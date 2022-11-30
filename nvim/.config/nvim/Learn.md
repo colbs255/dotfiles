@@ -8,3 +8,6 @@
 - :Gvdiffsplit
 - :GRrename
 - :GDelete
+
+# Neogit
+- :Neogit
