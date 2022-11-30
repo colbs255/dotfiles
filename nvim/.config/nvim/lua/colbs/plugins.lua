@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
         run = ":TSUpdate" -- may error when installing, but works after
     }
     use 'tpope/vim-surround'
+    use 'tpope/vim-fugitive'
 
     -- Colorscheme
     use 'folke/tokyonight.nvim'

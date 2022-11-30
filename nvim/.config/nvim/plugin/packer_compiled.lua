@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/colbychance/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/colbychance/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/colbychance/.local/share/nvim/site/pack/packer/start/vim-surround",
