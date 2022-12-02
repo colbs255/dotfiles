@@ -20,13 +20,19 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+-- Highlight results
+vim.opt.hlsearch = true
+-- Highlight while typing search
 vim.opt.incsearch = true
+-- Should be set together
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 -- gdefault is deprecated. It messes with plugins
 
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+-- TOOD: sidescrollof
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
