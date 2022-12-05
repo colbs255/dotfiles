@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
 
+    -- Useful
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -19,6 +20,12 @@ return require('packer').startup(function(use)
     use {
         'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim'
+    }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
     }
 
     -- Colorscheme
