@@ -1,1 +1,2 @@
-require("colbs")
+require("settings")
+require("plugins")
