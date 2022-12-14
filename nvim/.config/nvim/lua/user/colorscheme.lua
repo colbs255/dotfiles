@@ -7,6 +7,7 @@ local colorscheme = "tokyonight"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
+    -- Makes colorscheme errors more graceful
     vim.notify("Unable to load colorscheme: " .. colorscheme, vim.log.levels.WARN)
   return
 end

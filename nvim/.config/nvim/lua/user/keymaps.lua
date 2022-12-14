@@ -1,4 +1,4 @@
-local Remap = require("keymap")
+local Remap = require("user.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
