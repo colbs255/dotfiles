@@ -1,6 +1,19 @@
 -- Update with :PackerSync
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+
+-- bootstraps packer
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        -- Only required if you have packer configured as `opt`
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
+
+local bootstrapping_packer = ensure_packer()
 
 return require('packer').startup(function(use)
     -- The necessities
@@ -27,7 +40,20 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
+    }
 
     -- Colorscheme
     use 'folke/tokyonight.nvim'
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Must be after all plugins
+    if bootstrapping_packer then
+        require('packer').sync()
+    end
 end)

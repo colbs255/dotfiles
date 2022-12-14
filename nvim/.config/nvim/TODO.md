@@ -5,10 +5,13 @@
     - fugitive
     - lazygit
 - checkout https://github.com/mikebarkmin/.dotfiles
-- autopairs
-- git
-- lsp
-- tree sitter refactoring
+
+- plugins
+    - autopairs
+    - lsp
+    - tree sitter refactoring
+    - leap nvim
+
 
 - What is my git workflow?
     - add/stage -> commit -> push -> make pr
