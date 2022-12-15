@@ -48,6 +48,14 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- Experimental
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
     -- Colorscheme
     use 'folke/tokyonight.nvim'
 

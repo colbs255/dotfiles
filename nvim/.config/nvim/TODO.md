@@ -12,6 +12,8 @@
     - tree sitter refactoring
     - leap nvim
 
+- neovim from scratch
+
 
 - What is my git workflow?
     - add/stage -> commit -> push -> make pr
