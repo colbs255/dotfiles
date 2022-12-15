@@ -11,6 +11,7 @@
     - lsp
     - tree sitter refactoring
     - leap nvim
+    - harpoon
 
 - neovim from scratch
 

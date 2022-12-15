@@ -11,3 +11,6 @@
 
 # Neogit
 - :Neogit
+
+# Gitsigns
+- step through stage hunks
