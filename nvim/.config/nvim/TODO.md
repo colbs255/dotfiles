@@ -12,9 +12,12 @@
     - tree sitter refactoring
     - leap nvim
     - harpoon
+    - folke/which-key.nvim
+    - ThePrimeagen/harpoon
+    - lukas-reineke/indent-blankline.nvim
+    - lsp-zero
 
 - neovim from scratch
-
 
 - What is my git workflow?
     - add/stage -> commit -> push -> make pr

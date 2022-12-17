@@ -1,5 +1,5 @@
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'java', 'python', 'bash', 'json', 'c', 'yaml' },
+require"nvim-treesitter.configs".setup {
+    ensure_installed = { "java", "python", "bash", "json", "c", "yaml" },
     sync_install = false,
     highlight = {
         enable = true,

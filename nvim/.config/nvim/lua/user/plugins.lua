@@ -47,6 +47,12 @@ return require('packer').startup(function(use)
             {"nvim-treesitter/nvim-treesitter"}
         }
     }
+    use {
+        "ThePrimeagen/harpoon"
+    }
+
+    -- Colorscheme
+    use 'folke/tokyonight.nvim'
 
     -- Experimental
     use {
@@ -55,9 +61,6 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
-
-    -- Colorscheme
-    use 'folke/tokyonight.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Must be after all plugins

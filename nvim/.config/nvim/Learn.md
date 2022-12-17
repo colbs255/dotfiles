@@ -1,5 +1,8 @@
 # Learn
 
+# Basic Git
+- @: to repeat last command
+
 # Fugitive
 - :G for status
 - :G log
@@ -14,3 +17,4 @@
 
 # Gitsigns
 - step through stage hunks
+- view diff in hunk
