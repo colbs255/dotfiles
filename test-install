@@ -1,3 +1,10 @@
 #!/bin/bash
 #
 # Install all configs and favorite programs
+
+# Create directory for dotfiles
+INSTALL_PATH=~/Desktop/.config
+mkdir -p $INSTALL_PATH;rm -r $INSTALL_PATH/*;
+
+# Install with stow
+stow --verbose --target=$INSTALL_PATH --restow */
