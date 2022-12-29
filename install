@@ -11,6 +11,7 @@ brew install stow
 brew install ripgrep
 brew install fzf
 brew install neovim
+brew cask install iterm2
 
 ###########################################################################
 # dotfiles
