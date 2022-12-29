@@ -6,13 +6,13 @@
 # Programs
 ###########################################################################
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install neovim
 brew install git
 brew install stow
 brew install ripgrep
 brew install fzf
+brew install neovim
 
 ###########################################################################
 # dotfiles
 ###########################################################################
-stow --target=~ neovim
+stow nvim
