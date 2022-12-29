@@ -5,10 +5,12 @@
 ###########################################################################
 # Programs
 ###########################################################################
-# Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# brew install jesseduffield/lazygit/lazygit
-brew intall neovim
+brew install neovim
+brew install git
+brew install stow
+brew install ripgrep
+brew install fzf
 
 ###########################################################################
 # dotfiles
