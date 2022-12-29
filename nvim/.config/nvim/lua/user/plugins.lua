@@ -83,6 +83,7 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
+    use "~/Desktop/Projects/kubectl.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Must be after all plugins
