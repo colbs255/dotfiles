@@ -19,6 +19,11 @@ vnoremap(">", ">gv")
 
 -- Shortcuts =====================================
 nnoremap("<leader>oq", ":e ~/quick.md<CR>")
+nnoremap("<leader>os", function()
+    local scratch_buffer = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_buf_set_name(scratch_buffer, "__scratch__.md")
+    vim.api.nvim_set_current_buf(scratch_buffer)
+end)
 
 -- Telescope =====================================
 nnoremap("<C-p>", function()

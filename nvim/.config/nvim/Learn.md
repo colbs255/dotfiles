@@ -38,3 +38,19 @@ Diagnostics
 - gl: Show diagnostics in a floating window. See :help vim.diagnostic.open_float().
 - [d: Move to the previous diagnostic in the current buffer. See :help vim.diagnostic.goto_prev().
 - ]d: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
+
+Command line window mode
+q: for command line window
+while in command line mode, ctrl-f for command line window
+
+Netrw
+- cd to cd into current directory
+- Exploring: N before command is the window size
+    - Lexplore: traditional file tree explorer
+    - Texplore: explorer in tab
+- i to toggle modes (tree mode) (aka liststyle)
+- mc and mF
+- X execute filename under cursor via system
+- Maybe make a open Lexplore with tree plugin?
+- u to go to previous directory (can repeat) - think as a back button
+    - U for opposite
