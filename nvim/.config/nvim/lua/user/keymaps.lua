@@ -47,7 +47,7 @@ nnoremap("<Leader>fh", function()
 end)
 
 -- Neogit ========================================
-nnoremap("<Leader>gs", function()
+nnoremap("<Leader>gg", function()
     require('neogit').open()
 end)
 

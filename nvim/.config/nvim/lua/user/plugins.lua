@@ -30,7 +30,12 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate" -- may error when installing, but works after
     }
-    use 'tpope/vim-surround'
+    use {
+        'kylechui/nvim-surround',
+        config = function()
+            require('nvim-surround').setup()
+        end
+    }
     use {
         'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim'
