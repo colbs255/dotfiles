@@ -17,7 +17,7 @@ local bootstrapping_packer = ensure_packer()
 
 return require('packer').startup(function(use)
     -- The necessities
-    use 'wbthomason/packer.nvim'
+    use "wbthomason/packer.nvim"
     use "lewis6991/impatient.nvim"
     use 'nvim-lua/plenary.nvim'
 

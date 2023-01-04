@@ -16,6 +16,9 @@ vnoremap("p", '"_dP')
 -- Stay in indent mode
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
+-- Buffers =====================================
+nnoremap("<leader>bs", ":update<CR>")
+nnoremap("<leader>br", ":%s///g<left><left><left>")
 
 -- Shortcuts =====================================
 nnoremap("<leader>oq", ":e ~/quick.md<CR>")
