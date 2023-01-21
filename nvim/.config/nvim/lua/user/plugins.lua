@@ -17,7 +17,7 @@ local bootstrapping_packer = ensure_packer()
 
 return require('packer').startup(function(use)
     -- The necessities
-    use 'wbthomason/packer.nvim'
+    use "wbthomason/packer.nvim"
     use "lewis6991/impatient.nvim"
     use 'nvim-lua/plenary.nvim'
 
@@ -30,7 +30,12 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate" -- may error when installing, but works after
     }
-    use 'tpope/vim-surround'
+    use {
+        'kylechui/nvim-surround',
+        config = function()
+            require('nvim-surround').setup()
+        end
+    }
     use {
         'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim'
@@ -84,6 +89,10 @@ return require('packer').startup(function(use)
         }
     }
     use "~/Desktop/Projects/kubectl.nvim"
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Must be after all plugins
