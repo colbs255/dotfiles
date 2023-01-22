@@ -49,11 +49,6 @@ nnoremap("<Leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
 
--- Neogit ========================================
-nnoremap("<Leader>gg", function()
-    require('neogit').open()
-end)
-
 -- Harpoon =======================================
 nnoremap("<Leader>qj", function()
     require("harpoon.ui").nav_file(1)

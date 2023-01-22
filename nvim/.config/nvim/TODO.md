@@ -2,6 +2,7 @@
 
 - stow does not work with '~' need actual directory
 - stow has a source directory (-d) which tells it where the stow packages are
+- by default, stow will store in parent directory (e.g., when in ~/dotfiles, stow nvim will make a ~/.config/nvim...)
 - and a target directory -t which tells it where to install the package
     - you need to specify the -t when deleting (-D) to tell it where to delete
 
@@ -12,20 +13,13 @@
 - checkout https://github.com/mikebarkmin/.dotfiles
 
 - plugins
-    - autopairs
-    - lsp
+    - lsp-zero
+    - dap
+    - nerd fonts
     - tree sitter refactoring
-    - leap nvim
     - harpoon
     - folke/which-key.nvim
     - ThePrimeagen/harpoon
     - lukas-reineke/indent-blankline.nvim
-    - lsp-zero
 
 - neovim from scratch
-
-- What is my git workflow?
-    - add/stage -> commit -> push -> make pr
-        - look at diffs
-    - make branch off of branch
-    - merge
