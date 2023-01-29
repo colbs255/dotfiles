@@ -7,5 +7,9 @@ return {
     keys = {
         { "<Leader>gg", function () require('neogit').open() end }
     },
-    config = true
+    config = function ()
+        require('neogit').setup {
+            disable_commit_confirmation = true
+        }
+    end
 }
