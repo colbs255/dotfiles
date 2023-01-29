@@ -49,6 +49,10 @@ nnoremap("<Leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
 
+nnoremap("<Leader>gb", function()
+    require('telescope.builtin').git_branches()
+end)
+
 -- Harpoon =======================================
 nnoremap("<Leader>qj", function()
     require("harpoon.ui").nav_file(1)
