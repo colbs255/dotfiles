@@ -10,7 +10,8 @@ brew install stow
 brew install ripgrep
 brew install fzf
 brew install neovim
-
+brew tap wez/wezterm
+brew install --cask wez/wezterm/wezterm
 
 ###########################################################################
 # dotfiles
