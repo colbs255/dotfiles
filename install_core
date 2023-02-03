@@ -17,3 +17,4 @@ brew install --cask wez/wezterm/wezterm
 # dotfiles
 ###########################################################################
 stow nvim
+stow wezterm
