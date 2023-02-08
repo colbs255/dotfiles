@@ -5,7 +5,8 @@
 - Alfred or launchbar or raycast
 - Disable iCloud
 - Install karabiner with brew for keyboard shortcuts
-- finsih wezterm
+- pw manager
+- java, maven, sdk man
 
 # Software
 - karabiner
