@@ -1,0 +1,9 @@
+let mapleader=" "
+set scrolloff=7
+set incsearch
+
+map <leader>ff <Action>(GotoFile)
+map <leader>fe <Action>(RecentFiles)
+
+set nu
+set relativenumber
