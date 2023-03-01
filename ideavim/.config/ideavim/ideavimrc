@@ -1,9 +1,26 @@
 let mapleader=" "
-set scrolloff=7
+
+""" Common settings -------------------------
+set showmode
 set incsearch
-
-map <leader>ff <Action>(GotoFile)
-map <leader>fe <Action>(RecentFiles)
-
-set nu
+set scrolloff=8
+set sidescrolloff=8
+set number
 set relativenumber
+
+""" Search -------------------------------- 
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+""" Plugins  --------------------------------
+set surround
+set commentary
+
+""" Mappings --------------------------------
+" Note: map must be used for ideavim
+map <leader>ff <Action>(GotoClass)
+map <leader>fg <Action>(FindInPath)
+map <leader>fb <Action>(RecentFiles)
+map <leader>^ <Action>(GotoTest)
