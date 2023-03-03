@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-# Install apps that are nice to have
-#
-
-brew install --cask temurin
-brew install --cask intellij-idea

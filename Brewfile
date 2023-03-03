@@ -1,0 +1,16 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "wez/wezterm"
+
+brew "asciidoctor"
+brew "fish"
+brew "fzf"
+brew "git"
+brew "neovim"
+brew "ripgrep"
+brew "stow"
+
+cask "intellij-idea-ce"
+cask "temurin"
+cask "wezterm"
