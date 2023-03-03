@@ -2,8 +2,9 @@
 
 My opinionated dot files. Use at your own risk :)
 
-# Bootstrap
-1. Download homebrew and follow instructions it gives you
+## Install
+
+1. Install homebrew
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -22,12 +23,7 @@ cd ~
 git clone git@github.com:colbs255/dotfiles.git
 cd dotfiles
 ```
-
-# Install configs
-
-# Install core apps
-Apps that should be on all machines
+1. Install
+```bash
 ./install
-
-# Install extra apps
-You may not need all of these, take a look before installing
+```
