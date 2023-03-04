@@ -1,8 +1,10 @@
 -- To see what an option is, run :help <cmd>. For example, :help guicursor
 -- To see list of all options, :options
+vim.g.mapleader = " "
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.spelllang = "en_us"
 
 vim.opt.errorbells = false
 
@@ -11,18 +13,16 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
-
 vim.opt.wrap = false
+vim.opt.smartindent = true
+vim.opt.breakindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Highlight results
 vim.opt.hlsearch = true
--- Highlight while typing search
 vim.opt.incsearch = true
 -- Should be set together
 vim.opt.ignorecase = true
@@ -45,8 +45,6 @@ vim.opt.updatetime = 50
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
-
-vim.g.mapleader = " "
 
 -- netrw
 vim.g.netrw_browse_split = 0
