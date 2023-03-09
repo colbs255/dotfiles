@@ -1,5 +1,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 set EDITOR nvim
+set -gx TERM screen-256color
 
 if status is-interactive
     fish_vi_key_bindings
