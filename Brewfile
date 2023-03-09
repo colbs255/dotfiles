@@ -10,6 +10,7 @@ brew "git"
 brew "neovim"
 brew "ripgrep"
 brew "stow"
+brew "tmux"
 
 cask "intellij-idea-ce"
 cask "temurin"

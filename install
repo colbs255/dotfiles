@@ -1,17 +1,15 @@
 #!/bin/bash
 #
 # Install apps and configs I really need to get things done
-#
-#
 
 # By default, macs make accent popups when keys are held down instead of repeating, this turns that off
 defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Programs
 brew bundle
 
-###########################################################################
 # dotfiles
-###########################################################################
 stow fish
 stow nvim
 stow wezterm
+stow tmux
