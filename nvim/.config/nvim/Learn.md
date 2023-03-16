@@ -44,9 +44,11 @@ q: for command line window
 while in command line mode, ctrl-f for command line window
 
 Netrw
+- Vexplore, then move through explore and preview files with p. Allows you to quickly view files in directory
 - cd to cd into current directory
 - Exploring: N before command is the window size
     - Lexplore: traditional file tree explorer
+        - vexplore will split the current window whereas Lexplore will spilt the whole tab (more traditional)
     - Texplore: explorer in tab
 - i to toggle modes (tree mode) (aka liststyle)
 - mc and mF

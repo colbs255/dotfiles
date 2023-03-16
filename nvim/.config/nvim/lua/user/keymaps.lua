@@ -13,6 +13,10 @@ nnoremap("<leader>-", ":Ex<CR>")
 nnoremap("x", '"_x')
 -- Prevents visual paste from overwriting register
 vnoremap("p", '"_dP')
+-- Centers the cursor when scrolling
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+
 -- Stay in indent mode
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
