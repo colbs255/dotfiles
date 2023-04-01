@@ -1,0 +1,10 @@
+fish
+neovim
+git
+fzf
+ripgrep
+asciidoctor
+stow
+tmux
+pandoc
+lazygit
