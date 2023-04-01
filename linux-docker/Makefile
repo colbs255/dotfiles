@@ -1,15 +1,15 @@
 # Variable
-image_name := colbs-linux
+image_name := colby-linux
 
 # First target is the default command
 all: clean build run
 build:
-	docker build -t $(image_name) -f colby-linux.Dockerfile ..
+	docker build -t $(image_name) -f $(image_name).Dockerfile ..
 run:
 	docker run -it $(image_name)
 clean:
 	docker rmi $(image_name) -f
 edit:
-	nvim colby-linux.Dockerfile
+	nvim $(image_name).Dockerfile
 
 .PHONY: clean all
