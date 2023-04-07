@@ -3,6 +3,7 @@ switch (uname)
     case Linux
     case Darwin
         eval "$(/opt/homebrew/bin/brew shellenv)"
+        fish_add_path ~/.docker/bin
 end
 
 set EDITOR nvim
@@ -12,13 +13,14 @@ if status is-interactive
     fish_vi_key_bindings
 end
 
+# Prompt
 function fish_prompt
     set_color green
     echo (pwd)
     echo '> '
 end
 
-
+# Abbreviations
 abbr --add lg lazygit
 abbr --add vi nvim
 function multicd
