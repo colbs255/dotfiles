@@ -467,6 +467,12 @@
         "options": {
           "full_name": "dash"
         }
+      },
+      "docker": {
+        "version": "4.18.0,104112",
+        "options": {
+          "full_name": "docker"
+        }
       }
     }
   },
