@@ -14,6 +14,7 @@ RUN apk update \
 # Install dotfiles and neovim plugins
 RUN cd dotfiles \
     && stow nvim \
+    && stow fish \
     && nvim --headless "+Lazy! sync" +qa
 
 CMD ["fish"]
