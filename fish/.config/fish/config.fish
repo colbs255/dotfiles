@@ -18,6 +18,9 @@ function fish_prompt
     echo '> '
 end
 
+
+abbr --add lg lazygit
+abbr --add vi nvim
 function multicd
     echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
 end
