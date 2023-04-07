@@ -8,3 +8,4 @@ stow
 tmux
 pandoc
 lazygit
+zoxide
