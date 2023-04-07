@@ -1,4 +1,10 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# os specific
+switch (uname)
+    case Linux
+    case Darwin
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
 set EDITOR nvim
 set -gx TERM screen-256color
 

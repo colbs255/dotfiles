@@ -9,3 +9,4 @@ tmux
 pandoc
 lazygit
 zoxide
+alpine-sdk

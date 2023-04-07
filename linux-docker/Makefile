@@ -2,7 +2,7 @@
 image_name := colby-linux
 
 # First target is the default command
-all: clean build run
+all: build run
 build:
 	docker build -t $(image_name) -f $(image_name).Dockerfile ..
 run:
@@ -12,4 +12,4 @@ clean:
 edit:
 	nvim $(image_name).Dockerfile
 
-.PHONY: clean all
+.PHONY: all build run clean edit
