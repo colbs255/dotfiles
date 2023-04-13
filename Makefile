@@ -1,12 +1,10 @@
 configs := fish nvim wezterm tmux ideavim
 
-install: mac_settings homebrew programs dotfiles
+install: mac_settings programs dotfiles
 
 mac_settings:
 	defaults write -g ApplePressAndHoldEnabled -bool false
 	defaults write com.apple.dock orientation left
-homebrew:
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 programs:
 	brew bundle
 dotfiles:
@@ -14,4 +12,4 @@ dotfiles:
 		stow $(config); \
 	)
 
-.PHONY: install mac_settings homebrew programs dotfiles
+.PHONY: install mac_settings programs dotfiles
