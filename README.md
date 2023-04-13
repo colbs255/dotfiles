@@ -6,7 +6,7 @@ My opinionated dot files. Use at your own risk :)
 
 1. (optional) Create SSH key and [add SSH key to gihthub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 ``` bash
-ssh-keygen -t ed25519 -C "githubkey"
+ssh-keygen -t ed25519 -C "email"
 ```
 2. Install homebrew
 ``` bash
