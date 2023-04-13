@@ -4,16 +4,15 @@ My opinionated dot files. Use at your own risk :)
 
 ## Install
 
-1. Create SSH key (optional)
-```bash
-ssh-keygen -t ed25519 -C "githubkey"
-```
-2. [Add SSH key to gihthub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (optional)
-3. Clone this repo
+1. (optional) Create SSH key and [add SSH key to gihthub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 ``` bash
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles
+ssh-keygen -t ed25519 -C "email"
 ```
-4. Install
+2. Install homebrew
 ``` bash
-cd ~/dotfiles && make
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+3. Clone this repo and install
+``` bash
+git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
 ```
