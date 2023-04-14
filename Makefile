@@ -1,4 +1,4 @@
-configs := fish nvim wezterm tmux ideavim
+configs := fish nvim wezterm tmux ideavim git
 
 install: mac_settings programs dotfiles
 
