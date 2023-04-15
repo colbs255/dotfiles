@@ -21,6 +21,8 @@ function fish_prompt
     echo '> '
 end
 
+set -g fish_greeting Welcome!
+
 # Abbreviations
 abbr --add lg lazygit
 abbr --add vi nvim
