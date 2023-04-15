@@ -9,7 +9,7 @@ programs:
 	brew bundle
 dotfiles:
 	$(foreach config,$(configs), \
-		stow $(config); \
+		/opt/homebrew/bin/stow $(config); \
 	)
 
 .PHONY: install mac_settings programs dotfiles
