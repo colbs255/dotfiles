@@ -21,7 +21,7 @@ function fish_prompt
     echo '> '
 end
 
-set -g fish_greeting Welcome!
+set -g fish_greeting Welcome $USER!
 
 # Abbreviations
 abbr --add lg lazygit

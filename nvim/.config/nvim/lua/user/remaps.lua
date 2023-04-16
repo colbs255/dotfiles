@@ -45,28 +45,39 @@ nnoremap("<leader>os", function()
 end)
 
 -- Telescope =====================================
-nnoremap("<C-p>", function()
+
+-- Searches all files inside the git repo, respecting the gitignore
+nnoremap("<Leader><space>", function()
     require('telescope.builtin').git_files()
 end)
 
+-- Searches all files starting from your current working directory, respecting the gitignore
 nnoremap("<Leader>ff", function()
     require('telescope.builtin').find_files()
-end)
-
-nnoremap("<Leader>fg", function()
-    require('telescope.builtin').live_grep()
-end)
-
-nnoremap("<Leader>fb", function()
-    require('telescope.builtin').buffers()
 end)
 
 nnoremap("<Leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
 
+nnoremap("<Leader>fm", function()
+    require('telescope.builtin').man_pages()
+end)
+
 nnoremap("<Leader>gb", function()
     require('telescope.builtin').git_branches()
+end)
+
+nnoremap("<Leader>/", function()
+    require('telescope.builtin').live_grep()
+end)
+
+nnoremap("<Leader>,", function()
+    require('telescope.builtin').buffers()
+end)
+
+nnoremap("<Leader>:", function()
+    require('telescope.builtin').command_history()
 end)
 
 -- Harpoon =======================================
