@@ -20,7 +20,7 @@ set commentary
 
 """ Mappings --------------------------------
 " Note: map must be used for ideavim
-map <leader>ff <Action>(GotoClass)
-map <leader>fg <Action>(FindInPath)
-map <leader>fb <Action>(RecentFiles)
+map <leader><leader> <Action>(GotoClass)
+map <leader>/ <Action>(FindInPath)
+map <leader>, <Action>(RecentFiles)
 map <leader>^ <Action>(GotoTest)
