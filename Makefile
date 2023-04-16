@@ -1,4 +1,4 @@
-configs := fish nvim wezterm tmux ideavim git
+configs := fish nvim wezterm tmux ideavim git lazygit
 
 install: mac_settings programs dotfiles
 
