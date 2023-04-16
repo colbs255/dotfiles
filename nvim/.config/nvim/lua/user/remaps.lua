@@ -45,20 +45,12 @@ nnoremap("<leader>os", function()
 end)
 
 -- Telescope =====================================
-nnoremap("<C-p>", function()
+nnoremap("<Leader><space>", function()
     require('telescope.builtin').git_files()
 end)
 
 nnoremap("<Leader>ff", function()
     require('telescope.builtin').find_files()
-end)
-
-nnoremap("<Leader>fg", function()
-    require('telescope.builtin').live_grep()
-end)
-
-nnoremap("<Leader>fb", function()
-    require('telescope.builtin').buffers()
 end)
 
 nnoremap("<Leader>fh", function()
@@ -67,6 +59,18 @@ end)
 
 nnoremap("<Leader>gb", function()
     require('telescope.builtin').git_branches()
+end)
+
+nnoremap("<Leader>/", function()
+    require('telescope.builtin').live_grep()
+end)
+
+nnoremap("<Leader>,", function()
+    require('telescope.builtin').buffers()
+end)
+
+nnoremap("<Leader>:", function()
+    require('telescope.builtin').command_history()
 end)
 
 -- Harpoon =======================================
