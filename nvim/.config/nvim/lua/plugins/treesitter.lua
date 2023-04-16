@@ -3,14 +3,14 @@ return {
     commit = "287ffdccc1dd7ed017d844a4fad069fd3340fa94",
     config = function()
         require("nvim-treesitter.configs").setup({
-            ensure_installed = {"java", "python", "bash", "json", "c", "yaml", "rust", "lua"},
+            ensure_installed = { "java", "python", "bash", "json", "c", "yaml", "rust", "lua" },
             -- Only sync_install if running headless.
             -- From: https://github.com/nvim-treesitter/nvim-treesitter/issues/3579#issuecomment-1278662119
             sync_install = #vim.api.nvim_list_uis() == 0,
 
             highlight = {
                 enable = true,
-                disable = { "help" }
+                disable = { "help" },
             },
             autopairs = { enable = true },
             indent = { enable = true, disable = { "python", "css" } },
@@ -21,5 +21,5 @@ return {
         vim.opt.foldlevel = 999999 -- Leave unfolded by default.
         vim.opt.foldmethod = "expr"
     end,
-    build = ":TSUpdate"
+    build = ":TSUpdate",
 }

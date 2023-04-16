@@ -1,16 +1,13 @@
 -- Makes vim mapping more convenient in lua configs
 local function bind(op, outer_opts)
-    outer_opts = outer_opts or {noremap = true}
+    outer_opts = outer_opts or { noremap = true }
     return function(lhs, rhs, opts)
-        opts = vim.tbl_extend("force",
-            outer_opts,
-            opts or {}
-        )
+        opts = vim.tbl_extend("force", outer_opts, opts or {})
         vim.keymap.set(op, lhs, rhs, opts)
     end
 end
 
-local nmap = bind("n", {noremap = false})
+local nmap = bind("n", { noremap = false })
 local nnoremap = bind("n")
 local vnoremap = bind("v")
 local xnoremap = bind("x")
@@ -48,36 +45,36 @@ end)
 
 -- Searches all files inside the git repo, respecting the gitignore
 nnoremap("<Leader><space>", function()
-    require('telescope.builtin').git_files()
+    require("telescope.builtin").git_files()
 end)
 
 -- Searches all files starting from your current working directory, respecting the gitignore
 nnoremap("<Leader>ff", function()
-    require('telescope.builtin').find_files()
+    require("telescope.builtin").find_files()
 end)
 
 nnoremap("<Leader>fh", function()
-    require('telescope.builtin').help_tags()
+    require("telescope.builtin").help_tags()
 end)
 
 nnoremap("<Leader>fm", function()
-    require('telescope.builtin').man_pages()
+    require("telescope.builtin").man_pages()
 end)
 
 nnoremap("<Leader>gb", function()
-    require('telescope.builtin').git_branches()
+    require("telescope.builtin").git_branches()
 end)
 
 nnoremap("<Leader>/", function()
-    require('telescope.builtin').live_grep()
+    require("telescope.builtin").live_grep()
 end)
 
 nnoremap("<Leader>,", function()
-    require('telescope.builtin').buffers()
+    require("telescope.builtin").buffers()
 end)
 
 nnoremap("<Leader>:", function()
-    require('telescope.builtin').command_history()
+    require("telescope.builtin").command_history()
 end)
 
 -- Harpoon =======================================
