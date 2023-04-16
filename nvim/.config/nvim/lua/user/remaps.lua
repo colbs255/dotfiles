@@ -57,6 +57,10 @@ nnoremap("<Leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
 
+nnoremap("<Leader>fm", function()
+    require('telescope.builtin').man_pages()
+end)
+
 nnoremap("<Leader>gb", function()
     require('telescope.builtin').git_branches()
 end)
