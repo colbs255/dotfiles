@@ -3,6 +3,9 @@
 [core]
 	editor = nvim
     pager = delta
+[pull]
+    ff = only
+    rebase = true
 [interactive]
     diffFilter = delta --color-only
 [delta]
