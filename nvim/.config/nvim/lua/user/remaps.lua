@@ -45,10 +45,13 @@ nnoremap("<leader>os", function()
 end)
 
 -- Telescope =====================================
+
+-- Searches all files inside the git repo, respecting the gitignore
 nnoremap("<Leader><space>", function()
     require('telescope.builtin').git_files()
 end)
 
+-- Searches all files starting from your current working directory, respecting the gitignore
 nnoremap("<Leader>ff", function()
     require('telescope.builtin').find_files()
 end)
