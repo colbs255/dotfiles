@@ -1,10 +1,10 @@
 -- Makes vim mapping more convenient in lua configs
 local function bind(op, outer_opts)
-	outer_opts = outer_opts or { noremap = true }
-	return function(lhs, rhs, opts)
-		opts = vim.tbl_extend("force", outer_opts, opts or {})
-		vim.keymap.set(op, lhs, rhs, opts)
-	end
+    outer_opts = outer_opts or { noremap = true }
+    return function(lhs, rhs, opts)
+        opts = vim.tbl_extend("force", outer_opts, opts or {})
+        vim.keymap.set(op, lhs, rhs, opts)
+    end
 end
 
 local nmap = bind("n", { noremap = false })
@@ -36,60 +36,60 @@ nnoremap("<leader>br", ":%s///g<left><left><left>")
 -- Shortcuts =====================================
 nnoremap("<leader>oq", ":e ~/quick.md<CR>")
 nnoremap("<leader>os", function()
-	local scratch_buffer = vim.api.nvim_create_buf(true, true)
-	vim.api.nvim_buf_set_name(scratch_buffer, "__scratch__.md")
-	vim.api.nvim_set_current_buf(scratch_buffer)
+    local scratch_buffer = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_buf_set_name(scratch_buffer, "__scratch__.md")
+    vim.api.nvim_set_current_buf(scratch_buffer)
 end)
 
 -- Telescope =====================================
 
 -- Searches all files inside the git repo, respecting the gitignore
 nnoremap("<Leader><space>", function()
-	require("telescope.builtin").git_files()
+    require("telescope.builtin").git_files()
 end)
 
 -- Searches all files starting from your current working directory, respecting the gitignore
 nnoremap("<Leader>ff", function()
-	require("telescope.builtin").find_files()
+    require("telescope.builtin").find_files()
 end)
 
 nnoremap("<Leader>fh", function()
-	require("telescope.builtin").help_tags()
+    require("telescope.builtin").help_tags()
 end)
 
 nnoremap("<Leader>fm", function()
-	require("telescope.builtin").man_pages()
+    require("telescope.builtin").man_pages()
 end)
 
 nnoremap("<Leader>gb", function()
-	require("telescope.builtin").git_branches()
+    require("telescope.builtin").git_branches()
 end)
 
 nnoremap("<Leader>/", function()
-	require("telescope.builtin").live_grep()
+    require("telescope.builtin").live_grep()
 end)
 
 nnoremap("<Leader>,", function()
-	require("telescope.builtin").buffers()
+    require("telescope.builtin").buffers()
 end)
 
 nnoremap("<Leader>:", function()
-	require("telescope.builtin").command_history()
+    require("telescope.builtin").command_history()
 end)
 
 -- Harpoon =======================================
 nnoremap("<Leader>qj", function()
-	require("harpoon.ui").nav_file(1)
+    require("harpoon.ui").nav_file(1)
 end)
 nnoremap("<Leader>qk", function()
-	require("harpoon.ui").nav_file(2)
+    require("harpoon.ui").nav_file(2)
 end)
 nnoremap("<Leader>ql", function()
-	require("harpoon.ui").nav_file(3)
+    require("harpoon.ui").nav_file(3)
 end)
 nnoremap("<Leader>qm", function()
-	require("harpoon.ui").toggle_quick_menu()
+    require("harpoon.ui").toggle_quick_menu()
 end)
 nnoremap("<Leader>qa", function()
-	require("harpoon.mark").add_file()
+    require("harpoon.mark").add_file()
 end)
