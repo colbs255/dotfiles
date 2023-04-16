@@ -53,6 +53,6 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_winsize = 25
 -- Comma separated regexes for hiding folders in netrw
 -- Hide ./
-vim.g.netrw_list_hide =  "^\\./"
+vim.g.netrw_list_hide = "^\\./"
 -- Hide ../
 vim.g.netrw_list_hide = vim.g.netrw_list_hide .. "," .. "^\\.\\./"
