@@ -13,6 +13,7 @@ brew "ripgrep"
 brew "stow"
 brew "tmux"
 brew "lazygit"
+brew "fd"
 
 cask "intellij-idea-ce"
 cask "temurin"
