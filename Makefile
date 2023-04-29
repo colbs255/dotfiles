@@ -11,5 +11,7 @@ dotfiles:
 	$(foreach config,$(configs), \
 		/opt/homebrew/bin/stow $(config); \
 	)
+lint:
+	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
-.PHONY: install mac_settings programs dotfiles
+.PHONY: install mac_settings programs dotfiles lint
