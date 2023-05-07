@@ -10,6 +10,8 @@ dotfiles:
 	cd config && stow --target=../.. --restow *
 clean:
 	cd config && stow --target=../.. --delete *
+linuxprograms:
+	./linux/install.sh
 lint:
 	cd config && stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
