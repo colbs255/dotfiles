@@ -5,3 +5,4 @@
 * intellij
 * remove software I don't want
 * raycast replacement
+* nix

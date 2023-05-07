@@ -9,4 +9,6 @@ sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 # Lazygit repo
 sudo dnf -y copr enable atim/lazygit
 
-sudo yum -y install $(cat linux/packages.txt)
+sudo dnf -y install $(cat linux/packages.txt)
+
+sudo dnf -y remove $(cat linux/remove.txt)
