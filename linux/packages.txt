@@ -15,3 +15,4 @@ tmux
 lazygit
 fd-find
 brave-browser
+java-latest-openjdk-devel.x86_64
