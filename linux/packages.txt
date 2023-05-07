@@ -14,3 +14,4 @@ nnn
 tmux
 lazygit
 fd-find
+brave-browser
