@@ -12,7 +12,7 @@ dotfiles:
 		stow $(config); \
 	)
 linuxprograms:
-	sudo yum -y install $(cat packages.txt)
+	./linux/install.sh
 lint:
 	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
