@@ -1,0 +1,15 @@
+make
+https://github.com/wez/wezterm/releases/download/nightly/wezterm-nightly-fedora38.rpm
+asciidoctor
+fish
+fzf
+git
+git-delta
+neovim
+ripgrep
+stow
+htop
+nnn
+tmux
+lazygit
+fd-find

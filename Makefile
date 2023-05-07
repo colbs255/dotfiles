@@ -9,8 +9,10 @@ programs:
 	brew bundle
 dotfiles:
 	$(foreach config,$(configs), \
-		/opt/homebrew/bin/stow $(config); \
+		stow $(config); \
 	)
+linuxprograms:
+	sudo yum -y install $(cat packages.txt)
 lint:
 	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
