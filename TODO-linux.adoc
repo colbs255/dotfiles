@@ -1,8 +1,8 @@
 = TODO
 
 * docker
-* java
-* intellij
+* intellij: https://www.jetbrains.com/help/idea/installation-guide.html#62d29ab6
 * remove software I don't want
-* raycast replacement
+* KRunner, Cerebro, Albert
 * nix
+* wifi is slow sometimes
