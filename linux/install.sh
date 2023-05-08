@@ -14,3 +14,6 @@ sudo dnf -y install $(cat linux/packages.txt)
 sudo dnf -y remove $(cat linux/remove.txt)
 
 echo "Note: you may have to run 'sudo alternatives --config java' to choose your java"
+
+# Install intelliJ
+wget -O ~/Downloads/intellij.tar.gz https://download.jetbrains.com/idea/ideaIC-2023.1.1.tar.gz
