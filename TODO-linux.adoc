@@ -6,3 +6,4 @@
 * KRunner, Cerebro, Albert
 * nix
 * wifi is slow sometimes
+* make my own package
