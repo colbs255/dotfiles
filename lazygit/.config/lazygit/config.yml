@@ -26,4 +26,4 @@ git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
   allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
 notARepository: 'prompt' # one of: 'prompt' | 'create' | 'skip' | 'quit'
-promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
+promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
