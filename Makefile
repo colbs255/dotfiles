@@ -1,5 +1,3 @@
-configs := fish nvim wezterm tmux ideavim git lazygit
-
 install: mac_settings programs dotfiles
 
 mac_settings:
@@ -8,13 +6,9 @@ mac_settings:
 programs:
 	brew bundle
 dotfiles:
-	$(foreach config,$(configs), \
-		stow --target=.. --dir=config --restow $(config); \
-	)
+	cd config && stow --target=../.. --restow *
 clean:
-	$(foreach config,$(configs), \
-		stow --target=.. --dir=config --delete $(config); \
-	)
+	cd config && stow --target=../.. --delete *
 lint:
 	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
