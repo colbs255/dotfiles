@@ -17,3 +17,6 @@ echo "Note: you may have to run 'sudo alternatives --config java' to choose your
 
 # Install intelliJ
 wget -O ~/Downloads/intellij.tar.gz https://download.jetbrains.com/idea/ideaIC-2023.1.1.tar.gz
+
+# Bitwarden
+npm install -g @bitwarden/cli
