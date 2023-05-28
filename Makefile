@@ -10,6 +10,6 @@ dotfiles:
 clean:
 	cd config && stow --target=../.. --delete *
 lint:
-	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
+	cd config && stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
 .PHONY: install mac_settings programs dotfiles lint
