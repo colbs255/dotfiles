@@ -9,7 +9,11 @@ programs:
 	brew bundle
 dotfiles:
 	$(foreach config,$(configs), \
-		/opt/homebrew/bin/stow $(config); \
+		stow --target=.. --dir=config --restow $(config); \
+	)
+clean:
+	$(foreach config,$(configs), \
+		stow --target=.. --dir=config --delete $(config); \
 	)
 lint:
 	stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
