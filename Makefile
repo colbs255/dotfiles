@@ -5,7 +5,7 @@ settings:
 	defaults write com.apple.dock orientation left
 programs:
 	-brew bundle
-	-sudo yum -y install $(cat packages.txt)
+	./linux/install.sh
 dotfiles:
 	cd config && stow --target=../.. --restow *
 clean:
