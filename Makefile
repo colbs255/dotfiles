@@ -1,10 +1,12 @@
+# Get the os (Linux or Darwin) and convert it to lowercase with tr
+OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+
 install: settings programs dotfiles
 
 settings:
-	defaults write -g ApplePressAndHoldEnabled -bool false
-	defaults write com.apple.dock orientation left
+	cd $(OS) && ./settings.sh
 programs:
-	brew bundle
+	cd $(OS) && ./programs.sh
 dotfiles:
 	cd config && stow --target=../.. --restow *
 clean:
