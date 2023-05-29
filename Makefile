@@ -1,6 +1,6 @@
-install: mac_settings programs dotfiles
+install: settings programs dotfiles
 
-mac_settings:
+settings:
 	defaults write -g ApplePressAndHoldEnabled -bool false
 	defaults write com.apple.dock orientation left
 programs:
@@ -12,4 +12,4 @@ clean:
 lint:
 	cd config && stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 
-.PHONY: install mac_settings programs dotfiles lint
+.PHONY: install settings programs dotfiles lint
