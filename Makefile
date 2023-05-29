@@ -1,10 +1,13 @@
+OS := $(shell uname -s)
+
 install: settings programs dotfiles
 
+test:
+	@echo "OS: $(OS)"
 settings:
-	defaults write -g ApplePressAndHoldEnabled -bool false
-	defaults write com.apple.dock orientation left
+	./darwin/settings.sh
 programs:
-	brew bundle
+	./darwin/progams.sh
 dotfiles:
 	cd config && stow --target=../.. --restow *
 clean:
