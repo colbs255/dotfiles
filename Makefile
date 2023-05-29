@@ -1,13 +1,12 @@
-OS := $(shell uname -s)
+# Get the os (Linux or Darwin) and convert it to lowercase with tr
+OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
 install: settings programs dotfiles
 
-test:
-	@echo "OS: $(OS)"
 settings:
-	./darwin/settings.sh
+	cd $(OS) && ./settings.sh
 programs:
-	./darwin/progams.sh
+	cd $(OS) && ./programs.sh
 dotfiles:
 	cd config && stow --target=../.. --restow *
 clean:
