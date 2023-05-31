@@ -5,6 +5,13 @@ local osToBinPath = {
     darwin = "/opt/homebrew/bin"
 }
 
+local function loadShellPathForOS ()
+    local handle = io.popen("uname -s | tr '[:upper:]' '[:lower:]'")
+    local osName = string.gsub(handle:read("*a"), "\n", "")
+    handle:close()
+    return osToBinPath[osName]
+end
+
 local program_path = loadShellPathForOS() .. "/fish"
 
 return {
@@ -21,10 +28,3 @@ return {
         bottom = 0,
     },
 }
-
-function loadShellPathForOS ()
-    local handle = io.popen("uname -s | tr '[:upper:]' '[:lower:]'")
-    local os_name = string.gsub(handle:read("*a"), "\n", "")
-    handle:close()
-    return osToBinPath[output]
-end
