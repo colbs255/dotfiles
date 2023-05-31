@@ -4,8 +4,6 @@ BIN_PATH := $(shell cat $(OS)/path.txt)
 
 install: settings programs dotfiles
 
-test:
-	@echo $(BIN_PATH)
 settings:
 	cd $(OS) && ./settings.sh
 programs:
