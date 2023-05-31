@@ -1,5 +1,6 @@
 # Get the os (Linux or Darwin) and convert it to lowercase with tr
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+BIN_PATH := $(shell cat $(OS)/path.txt)
 
 install: settings programs dotfiles
 
@@ -8,7 +9,7 @@ settings:
 programs:
 	cd $(OS) && ./programs.sh
 dotfiles:
-	cd config && stow --target=../.. --restow *
+	cd config && $(BIN_PATH)/stow --target=../.. --restow *
 lint:
 	cd config && stylua wezterm/.config/wezterm/wezterm.lua nvim/.config/nvim/
 

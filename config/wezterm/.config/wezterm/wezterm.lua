@@ -1,7 +1,21 @@
 local wezterm = require("wezterm")
 
+local osToBinPath = {
+    linux = "/usr/bin",
+    darwin = "/opt/homebrew/bin"
+}
+
+local function loadShellPathForOS ()
+    local handle = io.popen("uname -s | tr '[:upper:]' '[:lower:]'")
+    local osName = string.gsub(handle:read("*a"), "\n", "")
+    handle:close()
+    return osToBinPath[osName]
+end
+
+local program_path = loadShellPathForOS() .. "/fish"
+
 return {
-    default_prog = { "/opt/homebrew/bin/fish", "-l" },
+    default_prog = { program_path, "-l" },
     font = wezterm.font("JetBrains Mono"),
     font_size = 18.0,
     color_scheme = "Catppuccin Mocha",
