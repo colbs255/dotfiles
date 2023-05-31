@@ -8,7 +8,7 @@ My opinionated dot files. Use at your own risk :)
 ``` bash
 ssh-keygen -t ed25519 -C "email"
 ```
-2. Install homebrew
+2. (mac only) Install homebrew
 ``` bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
