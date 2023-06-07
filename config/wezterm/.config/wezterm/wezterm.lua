@@ -12,7 +12,7 @@ local function loadShellPathForOS ()
     return osToBinPath[osName]
 end
 
-local program_path = loadShellPathForOS() .. "/fish"
+local program_path = loadShellPathForOS() .. "/bash"
 
 return {
     default_prog = { program_path, "-l" },
