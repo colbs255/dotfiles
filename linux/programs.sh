@@ -16,6 +16,3 @@ sudo dnf -y copr enable atim/lazygit
 sudo dnf -y install $(cat packages.txt)
 
 sudo dnf -y remove $(cat remove.txt)
-
-# Bitwarden
-npm install -g @bitwarden/cli
