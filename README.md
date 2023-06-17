@@ -14,7 +14,7 @@ ssh-keygen -t ed25519 -C "email"
 ```
 3. (kionite only) Setup toolbox
 ``` bash
-toolbox create main && toolbox activate main && sudo dnf -y install make
+toolbox create main && toolbox enter main && sudo dnf -y install make
 ```
 4. Clone this repo and install
 ``` bash
