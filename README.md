@@ -18,7 +18,7 @@ ssh-keygen -t ed25519 -C "email"
 ``` bash
 git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
 ```
-### Fedora Kionite/Silverblue
+### Fedora Kinoite/Silverblue
 
 1. Setup toolbox
 ``` bash
