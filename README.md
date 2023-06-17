@@ -22,5 +22,5 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 ```
 5. (kionite only) Install flatpaks. From another terminal:
 ``` bash
-cd dotfiles && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub $(cat linux/flatpaks.txt)
+cd ~/dotfiles && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak -y install flathub $(cat linux/flatpaks.txt)
 ```
