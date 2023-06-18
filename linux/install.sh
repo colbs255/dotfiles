@@ -13,6 +13,5 @@ rpm-ostree override remove firefox firefox-langpacks
 
 # Create main toolbox
 toolbox create main
-toolbox enter main
-sudo dnf -y install make
-make
+toolbox run -c main sudo dnf -y install make
+toolbox run -c main make
