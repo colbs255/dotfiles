@@ -21,5 +21,5 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 ### Fedora Kinoite/Silverblue
 
 ``` bash
-bash -c $(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
