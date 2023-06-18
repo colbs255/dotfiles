@@ -20,21 +20,6 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 ```
 ### Fedora Kinoite/Silverblue
 
-1. Setup toolbox
 ``` bash
-toolbox create main
-toolbox enter main
-```
-2. Clone this repo and install
-``` bash
-sudo dnf -y install make
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
-```
-3. Install flatpaks (run from host terminal)
-``` bash
-cd ~/dotfiles && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak -y install flathub $(cat linux/flatpaks.txt)
-```
-4. Remove firefox
-``` bash
-rpm-ostree override remove firefox firefox-langpacks
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
