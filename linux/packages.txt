@@ -16,3 +16,4 @@ fd-find
 java-latest-openjdk-devel.x86_64
 nodejs
 zoxide
+sd
