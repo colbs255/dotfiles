@@ -18,7 +18,7 @@ ssh-keygen -t ed25519 -C "email"
 ``` bash
 git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
 ```
-### Fedora Kinoite/Silverblue
+### Fedora Kinoite/Silverblue/Sericea
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
