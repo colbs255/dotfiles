@@ -52,6 +52,8 @@ gaps inner 20
 
 input type:keyboard {
     xkb_options ctrl:nocaps
+    repeat_delay 220
+    repeat_rate 80
 }
 
 ### Key bindings
