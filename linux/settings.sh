@@ -1,3 +1,3 @@
 #!/bin/bash
 
-# Nothing yet
+xdg-settings set default-web-browser com.brave.Browser.desktop
