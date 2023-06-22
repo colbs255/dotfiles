@@ -26,9 +26,9 @@ gaps inner 20
 ### Idle configuration
 
 exec swayidle -w \
-         timeout 300 'swaylock -f -i /usr/share/backgrounds/fedora-workstation/petals_light.webp' \
+         timeout 300 'swaylock -f -i /usr/share/backgrounds/fedora-workstation/petals_light.webp --ring-color 7134eb' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -i /usr/share/backgrounds/fedora-workstation/petals_light.webp'
+         before-sleep 'swaylock -f -i /usr/share/backgrounds/fedora-workstation/petals_light.webp --ring-color 7134eb'
 
 ### Input configuration
 
