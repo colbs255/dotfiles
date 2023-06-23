@@ -17,10 +17,11 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
 set $background /usr/share/backgrounds/fedora-workstation/montclair_dark.webp
 
-### Output configuration
+### Appearance
 
 output * bg $background fill
 gaps inner 20
+font pango:RobotoMonoNerdFont Bold 16
 
 ### Input configuration
 
