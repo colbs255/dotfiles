@@ -141,5 +141,4 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# DO NOT CHANGE
-include '$(/usr/libexec/sway/layered-include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+include ~/.config/sway/config.d/*.conf
