@@ -19,6 +19,7 @@ return {
     color_scheme = "Catppuccin Mocha",
     hide_tab_bar_if_only_one_tab = true,
     cursor_blink_rate = 800,
+    window_close_confirmation = "NeverPrompt",
     window_background_opacity = 0.9,
     window_padding = {
         left = 0,
