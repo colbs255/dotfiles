@@ -42,11 +42,18 @@ bindsym $mod+Shift+Escape exec $lock_screen
 #     before-sleep "$lock_screen" \
 #     lock "$lock_screen" \
 #     unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
-exec always_pkill swayidle; swayidle -w timeout 10 'swaylock -f'
+# exec always_pkill swayidle; swayidle -w timeout 10 'swaylock -f'
 
 ## Disable title bar
 default_border pixel 3
 default_floating_border pixel 3
+
+### Waybar
+
+bar {
+    position top
+    swaybar_command waybar
+}
 
 ### Input configuration
 
