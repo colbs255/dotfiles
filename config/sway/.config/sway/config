@@ -45,8 +45,8 @@ bindsym $mod+Shift+Escape exec $lock_screen
 # exec always_pkill swayidle; swayidle -w timeout 10 'swaylock -f'
 
 ## Disable title bar
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 5
+default_floating_border pixel 5
 
 ### Waybar
 
@@ -173,5 +173,12 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# A special mode for passing any keybindings to the focused application
+
+mode "passthrough" {
+    bindsym $mod+Pause mode default
+}
+bindsym $mod+Pause mode "passthrough"
 
 include ~/.config/sway/config.d/*.conf
