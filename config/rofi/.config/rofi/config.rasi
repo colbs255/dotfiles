@@ -3,7 +3,7 @@ configuration {
 	combi-modi: "window,drun,calc";
 	disable-history: false;
 	drun-display-format: "{name}";
-	font: "FiraCode Nerd Font Regular 12";
+	font: "FiraCode Nerd Font Regular 18";
 	icon-theme: "Fluent";
 	kb-accept-custom: "Control+Return";
 	kb-cancel: "Escape,Control+g,Control+bracketleft,Control+space";
@@ -12,16 +12,18 @@ configuration {
 	modi: "drun";
 	scroll-method: 0;
 	show-icons: true;
-  sorting-method: "fzf";
-  sort: true;
+    sorting-method: "fzf";
+    sort: true;
 	threads: 0;
 	window-thumbnail: true;
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
-  filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
-  }
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method: "name";
+    }
 }
+
+@theme "android_notification"
