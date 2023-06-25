@@ -21,6 +21,7 @@ set $background /usr/share/backgrounds/fedora-workstation/montclair_dark.webp
 output * bg $background fill
 gaps inner 20
 font pango:RobotoMonoNerdFont Bold 16
+
 ## Colors
 # class                 border  bground text    indicator child_border
 client.focused          #000000 #6A0D89 #FFFFFF #C518FF   #6A0D89
@@ -30,12 +31,9 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
-
 ### Lock Screen
 set $lock swaylock -f
-
 bindsym $mod+Shift+Escape exec $lock
-
 exec_always pkill swayidle; swayidle -w \
          timeout 300 "$lock" \
          timeout 600 'swaymsg "output * power off"' \
@@ -125,7 +123,7 @@ input type:keyboard {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
 #
-# Layout stuff:
+# Layout:
 #
     bindsym $mod+b splith
     bindsym $mod+v splitv
