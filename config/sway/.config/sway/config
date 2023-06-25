@@ -12,8 +12,7 @@ set $right l
 set $term flatpak run org.wezfurlong.wezterm
 set $browser flatpak run org.brave.Browser
 
-set $rofi_cmd rofi -terminal '$term'
-set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+set $menu rofi -terminal '$term' -show drun
 
 set $background /usr/share/backgrounds/fedora-workstation/montclair_dark.webp
 

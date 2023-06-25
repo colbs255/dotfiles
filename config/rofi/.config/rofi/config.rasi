@@ -1,6 +1,7 @@
 configuration {
-	combi-hide-mode-prefix: true;
-	combi-modi: "window,drun,calc";
+    modi: "drun,combi,filebrowser";
+    combi-modi: "drun,calc";
+    combi-hide-mode-prefix: true;
 	disable-history: false;
 	drun-display-format: "{name}";
 	font: "FiraCode Nerd Font Regular 18";
@@ -8,8 +9,9 @@ configuration {
 	kb-accept-custom: "Control+Return";
 	kb-cancel: "Escape,Control+g,Control+bracketleft,Control+space";
 	kb-row-select: "Control+Super+space";
+    kb-row-up: "Control+p";
+    kb-row-down: "Control+n";
 	matching: "fuzzy";
-	modi: "drun";
 	scroll-method: 0;
 	show-icons: true;
     sorting-method: "fzf";
