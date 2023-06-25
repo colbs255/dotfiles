@@ -11,8 +11,7 @@ set $right l
 set $term flatpak run org.wezfurlong.wezterm
 set $browser flatpak run org.brave.Browser
 
-set $rofi_cmd rofi \
-        -terminal '$term'
+set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
 set $background /usr/share/backgrounds/fedora-workstation/montclair_dark.webp
@@ -36,13 +35,6 @@ client.background       #FFFFFF
 set $lock swaylock -f
 
 bindsym $mod+Shift+Escape exec $lock
-
-# exec swayidle -w \
-#     timeout 10 "$lock_screen" \
-#     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#     before-sleep "$lock_screen" \
-#     lock "$lock_screen" \
-#     unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
 
 exec_always pkill swayidle; swayidle -w \
          timeout 300 "$lock" \
