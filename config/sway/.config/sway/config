@@ -33,16 +33,23 @@ client.background       #FFFFFF
 
 
 ### Lock Screen
-set $lock_screen swaylock -f -i /usr/share/backgrounds/fedora-workstation/petals_light.webp --ring-color 6A0D89
+set $lock swaylock -f
 
-bindsym $mod+Shift+Escape exec $lock_screen
+bindsym $mod+Shift+Escape exec $lock
+
 # exec swayidle -w \
 #     timeout 10 "$lock_screen" \
 #     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #     before-sleep "$lock_screen" \
 #     lock "$lock_screen" \
 #     unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
-# exec always_pkill swayidle; swayidle -w timeout 10 'swaylock -f'
+
+exec_always pkill swayidle; swayidle -w \
+         timeout 300 "$lock" \
+         timeout 600 'swaymsg "output * power off"' \
+         resume 'swaymsg "output * power on"' \
+         before-sleep "$lock" \
+         before-sleep 'playerctl pause'
 
 ## Disable title bar
 default_border pixel 5
