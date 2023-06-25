@@ -165,14 +165,4 @@ for_window [app_id="lxqt-policykit-agent"] {
     move position center
 }
 
-#################################################################
-## System settings
-#################################################################
-exec /usr/libexec/lxqt-policykit-agent
-exec /usr/libexec/sway-systemd/wait-sni-ready && \
-    systemctl --user start sway-xdg-autostart.target
-exec /usr/bin/xdg-user-dirs-update
-exec /usr/libexec/sway-systemd/assign-cgroups.py
-exec /usr/libexec/sway-systemd/session.sh --with-cleanup
-
 include ~/.config/sway/config.d/*.conf
