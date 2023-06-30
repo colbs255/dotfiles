@@ -1,3 +1,4 @@
 com.brave.Browser
 org.wezfurlong.wezterm
 com.jetbrains.IntelliJ-IDEA-Community
+org.videolan.VLC
