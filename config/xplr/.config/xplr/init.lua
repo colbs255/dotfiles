@@ -146,17 +146,17 @@ xplr.config.layouts.builtin.no_help_no_selection = {
 xplr.config.general.table.header.cols = {
   { format = "",            style = {} },
   { format = "╭─── path", style = {} },
-  { format = "perm",              style = {} },
   { format = "size",              style = {} },
   { format = "modified",          style = {} },
+  { format = "",              style = {} },
 }
 
 xplr.config.general.table.col_widths = {
   { Percentage = 10 },
-  { Percentage = 50 },
-  { Percentage = 10 },
+  { Percentage = 60 },
   { Percentage = 10 },
   { Percentage = 20 },
+  { Percentage = 0 },
 }
 
 -- Index
@@ -173,29 +173,8 @@ xplr.fn.builtin.fmt_general_table_row_cols_0 = function(m)
   return r
 end
 
--- Perms
-xplr.fn.builtin.fmt_general_table_row_cols_2 = function(m)
-  local r = xplr.util.paint("r", { fg = "Green" })
-  local w = xplr.util.paint("w", { fg = "Yellow" })
-  local x = xplr.util.paint("x", { fg = "Red" })
-  local s = xplr.util.paint("s", { fg = "Red" })
-  local S = xplr.util.paint("S", { fg = "Red" })
-  local t = xplr.util.paint("t", { fg = "Red" })
-  local T = xplr.util.paint("T", { fg = "Red" })
-
-  return xplr.util
-      .permissions_rwx(m.permissions)
-      :gsub("r", r)
-      :gsub("w", w)
-      :gsub("x", x)
-      :gsub("s", s)
-      :gsub("S", S)
-      :gsub("t", t)
-      :gsub("T", T)
-end
-
 -- Size
-xplr.fn.builtin.fmt_general_table_row_cols_3 = function(m)
+xplr.fn.builtin.fmt_general_table_row_cols_2 = function(m)
   if not m.is_dir then
     return m.human_size
   else
@@ -204,8 +183,13 @@ xplr.fn.builtin.fmt_general_table_row_cols_3 = function(m)
 end
 
 -- Time
-xplr.fn.builtin.fmt_general_table_row_cols_4 = function(m)
+xplr.fn.builtin.fmt_general_table_row_cols_3 = function(m)
   return tostring(os.date("%b %d, %H:%M:%S %Y", m.last_modified / 1000000000))
+end
+
+-- Perms
+xplr.fn.builtin.fmt_general_table_row_cols_4 = function(m)
+  return ""
 end
 
 -- ### Required --------------------------------------------------
