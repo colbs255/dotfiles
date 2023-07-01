@@ -3,8 +3,9 @@ local xplr = xplr -- The globally exposed configuration to be overridden.
 version = '0.21.2'
 ---@diagnostic enable
 
+-- ###########################################################################
 -- ### General Configuration --------------------------------------------------
-
+-- ###########################################################################
 xplr.config.general.panel_ui.default.border_style = { fg = "Blue" }
 xplr.config.node_types.directory.meta.icon = "🗀 "
 xplr.config.node_types.file.meta.icon = "ƒ "
@@ -13,14 +14,9 @@ xplr.config.node_types.symlink.meta.icon = "§ "
 xplr.config.node_types.extension.md = { meta = { icon = " " } }
 xplr.config.node_types.extension.adoc = { meta = { icon = " " } }
 
+-- ###########################################################################
 -- ### Layouts ----------------------------------------------------------------
---
--- xplr layouts define the structure of the UI, i.e. how many panel we see,
--- placement and size of the panels, how they look etc.
---
---
--- `xplr.config.layouts.builtin` contain some built-in panels which can be
--- overridden, but you can't add or remove panels in it.
+-- ###########################################################################
 xplr.config.layouts.builtin.default = {
   Horizontal = {
     config = {
@@ -144,7 +140,9 @@ xplr.config.layouts.builtin.no_help_no_selection = {
   },
 }
 
--- ### Table columns --------------------------------------------------
+-- ###########################################################################
+-- ### File Table columns --------------------------------------------------
+-- ###########################################################################
 xplr.config.general.table.header.cols = {
   { format = "",            style = {} },
   { format = "╭─── path", style = {} },
@@ -161,7 +159,7 @@ xplr.config.general.table.col_widths = {
   { Percentage = 20 },
 }
 
--- Renders the first column in the table
+-- Index
 xplr.fn.builtin.fmt_general_table_row_cols_0 = function(m)
   local r = ""
   if m.is_before_focus then
