@@ -14,7 +14,7 @@ set $browser flatpak run org.brave.Browser
 
 set $menu rofi -terminal '$term' -show drun
 
-set $background /usr/share/backgrounds/fedora-workstation/montclair_dark.webp
+set $background ~/.config/wallpapers/desktop
 
 #################################################################
 ## Appearance
