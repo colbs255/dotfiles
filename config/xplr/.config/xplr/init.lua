@@ -12,7 +12,6 @@ xplr.config.node_types.symlink.meta.icon = "§ "
 
 xplr.config.node_types.extension.md = { meta = { icon = " " } }
 xplr.config.node_types.extension.adoc = { meta = { icon = " " } }
-xplr.config.node_types.extension.rs = { meta = { icon = "🦀 " } }
 
 -- ### Layouts ----------------------------------------------------------------
 --
@@ -35,14 +34,14 @@ xplr.config.layouts.builtin.default = {
         Vertical = {
           config = {
             constraints = {
-              { Length = 3 },
               { Min = 1 },
+              { Length = 3 },
               { Length = 3 },
             },
           },
           splits = {
-            "SortAndFilter",
             "Table",
+            "SortAndFilter",
             "InputAndLogs",
           },
         },
