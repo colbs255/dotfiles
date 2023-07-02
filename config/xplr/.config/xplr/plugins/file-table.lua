@@ -1,53 +1,73 @@
-local function setup()
-    local xplr = xplr
-    xplr.config.general.table.header.cols = {
-        { format = "",            style = {} },
-        { format = "╭─── Path", style = {} },
-        { format = "Size",              style = {} },
-        { format = "Modified",          style = {} },
-        { format = "",              style = {} },
-    }
+local xplr = xplr
 
-    xplr.config.general.table.col_widths = {
-        { Percentage = 10 },
-        { Percentage = 60 },
-        { Percentage = 10 },
-        { Percentage = 20 },
-        { Percentage = 0 },
-    }
+local function zenmode()
+    xplr.fn.custom.zentable_path = function(m)
+        local nl = xplr.util.paint("\\n", { add_modifiers = { "Italic", "Dim" } })
+        local r = m.tree .. m.prefix
+        local style = xplr.util.lscolor(m.absolute_path)
+        style = xplr.util.style_mix({ style, m.style })
 
-    -- Index
-    xplr.fn.builtin.fmt_general_table_row_cols_0 = function(m)
-        local r = ""
-        if m.is_before_focus then
-            r = r .. " -"
+        if m.meta.icon == nil then
+            r = r .. ""
         else
-            r = r .. "  "
+            r = r .. m.meta.icon .. " "
         end
 
-        r = r .. m.relative_index .. "│" .. m.index
+        local rel = m.relative_path
+        if m.is_dir then
+            rel = rel .. "/"
+        end
+        r = r .. xplr.util.paint(xplr.util.shell_escape(rel), style)
+
+        r = r .. m.suffix .. " "
+
+        if m.is_symlink then
+            r = r .. "-> "
+
+            if m.is_broken then
+                r = r .. "×"
+            else
+                local symlink_path = xplr.util.shorten(m.symlink.absolute_path)
+                if m.symlink.is_dir then
+                    symlink_path = symlink_path .. "/"
+                end
+                r = r .. symlink_path:gsub("\n", nl)
+            end
+        end
 
         return r
     end
 
-    -- Size
-    xplr.fn.builtin.fmt_general_table_row_cols_2 = function(m)
-        if not m.is_dir then
-            return m.human_size
-        else
-            return ""
-        end
-    end
+    xplr.config.general.table.header.cols = {
+        {},
+    }
 
-    -- Time
-    xplr.fn.builtin.fmt_general_table_row_cols_3 = function(m)
-        return tostring(os.date("%b %d, %H:%M:%S %Y", m.last_modified / 1000000000))
-    end
+    xplr.config.general.default_ui.prefix = " "
+    xplr.config.general.default_ui.suffix = ""
 
-    -- Perms
-    xplr.fn.builtin.fmt_general_table_row_cols_4 = function(m)
-        return ""
-    end
+    xplr.config.general.focus_ui.prefix = "│"
+    xplr.config.general.focus_ui.suffix = ""
+
+    xplr.config.general.selection_ui.prefix = "▍"
+    xplr.config.general.selection_ui.suffix = ""
+
+    xplr.config.general.focus_selection_ui.prefix = "▌"
+    xplr.config.general.focus_selection_ui.suffix = ""
+
+    xplr.config.general.table.row.cols = {
+        { format = "custom.zentable_path" },
+    }
+
+    xplr.config.general.table.col_widths = {
+        { Percentage = 100 },
+    }
+
+    xplr.config.general.table.tree = {
+        {},
+        {},
+        {},
+    }
 end
 
-return { setup = setup }
+
+return { setup = zenmode }

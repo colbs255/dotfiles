@@ -1,3 +1,5 @@
+local xplr = xplr
+
 local function black(x) return "\x1b[30m" .. x .. "\x1b[0m" end
 local function red(x) return "\x1b[31m" .. x .. "\x1b[0m" end
 local function green(x) return "\x1b[32m" .. x .. "\x1b[0m" end
@@ -8,7 +10,6 @@ local function cyan(x) return "\x1b[36m" .. x .. "\x1b[0m" end
 local function white(x) return "\x1b[37m" .. x .. "\x1b[0m" end
 
 local function setup()
-    local xplr = xplr
     xplr.config.node_types.mime_essence = {
         audio = {
             ["*"] = { meta = { icon = yellow " " } },

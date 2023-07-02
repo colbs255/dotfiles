@@ -1,5 +1,6 @@
+local xplr = xplr
+
 local function setup()
-    local xplr = xplr
     xplr.config.modes.builtin["default"].key_bindings.on_key["z"] = {
         help = "zoxide jump",
         messages = {
