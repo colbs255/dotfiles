@@ -7,6 +7,7 @@ version = '0.21.2'
 -- ### General Configuration --------------------------------------------------
 -- ###########################################################################
 xplr.config.general.panel_ui.default.border_style = { fg = "Blue" }
+xplr.config.general.show_hidden = true
 xplr.config.node_types.directory.meta.icon = "🗀 "
 xplr.config.node_types.file.meta.icon = "ƒ "
 xplr.config.node_types.symlink.meta.icon = "§ "
