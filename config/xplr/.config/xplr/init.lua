@@ -15,6 +15,26 @@ xplr.config.node_types.symlink.meta.icon = "§ "
 xplr.config.node_types.extension.md = { meta = { icon = " " } }
 xplr.config.node_types.extension.adoc = { meta = { icon = " " } }
 
+
+-- ###########################################################################
+-- ### Plugins ---------------------------------------------------------------
+-- ###########################################################################
+-- Zoxide
+xplr.config.modes.builtin["default"].key_bindings.on_key["z"] = {
+    help = "zoxide jump",
+    messages = {
+        {
+            BashExec = [===[
+              PTH="$(zoxide query -i)"
+              if [ -d "$PTH" ]; then
+                "$XPLR" -m "ChangeDirectory: %q" "${PTH:?}"
+              fi
+            ]===],
+        },
+        "PopMode",
+    },
+}
+
 -- ###########################################################################
 -- ### Layouts ----------------------------------------------------------------
 -- ###########################################################################
