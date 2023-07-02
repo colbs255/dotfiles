@@ -6,15 +6,16 @@ version = '0.21.2'
 -- ###########################################################################
 -- ### General Configuration --------------------------------------------------
 -- ###########################################################################
+local home = os.getenv("HOME")
+package.path = home
+    .. "/.config/xplr/plugins/?/init.lua;"
+    .. home
+    .. "/.config/xplr/plugins/?.lua;"
+    .. package.path
+require("icons").setup()
+
 xplr.config.general.panel_ui.default.border_style = { fg = "Blue" }
 xplr.config.general.show_hidden = true
-xplr.config.node_types.directory.meta.icon = "🗀 "
-xplr.config.node_types.file.meta.icon = "ƒ "
-xplr.config.node_types.symlink.meta.icon = "§ "
-
-xplr.config.node_types.extension.md = { meta = { icon = " " } }
-xplr.config.node_types.extension.adoc = { meta = { icon = " " } }
-
 
 -- ###########################################################################
 -- ### Plugins ---------------------------------------------------------------
