@@ -145,9 +145,9 @@ xplr.config.layouts.builtin.no_help_no_selection = {
 -- ###########################################################################
 xplr.config.general.table.header.cols = {
   { format = "",            style = {} },
-  { format = "╭─── path", style = {} },
-  { format = "size",              style = {} },
-  { format = "modified",          style = {} },
+  { format = "╭─── Path", style = {} },
+  { format = "Size",              style = {} },
+  { format = "Modified",          style = {} },
   { format = "",              style = {} },
 }
 
