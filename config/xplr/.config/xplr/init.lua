@@ -13,28 +13,11 @@ package.path = home
     .. "/.config/xplr/plugins/?.lua;"
     .. package.path
 require("icons").setup()
+require("file-table").setup()
+require("zoxide").setup()
 
 xplr.config.general.panel_ui.default.border_style = { fg = "Blue" }
 xplr.config.general.show_hidden = true
-
--- ###########################################################################
--- ### Plugins ---------------------------------------------------------------
--- ###########################################################################
--- Zoxide
-xplr.config.modes.builtin["default"].key_bindings.on_key["z"] = {
-    help = "zoxide jump",
-    messages = {
-        {
-            BashExec = [===[
-              PTH="$(zoxide query -i)"
-              if [ -d "$PTH" ]; then
-                "$XPLR" -m "ChangeDirectory: %q" "${PTH:?}"
-              fi
-            ]===],
-        },
-        "PopMode",
-    },
-}
 
 -- ###########################################################################
 -- ### Layouts ----------------------------------------------------------------
@@ -161,58 +144,6 @@ xplr.config.layouts.builtin.no_help_no_selection = {
         },
     },
 }
-
--- ###########################################################################
--- ### File Table columns --------------------------------------------------
--- ###########################################################################
-xplr.config.general.table.header.cols = {
-    { format = "",            style = {} },
-    { format = "╭─── Path", style = {} },
-    { format = "Size",              style = {} },
-    { format = "Modified",          style = {} },
-    { format = "",              style = {} },
-}
-
-xplr.config.general.table.col_widths = {
-    { Percentage = 10 },
-    { Percentage = 60 },
-    { Percentage = 10 },
-    { Percentage = 20 },
-    { Percentage = 0 },
-}
-
--- Index
-xplr.fn.builtin.fmt_general_table_row_cols_0 = function(m)
-    local r = ""
-    if m.is_before_focus then
-        r = r .. " -"
-    else
-        r = r .. "  "
-    end
-
-    r = r .. m.relative_index .. "│" .. m.index
-
-    return r
-end
-
--- Size
-xplr.fn.builtin.fmt_general_table_row_cols_2 = function(m)
-    if not m.is_dir then
-        return m.human_size
-    else
-        return ""
-    end
-end
-
--- Time
-xplr.fn.builtin.fmt_general_table_row_cols_3 = function(m)
-    return tostring(os.date("%b %d, %H:%M:%S %Y", m.last_modified / 1000000000))
-end
-
--- Perms
-xplr.fn.builtin.fmt_general_table_row_cols_4 = function(m)
-    return ""
-end
 
 -- ### Required --------------------------------------------------
 return {
