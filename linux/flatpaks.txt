@@ -1,3 +1,4 @@
 com.brave.Browser
 org.wezfurlong.wezterm
 com.jetbrains.IntelliJ-IDEA-Community
+com.github.tchx84.Flatseal
