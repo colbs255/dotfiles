@@ -17,6 +17,7 @@ brew "fd"
 brew "tree"
 brew "wget"
 brew "zoxide"
+brew "xplr"
 
 cask "intellij-idea-ce"
 cask "temurin"
