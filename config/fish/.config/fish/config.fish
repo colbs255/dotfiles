@@ -10,6 +10,7 @@ end
 set EDITOR nvim
 set -gx TERM screen-256color
 set -gx XDG_CONFIG_HOME $HOME/.config
+fish_add_path ~/.cargo/bin
 
 if status is-interactive
     fish_vi_key_bindings
