@@ -33,6 +33,6 @@ function multicd
 end
 abbr --add dotdot --regex '^\.\.+$' --function multicd
 abbr --add x 'cd "$(xplr --print-pwd-as-result)"'
-
+abbr --add cat 'bat --style=plain --paging=never'
 
 zoxide init fish | source
