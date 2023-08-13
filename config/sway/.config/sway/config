@@ -56,7 +56,7 @@ exec_always pkill swayidle; swayidle -w \
 #################################################################
 input type:keyboard {
     xkb_options ctrl:nocaps
-    repeat_delay 220
+    repeat_delay 240
     repeat_rate 80
 }
 
