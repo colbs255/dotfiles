@@ -19,7 +19,7 @@ end
 function fish_prompt
     set_color green
     echo (pwd)
-    echo '> '
+    echo '➜ '
 end
 
 set -g fish_greeting Welcome $USER!
