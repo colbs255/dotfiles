@@ -22,7 +22,10 @@ function fish_prompt
     echo '➜ '
 end
 
-set -g fish_greeting Welcome $USER!
+function fish_greeting
+    set_color blue
+    echo Welcome $USER!
+end
 
 # Abbreviations
 abbr --add lg lazygit
