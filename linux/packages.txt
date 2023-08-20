@@ -20,3 +20,4 @@ sd
 zathura
 zathura-pdf-mupdf
 bat
+exa
