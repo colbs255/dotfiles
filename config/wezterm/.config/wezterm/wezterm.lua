@@ -21,6 +21,7 @@ return {
     cursor_blink_rate = 800,
     window_close_confirmation = "NeverPrompt",
     window_background_opacity = 0.9,
+    scrollback_lines = 50000,
     window_padding = {
         left = 0,
         right = 0,
