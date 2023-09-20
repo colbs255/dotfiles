@@ -39,3 +39,5 @@ abbr --add c 'bat --style=plain --paging=never'
 abbr --add ls 'exa -F --icons --group-directories-first'
 
 zoxide init fish | source
+fish_add_path ~/.ghcup/bin
+fish_add_path ~/.cabal/bin
