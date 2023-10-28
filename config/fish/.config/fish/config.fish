@@ -38,6 +38,7 @@ abbr --add x 'cd "$(xplr --print-pwd-as-result)"'
 abbr --add c 'bat --style=plain --paging=never'
 abbr --add ls 'exa -F --icons --group-directories-first'
 
+# Setup paths
 zoxide init fish | source
 fish_add_path ~/.ghcup/bin
 fish_add_path ~/.cabal/bin
