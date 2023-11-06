@@ -19,6 +19,7 @@ brew "wget"
 brew "zoxide"
 brew "xplr"
 brew "bat"
+brew "exa"
 
 cask "intellij-idea-ce"
 cask "temurin"
