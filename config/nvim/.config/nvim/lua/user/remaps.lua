@@ -17,7 +17,6 @@ local inoremap = bind("i")
 -- local keymap = vim.api.nvim_set_keymap
 
 -- General =======================================
-nnoremap("<leader>-", ":Ex<CR>")
 -- Prevents delete char from overwriting register
 nnoremap("x", '"_x')
 -- Prevents visual paste from overwriting register
