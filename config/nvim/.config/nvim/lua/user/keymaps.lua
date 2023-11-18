@@ -51,8 +51,8 @@ local function toggleNumber()
     end
 end
 
-nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle Spelling" })
-nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle Word Wrap" })
-nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle Line Numbers" })
-nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
-nnoremap("<leader>ur", "<CMD>nohlsearch<CR>", { desc = "Disable search highlights" })
+nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle spelling" })
+nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle word wrap" })
+nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle line numbers" })
+nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle relative line numbers" })
+nnoremap("<leader>ur", function() toggleOption("hlsearch") end, { desc = "Toggle search highlights" })
