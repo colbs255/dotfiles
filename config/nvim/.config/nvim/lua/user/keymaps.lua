@@ -59,23 +59,20 @@ nnoremap("<Leader>qa", function() require("harpoon.mark").add_file() end)
 
 -- UI =======================================
 local function toggleOption(option)
-  ---@diagnostic disable-next-line: no-unknown
-  vim.opt_local[option] = not vim.opt_local[option]:get()
+    vim.opt_local[option] = not vim.opt_local[option]:get()
 end
 
-local nu = { number = true, relativenumber = true }
 local function toggleNumber()
-  if vim.opt_local.number:get() or vim.opt_local.relativenumber:get() then
-    nu = { number = vim.opt_local.number:get(), relativenumber = vim.opt_local.relativenumber:get() }
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-  else
-    vim.opt_local.number = nu.number
-    vim.opt_local.relativenumber = nu.relativenumber
-  end
+    if vim.opt_local.number:get() or vim.opt_local.relativenumber:get() then
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+    else
+        vim.opt_local.number = true
+        vim.opt_local.relativenumber = true
+    end
 end
 
 nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle Spelling" })
 nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle Word Wrap" })
-nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
 nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle Line Numbers" })
+nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
