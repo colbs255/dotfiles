@@ -55,4 +55,4 @@ nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle sp
 nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle word wrap" })
 nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle line numbers" })
 nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle relative line numbers" })
-nnoremap("<leader>ur", function() toggleOption("hlsearch") end, { desc = "Toggle search highlights" })
+nnoremap("<leader>ur", "<CMD>nohlsearch<CR>", { desc = "Turn off search highlight (nohlsearch)" })
