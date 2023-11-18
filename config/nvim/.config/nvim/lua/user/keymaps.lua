@@ -36,27 +36,6 @@ nnoremap("<leader>os", function()
     vim.api.nvim_set_current_buf(scratch_buffer)
 end)
 
--- Telescope =====================================
-
--- Searches all files inside the git repo, respecting the gitignore
-nnoremap("<Leader><space>", function() require("telescope.builtin").git_files() end)
-
--- Searches all files starting from your current working directory, respecting the gitignore
-nnoremap("<Leader>ff", function() require("telescope.builtin").find_files() end)
-nnoremap("<Leader>fh", function() require("telescope.builtin").help_tags() end)
-nnoremap("<Leader>fm", function() require("telescope.builtin").man_pages() end)
-nnoremap("<Leader>gb", function() require("telescope.builtin").git_branches() end)
-nnoremap("<Leader>/", function() require("telescope.builtin").live_grep() end)
-nnoremap("<Leader>,", function() require("telescope.builtin").buffers() end)
-nnoremap("<Leader>:", function() require("telescope.builtin").command_history() end)
-
--- Harpoon =======================================
-nnoremap("<Leader>qj", function() require("harpoon.ui").nav_file(1) end)
-nnoremap("<Leader>qk", function() require("harpoon.ui").nav_file(2) end)
-nnoremap("<Leader>ql", function() require("harpoon.ui").nav_file(3) end)
-nnoremap("<Leader>qm", function() require("harpoon.ui").toggle_quick_menu() end)
-nnoremap("<Leader>qa", function() require("harpoon.mark").add_file() end)
-
 -- UI =======================================
 local function toggleOption(option)
     vim.opt_local[option] = not vim.opt_local[option]:get()
