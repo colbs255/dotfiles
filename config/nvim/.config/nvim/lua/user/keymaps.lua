@@ -7,14 +7,10 @@ local function bind(op, outer_opts)
     end
 end
 
-local nmap = bind("n", { noremap = false })
 local nnoremap = bind("n")
 local vnoremap = bind("v")
 local xnoremap = bind("x")
 local inoremap = bind("i")
-
--- TOOD: Use keymap?
--- local keymap = vim.api.nvim_set_keymap
 
 -- General =======================================
 -- Prevents delete char from overwriting register
@@ -43,52 +39,43 @@ end)
 -- Telescope =====================================
 
 -- Searches all files inside the git repo, respecting the gitignore
-nnoremap("<Leader><space>", function()
-    require("telescope.builtin").git_files()
-end)
+nnoremap("<Leader><space>", function() require("telescope.builtin").git_files() end)
 
 -- Searches all files starting from your current working directory, respecting the gitignore
-nnoremap("<Leader>ff", function()
-    require("telescope.builtin").find_files()
-end)
-
-nnoremap("<Leader>fh", function()
-    require("telescope.builtin").help_tags()
-end)
-
-nnoremap("<Leader>fm", function()
-    require("telescope.builtin").man_pages()
-end)
-
-nnoremap("<Leader>gb", function()
-    require("telescope.builtin").git_branches()
-end)
-
-nnoremap("<Leader>/", function()
-    require("telescope.builtin").live_grep()
-end)
-
-nnoremap("<Leader>,", function()
-    require("telescope.builtin").buffers()
-end)
-
-nnoremap("<Leader>:", function()
-    require("telescope.builtin").command_history()
-end)
+nnoremap("<Leader>ff", function() require("telescope.builtin").find_files() end)
+nnoremap("<Leader>fh", function() require("telescope.builtin").help_tags() end)
+nnoremap("<Leader>fm", function() require("telescope.builtin").man_pages() end)
+nnoremap("<Leader>gb", function() require("telescope.builtin").git_branches() end)
+nnoremap("<Leader>/", function() require("telescope.builtin").live_grep() end)
+nnoremap("<Leader>,", function() require("telescope.builtin").buffers() end)
+nnoremap("<Leader>:", function() require("telescope.builtin").command_history() end)
 
 -- Harpoon =======================================
-nnoremap("<Leader>qj", function()
-    require("harpoon.ui").nav_file(1)
-end)
-nnoremap("<Leader>qk", function()
-    require("harpoon.ui").nav_file(2)
-end)
-nnoremap("<Leader>ql", function()
-    require("harpoon.ui").nav_file(3)
-end)
-nnoremap("<Leader>qm", function()
-    require("harpoon.ui").toggle_quick_menu()
-end)
-nnoremap("<Leader>qa", function()
-    require("harpoon.mark").add_file()
-end)
+nnoremap("<Leader>qj", function() require("harpoon.ui").nav_file(1) end)
+nnoremap("<Leader>qk", function() require("harpoon.ui").nav_file(2) end)
+nnoremap("<Leader>ql", function() require("harpoon.ui").nav_file(3) end)
+nnoremap("<Leader>qm", function() require("harpoon.ui").toggle_quick_menu() end)
+nnoremap("<Leader>qa", function() require("harpoon.mark").add_file() end)
+
+-- UI =======================================
+local function toggleOption(option)
+  ---@diagnostic disable-next-line: no-unknown
+  vim.opt_local[option] = not vim.opt_local[option]:get()
+end
+
+local nu = { number = true, relativenumber = true }
+local function toggleNumber()
+  if vim.opt_local.number:get() or vim.opt_local.relativenumber:get() then
+    nu = { number = vim.opt_local.number:get(), relativenumber = vim.opt_local.relativenumber:get() }
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  else
+    vim.opt_local.number = nu.number
+    vim.opt_local.relativenumber = nu.relativenumber
+  end
+end
+
+nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle Spelling" })
+nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle Word Wrap" })
+nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
+nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle Line Numbers" })
