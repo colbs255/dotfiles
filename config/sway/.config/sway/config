@@ -66,6 +66,8 @@ input type:keyboard {
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+space exec $menu
+set $search_google rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.com/search?q={}
+bindsym $mod+Shift+space exec $search_google
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 floating_modifier $mod normal
