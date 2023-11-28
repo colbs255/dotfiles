@@ -2,6 +2,8 @@
 -- To see list of all options, :options
 vim.g.mapleader = " "
 
+vim.opt.number = false
+vim.opt.relativenumber = false
 vim.opt.spelllang = "en_us"
 
 vim.opt.errorbells = false
