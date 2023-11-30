@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = { "java", "python", "bash", "json", "c", "yaml", "rust", "lua", "haskell" },
