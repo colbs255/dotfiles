@@ -1,5 +1,5 @@
 return {
-    "numToStr/Comment.nvim",
+    "echasnovski/mini.comment",
     event = "VeryLazy",
     config = true,
 }
