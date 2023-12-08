@@ -21,6 +21,8 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+-- Vim state recovery, less state means faster startup
+vim.opt.shada = "!,'0,/0,:10,<0,@0,f0,h,s20"
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
