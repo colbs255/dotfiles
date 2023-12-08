@@ -13,4 +13,18 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 -- Automatically source all configs in plugins directory.
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+                "editorconfig",
+            },
+        },
+    },
+})
