@@ -8,7 +8,7 @@ return {
             find = "gzf", -- Find surrounding (to the right)
             find_left = "gzF", -- Find surrounding (to the left)
             highlight = "gzh", -- Highlight surrounding
-            replace = "gzr", -- Replace surrounding
+            replace = "gzc", -- Replace surrounding
             update_n_lines = "gzn", -- Update `n_lines`
         },
     },
