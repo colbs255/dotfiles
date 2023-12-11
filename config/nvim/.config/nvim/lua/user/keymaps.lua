@@ -36,6 +36,11 @@ nnoremap("<leader>os", function()
     vim.api.nvim_set_current_buf(scratch_buffer)
 end)
 
+-- Diagnsotics ==================================
+nnoremap("gl", vim.diagnostic.open_float)
+nnoremap("[d", vim.diagnostic.goto_prev)
+nnoremap("]d", vim.diagnostic.goto_next)
+
 -- UI =======================================
 local function toggleOption(option)
     vim.opt_local[option] = not vim.opt_local[option]:get()
@@ -51,8 +56,17 @@ local function toggleNumber()
     end
 end
 
+local function toggleDiagnostics()
+    if vim.diagnostic.is_disabled() then
+        vim.diagnostic.enable()
+    else
+        vim.diagnostic.disable()
+    end
+end
+
 nnoremap("<leader>us", function() toggleOption("spell") end, { desc = "Toggle spelling" })
 nnoremap("<leader>uw", function() toggleOption("wrap") end, { desc = "Toggle word wrap" })
 nnoremap("<leader>ul", function() toggleNumber() end, { desc = "Toggle line numbers" })
 nnoremap("<leader>uL", function() toggleOption("relativenumber") end, { desc = "Toggle relative line numbers" })
 nnoremap("<leader>ur", "<CMD>nohlsearch<CR>", { desc = "Turn off search highlight (nohlsearch)" })
+nnoremap("<leader>ud", function() toggleDiagnostics() end, { desc = "Toggle diagnostics" })
