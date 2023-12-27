@@ -30,6 +30,7 @@
     pkgs.zathura
     pkgs.mupdf
     pkgs.eza
+    pkgs.temurin-bin-21
   ];
 
   home.file = {
