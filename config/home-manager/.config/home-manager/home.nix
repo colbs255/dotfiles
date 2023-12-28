@@ -10,8 +10,10 @@
     neovim
     git
     gnumake
-    clang
     gcc
+    ghc
+    cabal-install
+    haskell-language-server
     lazygit
     fish
     fzf
