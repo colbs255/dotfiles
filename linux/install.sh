@@ -1,17 +1,11 @@
 #!/bin/sh
 
-# Clone
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-
-# Install flatpaks
+# Setup shell with our dependencies
+nix-shell -p git home-manager
+# Clone repo
+git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles
+# Setup home-manager
+home-manager -f ~/dotfiles/config/home.nix switch
+# Flatpaks
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak -y install flathub $(cat linux/flatpaks.txt)
-
-# Remove pre-installed apps
-rpm-ostree override remove firefox firefox-langpacks
-
-# Create main toolbox
-toolbox create main
-toolbox run -c main sudo dnf -y install make
-toolbox run -c main make

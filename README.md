@@ -18,24 +18,15 @@ ssh-keygen -t ed25519 -C "email"
 ``` bash
 git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
 ```
-### Fedora Kinoite/Silverblue/Sericea
-
-``` bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
-```
 
 ### Nix Package Manager (BETA)
 
 1. Install nix
-2. Install git and home-manager
-```bash
-nix-shell -p git home-manager
-```
-3. Clone this repo
+2. Run install script
 ``` bash
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
-4. Init home manager config
-```bash
-home-manager -f ~/dotfiles/config/home.nix switch
+3. (optional) Source linux settings
+```
+./linux/settings.sh
 ```
