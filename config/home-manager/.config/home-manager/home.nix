@@ -48,6 +48,7 @@
     ".config/xplr/".source = ./xplr;
     ".config/fish/".source = ./fish;
     ".config/wezterm/".source = ./wezterm;
+    ".config/foot/".source = ./foot;
     ".config/zathura/".source = ./zathura;
     ".gitconfig".source = ./git/.gitconfig;
     ".tmux.conf".source = ./tmux/.tmux.conf;
