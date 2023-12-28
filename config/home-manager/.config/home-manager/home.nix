@@ -32,9 +32,9 @@
     eza
     temurin-bin-21
     # GUI
-    brave
-    jetbrains.idea-community
-    wezterm
+    flatpak
+    # brave
+    # jetbrains.idea-community
   ];
 
   home.file = {
