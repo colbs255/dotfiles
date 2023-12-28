@@ -11,6 +11,7 @@
     git
     gnumake
     clang
+    gcc
     lazygit
     fish
     fzf
