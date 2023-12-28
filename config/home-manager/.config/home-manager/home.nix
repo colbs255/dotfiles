@@ -6,31 +6,35 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.packages = [
-    pkgs.neovim
-    pkgs.git
-    pkgs.gnumake
-    pkgs.clang
-    pkgs.lazygit
-    pkgs.fish
-    pkgs.fzf
-    pkgs.delta
-    pkgs.asciidoctor
-    pkgs.ripgrep
-    pkgs.stow
-    pkgs.tmux
-    pkgs.fd
-    pkgs.tree
-    pkgs.wget
-    pkgs.zoxide
-    pkgs.xplr
-    pkgs.bat
-    pkgs.bottom
-    pkgs.sd
-    pkgs.zathura
-    pkgs.mupdf
-    pkgs.eza
-    pkgs.temurin-bin-21
+  home.packages = with pkgs; [
+    neovim
+    git
+    gnumake
+    clang
+    lazygit
+    fish
+    fzf
+    delta
+    asciidoctor
+    ripgrep
+    stow
+    tmux
+    fd
+    tree
+    wget
+    zoxide
+    xplr
+    bat
+    bottom
+    sd
+    zathura
+    mupdf
+    eza
+    temurin-bin-21
+    # GUI
+    brave
+    jetbrains.idea-community
+    wezterm
   ];
 
   home.file = {
@@ -46,23 +50,8 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/colby/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;
