@@ -38,10 +38,19 @@
   ];
 
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    ".config/lazygit/".source = ./lazygit;
+    ".config/ideavim/".source = ./ideavim;
+    ".config/nvim/".source = ./nvim;
+    ".config/rofi/".source = ./rofi;
+    ".config/sway/".source = ./sway;
+    ".config/swaylock/".source = ./swaylock;
+    ".config/wallpapers/".source = ./wallpapers;
+    ".config/xplr/".source = ./xplr;
+    ".config/fish/".source = ./fish;
+    ".config/wezterm/".source = ./wezterm;
+    ".config/zathura/".source = ./zathura;
+    ".gitconfig".source = ./git/.gitconfig;
+    ".tmux.conf".source = ./tmux/.tmux.conf;
   };
 
   home.sessionVariables = {
@@ -49,14 +58,4 @@
   };
 
   programs.home-manager.enable = true;
-  programs = {
-    fish = {
-      enable = true;
-      shellAbbrs = {
-	"lg" = "lazygit";
-	"vi" = "nvim";
-	"x" = "cd \"$(xplr --print-pwd-as-result)\"";
-      };
-    };
-  };
 }
