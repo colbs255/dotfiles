@@ -42,12 +42,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   home.sessionVariables = {
@@ -55,4 +49,14 @@
   };
 
   programs.home-manager.enable = true;
+  programs = {
+    fish = {
+      enable = true;
+      shellAbbrs = {
+	"lg" = "lazygit";
+	"vi" = "nvim";
+	"x" = "cd \"$(xplr --print-pwd-as-result)\"";
+      };
+    };
+  };
 }
