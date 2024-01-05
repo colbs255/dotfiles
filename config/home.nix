@@ -6,6 +6,25 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.file = {
+    ".config/nix/".source = ./nix;
+    ".config/lazygit/".source = ./lazygit;
+    ".config/ideavim/".source = ./ideavim;
+    ".config/nvim/".source = ./nvim;
+    ".config/rofi/".source = ./rofi;
+    ".config/sway/".source = ./sway;
+    ".config/swaylock/".source = ./swaylock;
+    ".config/wallpapers/".source = ./wallpapers;
+    ".config/xplr/".source = ./xplr;
+    ".config/fish/".source = ./fish;
+    ".config/wezterm/".source = ./wezterm;
+    ".config/foot/".source = ./foot;
+    ".config/zathura/".source = ./zathura;
+    ".gitconfig".source = ./git/.gitconfig;
+    ".tmux.conf".source = ./tmux/.tmux.conf;
+  };
+
+  programs.home-manager.enable = true;
   home.packages = with pkgs; [
     neovim
     git
@@ -39,23 +58,4 @@
     # brave
     # jetbrains.idea-community
   ];
-
-  home.file = {
-    ".config/lazygit/".source = ./lazygit;
-    ".config/ideavim/".source = ./ideavim;
-    ".config/nvim/".source = ./nvim;
-    ".config/rofi/".source = ./rofi;
-    ".config/sway/".source = ./sway;
-    ".config/swaylock/".source = ./swaylock;
-    ".config/wallpapers/".source = ./wallpapers;
-    ".config/xplr/".source = ./xplr;
-    ".config/fish/".source = ./fish;
-    ".config/wezterm/".source = ./wezterm;
-    ".config/foot/".source = ./foot;
-    ".config/zathura/".source = ./zathura;
-    ".gitconfig".source = ./git/.gitconfig;
-    ".tmux.conf".source = ./tmux/.tmux.conf;
-  };
-
-  programs.home-manager.enable = true;
 }
