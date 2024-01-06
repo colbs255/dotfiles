@@ -14,6 +14,24 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sh",
+    group = lsp_augroup,
+    callback = function()
+        local client = vim.lsp.start({
+            cmd = { 'bash-language-server', 'start' },
+            settings = {
+                bashIde = {
+                    globPattern = vim.env.GLOB_PATTERN or '*@(.sh|.inc|.bash|.command)',
+                },
+            },
+            filetypes = { 'sh' },
+            single_file_support = true,
+        })
+        vim.lsp.buf_attach_client(0, client)
+    end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     group = lsp_augroup,
     desc = "LSP actions",

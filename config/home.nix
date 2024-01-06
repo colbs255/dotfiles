@@ -58,6 +58,7 @@
     eza
     temurin-bin-21
     shellcheck
+    nodePackages.bash-language-server
     # GUI
     flatpak
     # brave
