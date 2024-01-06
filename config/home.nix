@@ -57,6 +57,7 @@
     mupdf
     eza
     temurin-bin-21
+    shellcheck
     # GUI
     flatpak
     # brave
