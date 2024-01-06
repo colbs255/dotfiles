@@ -3,6 +3,9 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30,
     "spacing": 4, // Gaps between modules (4px)
+    "margin-top": 4,
+    "margin-left": 20,
+    "margin-right": 20,
 
 // Configuration - modules-left
 
