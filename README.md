@@ -30,3 +30,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/l
 ```
 ./linux/settings.sh
 ```
+
+## Update
+
+After changing a config, run `homeupdate` for it to take effect

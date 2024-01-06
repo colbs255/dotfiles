@@ -14,6 +14,7 @@
     ".config/rofi/".source = ./rofi;
     ".config/sway/".source = ./sway;
     ".config/swaylock/".source = ./swaylock;
+    ".config/waybar/".source = ./waybar;
     ".config/wallpapers/".source = ./wallpapers;
     ".config/xplr/".source = ./xplr;
     ".config/fish/".source = ./fish;
