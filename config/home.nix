@@ -7,7 +7,6 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.file = {
-    ".config/nix/".source = ./nix;
     ".config/lazygit/".source = ./lazygit;
     ".config/ideavim/".source = ./ideavim;
     ".config/nvim/".source = ./nvim;
@@ -25,6 +24,10 @@
     ".tmux.conf".source = ./tmux/.tmux.conf;
   };
 
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     neovim
