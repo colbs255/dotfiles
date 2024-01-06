@@ -1,12 +1,3 @@
-# os specific
-switch (uname)
-    case Linux
-    case Darwin
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        # brew docker cask installs the app and the binary but doesn't add it to the path
-        fish_add_path ~/.docker/bin
-end
-
 set EDITOR nvim
 set -gx TERM screen-256color
 set -gx XDG_CONFIG_HOME $HOME/.config
