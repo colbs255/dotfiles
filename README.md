@@ -21,12 +21,10 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 
 ### Nix Package Manager (BETA)
 
-1. Install nix
-2. Run install script
 ``` bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
 
 ## Update
 
-When you change a config file, you must run `homeupdate` for it to take effect
+Run `homeupdate` to install your latest changes
