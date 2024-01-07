@@ -6,22 +6,22 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.file = {
-    ".config/lazygit/".source = ./lazygit;
-    ".config/ideavim/".source = ./ideavim;
-    ".config/nvim/".source = ./nvim;
-    ".config/rofi/".source = ./rofi;
-    ".config/sway/".source = ./sway;
-    ".config/swaylock/".source = ./swaylock;
-    ".config/waybar/".source = ./waybar;
-    ".config/wallpapers/".source = ./wallpapers;
-    ".config/xplr/".source = ./xplr;
-    ".config/fish/".source = ./fish;
-    ".config/wezterm/".source = ./wezterm;
-    ".config/foot/".source = ./foot;
-    ".config/zathura/".source = ./zathura;
-    ".config/git".source = ./git;
-    ".config/tmux".source = ./tmux;
+  xdg.configFile = {
+    lazygit.source = ./lazygit;
+    ideavim.source = ./ideavim;
+    nvim.source = ./nvim;
+    rofi.source = ./rofi;
+    sway.source = ./sway;
+    swaylock.source = ./swaylock;
+    waybar.source = ./waybar;
+    wallpapers.source = ./wallpapers;
+    xplr.source = ./xplr;
+    fish.source = ./fish;
+    wezterm.source = ./wezterm;
+    foot.source = ./foot;
+    zathura.source = ./zathura;
+    git.source = ./git;
+    tmux.source = ./tmux;
   };
 
   nix = {
