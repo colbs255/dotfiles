@@ -20,8 +20,8 @@
     ".config/wezterm/".source = ./wezterm;
     ".config/foot/".source = ./foot;
     ".config/zathura/".source = ./zathura;
-    ".gitconfig".source = ./git/.gitconfig;
-    ".tmux.conf".source = ./tmux/.tmux.conf;
+    ".config/git".source = ./git;
+    ".config/tmux".source = ./tmux;
   };
 
   nix = {
