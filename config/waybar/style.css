@@ -1,0 +1,156 @@
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+ 
+/* Reset all styles */
+
+* {
+    color: #eceff4;
+    border: 1px;
+    border-radius: 5;
+    padding: 0 0;
+    font-family:JetBrainsMono, SymbolsNerdFont;
+    font-size: 15px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-bottom:2px;
+   }
+
+window#waybar {
+    background:#2e3440;
+    background-color:rgba(43, 45, 50, 0.6);
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    border-bottom: 2px;
+    color: #eceff4;
+    border-color: #d8dee9;
+    border-style: solid;
+    margin-top:2px;
+}
+
+#workspaces button.focused {
+    border-color: #81a1c1;
+}
+
+#mode {
+    color: #ebcb8b;
+}
+
+#mode,
+#window,
+#network,
+#cpu,
+#temperature,
+#memory,
+#idle_inhibitor,
+#backlight,
+#pulseaudio,
+#battery,
+#clock,
+#tray,
+#custom-power {
+    padding: 2px 8px;
+    border: 1px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-radius: 5;
+    margin-top: 1px;
+}
+
+ 
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+
+#mode{
+    margin-bottom:3px;
+}
+
+#window{
+    border-style: hidden;
+    margin-top:1px;
+}
+
+#network {
+    color:#81a1c1;
+}
+
+#network.disabled,#network.disconnected {
+    color:#bf616a;
+}
+
+#cpu {
+    color:#a3be8c;
+}
+
+#temperature {
+    color: #8fbcbb;
+}
+
+#temperature.critical {
+    color: #bf616a;
+}
+
+#memory {
+    color: #b48ead;
+}
+
+#idle_inhibitor {
+   color: #81a1c1;
+}
+
+#backlight {
+    color: #ebcb8b;
+}
+
+#pulseaudio {
+    color: #b48ead;
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+}
+
+#battery {
+    color: #d8dee9;
+}
+
+#battery.charging {
+    color: #81a1c1;
+}
+
+@keyframes blink {
+    to {
+        color: #4c566a;
+        background-color: #eceff4;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #bf616a;
+    color: #eceff4;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+ color: #a3be8c;
+}
+
+#tray {
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
