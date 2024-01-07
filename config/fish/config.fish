@@ -32,5 +32,3 @@ abbr --add homeupdate 'home-manager --extra-experimental-features nix-command --
 
 # Setup paths
 zoxide init fish | source
-fish_add_path ~/.ghcup/bin
-fish_add_path ~/.cabal/bin
