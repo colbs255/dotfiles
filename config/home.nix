@@ -34,6 +34,7 @@
     git
     gnumake
     gcc
+    gh
     ghc
     cabal-install
     haskell-language-server
