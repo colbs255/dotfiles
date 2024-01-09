@@ -61,8 +61,9 @@
     shellcheck
     nodePackages.bash-language-server
     # GUI
-    flatpak
-    # brave
-    # jetbrains.idea-community
+    jetbrains.idea-community
+    brave
+    # flatpak
+    # wezterm
   ];
 }
