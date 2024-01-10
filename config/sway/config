@@ -9,7 +9,7 @@ set $down j
 set $up k
 set $right l
 
-set $term flatpak run org.wezfurlong.wezterm
+set $term foot fish
 set $browser flatpak run org.brave.Browser
 
 set $menu rofi -terminal '$term' -show drun
