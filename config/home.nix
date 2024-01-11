@@ -60,6 +60,8 @@
     temurin-bin-21
     shellcheck
     nodePackages.bash-language-server
+    slurp
+    grim
     # GUI
     jetbrains.idea-community
     brave
