@@ -29,6 +29,7 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
   programs.home-manager.enable = true;
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     neovim
     git
@@ -62,6 +63,7 @@
     nodePackages.bash-language-server
     slurp
     grim
+    jetbrains-mono
     # GUI
     jetbrains.idea-community
     brave
