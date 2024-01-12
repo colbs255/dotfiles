@@ -63,7 +63,7 @@
     nodePackages.bash-language-server
     slurp
     grim
-    jetbrains-mono
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # GUI
     jetbrains.idea-community
     brave
