@@ -18,7 +18,15 @@ ssh-keygen -t ed25519 -C "email"
 git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
 ```
 
-## Linux
+## NixOS
+
+``` bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/nixos.sh)"
+```
+
+Run `homeupdate` to install your latest changes
+
+## Other Linux
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
