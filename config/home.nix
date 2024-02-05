@@ -41,6 +41,8 @@
     haskell-language-server
     lazygit
     fish
+    foot
+    rofi
     fzf
     delta
     asciidoctor
