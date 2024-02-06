@@ -11,6 +11,7 @@
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
     rofi.source = ./rofi;
+    fuzzel.source = ./fuzzel;
     sway.source = ./sway;
     swaylock.source = ./swaylock;
     waybar.source = ./waybar;
