@@ -32,6 +32,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     neovim
+    swaybg
     git
     gnumake
     gcc
