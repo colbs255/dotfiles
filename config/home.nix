@@ -40,6 +40,7 @@
     cabal-install
     haskell-language-server
     lazygit
+    gitui
     fish
     foot
     fuzzel
