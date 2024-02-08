@@ -33,6 +33,8 @@
   home.packages = with pkgs; [
     neovim
     swaybg
+    waybar
+    wlogout
     git
     gnumake
     gcc
