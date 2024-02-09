@@ -7,11 +7,11 @@
 // Configuration - modules-left
 
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/window"
+        "hyprland/workspaces",
+        "hyprland/mode",
+        "hyprland/window"
     ],    
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
@@ -26,10 +26,10 @@
 		"10": "10",
         }
     },
-    "sway/mode": {
+    "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/window": {
+    "hyprland/window": {
         //"all-outputs": true, // Uncomment for active window on all outputs
         "format": "{}"
     },
