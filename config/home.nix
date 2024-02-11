@@ -70,10 +70,8 @@
     slurp
     grim
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    # GUI
     jetbrains.idea-community
     brave
-    # flatpak
-    # wezterm
+    inkscape
   ];
 }
