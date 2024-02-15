@@ -34,8 +34,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
   programs.hyprland.enable = true;
 
   # Enable CUPS to print documents.
