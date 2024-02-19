@@ -8,10 +8,11 @@
 
   xdg.configFile = {
     lazygit.source = ./lazygit;
+    gitui.source = ./gitui;
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
     fuzzel.source = ./fuzzel;
-    sway.source = ./sway;
+    hypr.source = ./hypr;
     swaylock.source = ./swaylock;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
