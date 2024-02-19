@@ -58,6 +58,7 @@
     wget
     zoxide
     xplr
+    xfce.thunar
     bat
     bottom
     sd
