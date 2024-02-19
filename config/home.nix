@@ -8,10 +8,11 @@
 
   xdg.configFile = {
     lazygit.source = ./lazygit;
+    gitui.source = ./gitui;
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
-    rofi.source = ./rofi;
-    sway.source = ./sway;
+    fuzzel.source = ./fuzzel;
+    hypr.source = ./hypr;
     swaylock.source = ./swaylock;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
@@ -32,6 +33,9 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     neovim
+    swaybg
+    waybar
+    wlogout
     git
     gnumake
     gcc
@@ -40,7 +44,10 @@
     cabal-install
     haskell-language-server
     lazygit
+    gitui
     fish
+    foot
+    fuzzel
     fzf
     delta
     asciidoctor
@@ -52,6 +59,7 @@
     wget
     zoxide
     xplr
+    xfce.thunar
     bat
     bottom
     sd
@@ -64,10 +72,8 @@
     slurp
     grim
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    # GUI
     jetbrains.idea-community
     brave
-    # flatpak
-    # wezterm
+    inkscape
   ];
 }

@@ -6,7 +6,7 @@
 
 * {
     border: 1px;
-    border-radius: 5;
+    border-radius: 5px;
     padding: 0 0;
     font-family:JetBrainsMono, SymbolsNerdFont;
     font-size: 15px;
@@ -54,7 +54,7 @@ window#waybar {
     border: 1px;
     border-bottom: 2px;
     border-style: solid;
-    border-radius: 5;
+    border-radius: 5px;
     margin-top: 1px;
 }
 
