@@ -48,6 +48,8 @@
   home.packages = with pkgs; [
     neovim
     swaybg
+    gtklock
+    swaylock-effects
     waybar
     wlogout
     git

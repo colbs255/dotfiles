@@ -31,6 +31,8 @@
   };
 
   programs.hyprland.enable = true;
+  security.pam.services.swaylock = {};
+  security.pam.services.gtklock = {};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
