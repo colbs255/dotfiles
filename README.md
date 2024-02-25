@@ -2,34 +2,27 @@
 
 My opinionated dot files. Use at your own risk :)
 
-## MacOS
+## Installation
 
-(optional) Create SSH key and [add SSH key to gihthub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+### MacOS
+
 ``` bash
-ssh-keygen -t ed25519 -C "email"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/darwin/install.sh"
 ```
 
-1. Install homebrew
-``` bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-2. Clone this repo and install
-``` bash
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
-```
-
-## NixOS
+### NixOS
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/nixos.sh)"
 ```
 
-Run `homeupdate` to install your latest changes
-
-## Other Linux
+### Other Linux
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
 
-Run `homeupdate` to install your latest changes
+## How it works
+
+Uses the nix package manager and Home Manager to install applications and manage configurations.
+Run `homeupdate` to install your latest changes via Home Manager.
