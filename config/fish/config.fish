@@ -31,4 +31,6 @@ abbr --add ls 'exa -F --icons --group-directories-first'
 abbr --add homeupdate 'home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ~/dotfiles/config'
 
 # Setup paths
+fish_add_path ~/.cabal/
+fish_add_path ~/.ghcup/bin/
 zoxide init fish | source
