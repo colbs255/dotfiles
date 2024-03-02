@@ -1,0 +1,14 @@
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+padding = { x = 10, y = 10 }
+opacity = 0.9
+decorations = "None"
+
+[font]
+size = 18
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
