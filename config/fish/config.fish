@@ -21,14 +21,19 @@ end
 # Abbreviations
 abbr --add lg lazygit
 abbr --add vi nvim
-function multicd
-    echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
-end
-abbr --add dotdot --regex '^\.\.+$' --function multicd
-abbr --add x 'cd "$(xplr --print-pwd-as-result)"'
 abbr --add c 'bat --style=plain --paging=never'
 abbr --add ls 'exa -F --icons --group-directories-first'
 abbr --add homeupdate 'home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ~/dotfiles/config'
+
+function yazi_cd
+	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
+abbr --add ya yazi_cd
 
 # Setup paths
 zoxide init fish | source
