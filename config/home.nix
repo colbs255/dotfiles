@@ -18,7 +18,7 @@
     wallpapers.source = ./wallpapers;
     xplr.source = ./xplr;
     fish.source = ./fish;
-    wezterm.source = ./wezterm;
+    alacritty.source = ./alacritty;
     foot.source = ./foot;
     zathura.source = ./zathura;
     git.source = ./git;
@@ -62,6 +62,7 @@
     gitui
     fish
     foot
+    alacritty
     fuzzel
     fzf
     delta
