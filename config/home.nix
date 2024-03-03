@@ -13,7 +13,7 @@
     nvim.source = ./nvim;
     fuzzel.source = ./fuzzel;
     hypr.source = ./hypr;
-    swaylock.source = ./swaylock;
+    wlogout.source = ./wlogout;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
     xplr.source = ./xplr;
