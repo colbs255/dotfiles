@@ -16,7 +16,6 @@
     wlogout.source = ./wlogout;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
-    xplr.source = ./xplr;
     fish.source = ./fish;
     alacritty.source = ./alacritty;
     foot.source = ./foot;
@@ -74,7 +73,7 @@
     tree
     wget
     zoxide
-    xplr
+    yazi
     xfce.thunar
     bat
     bottom
