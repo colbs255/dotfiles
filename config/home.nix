@@ -49,6 +49,7 @@
     neovim
     swaybg
     swaylock-effects
+    hyprlock
     waybar
     wlogout
     git
