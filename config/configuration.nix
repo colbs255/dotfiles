@@ -31,6 +31,7 @@
   };
 
   programs.hyprland.enable = true;
+  programs.steam.enable = true;
   security.pam.services.hyprlock = {};
 
   # Enable sound with pipewire.

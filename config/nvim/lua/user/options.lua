@@ -8,9 +8,21 @@ vim.opt.spelllang = "en_us"
 
 vim.opt.errorbells = false
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+local function set_indentation(spaces)
+    vim.opt.tabstop = spaces
+    vim.opt.softtabstop = spaces
+    vim.opt.shiftwidth = spaces
+end
+
+set_indentation(4)
+
+vim.api.nvim_create_user_command(
+    "SetIndentation",
+    function(opts)
+        set_indentation(tonumber(opts.fargs[1]))
+    end,
+    { nargs=1 }
+)
 vim.opt.expandtab = true
 
 vim.opt.wrap = false
@@ -58,3 +70,4 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_list_hide = "^\\./"
 -- Hide ../
 vim.g.netrw_list_hide = vim.g.netrw_list_hide .. "," .. "^\\.\\./"
+
