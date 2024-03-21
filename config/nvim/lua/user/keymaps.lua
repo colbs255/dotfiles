@@ -3,6 +3,7 @@ local function set_keymap(mode, lhs, rhs, description)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+-- stylua: ignore start
 set_keymap("n", "x", '"_x', "Prevent delete char from overwriting register")
 set_keymap("v", "p", '"_dP', "Prevents visual paste from overwriting register")
 
@@ -33,6 +34,7 @@ set_keymap("n", "<leader>ul", function() toggleNumber() end, "Toggle line number
 set_keymap("n", "<leader>uL", function() toggleOption("relativenumber") end, "Toggle relative line numbers")
 set_keymap("n", "<leader>ur", "<CMD>nohlsearch<CR>", "Turn off search highlight (nohlsearch)")
 set_keymap("n", "<leader>ud", function() toggleDiagnostics() end, { "Toggle diagnostics" })
+-- stylua: ignore end
 
 local function toggleOption(option)
     vim.opt_local[option] = not vim.opt_local[option]:get()

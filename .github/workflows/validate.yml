@@ -24,3 +24,14 @@ jobs:
     - name: Nix flake check
       working-directory: ./config
       run: nix flake check
+  validate-lua:
+    runs-on: ubuntu-latest
+    name: Validate lua files
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - uses: JohnnyMorganz/stylua-action@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        version: v0.20.0
+        args: --check config/nvim
