@@ -1,0 +1,26 @@
+name: validate configs
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  validate-nix:
+    runs-on: ubuntu-latest
+    name: Validate nix configs
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install Nix
+      uses: cachix/install-nix-action@v25
+    - name: Nix flake check
+      working-directory: ./config
+      run: nix flake check
