@@ -17,6 +17,6 @@ return {
         defaults = {
             prompt_prefix = " ",
             selection_caret = " ",
-        }
-    }
+        },
+    },
 }

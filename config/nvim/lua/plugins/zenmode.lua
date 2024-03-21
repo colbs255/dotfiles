@@ -18,10 +18,11 @@ return {
     },
     keys = {
         {
-            "<leader>uz", function()
+            "<leader>uz",
+            function()
                 require("zen-mode").toggle()
             end,
-            desc = "Zenmode"
-        }
+            desc = "Zenmode",
+        },
     },
 }
