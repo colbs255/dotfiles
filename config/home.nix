@@ -76,6 +76,7 @@
     yazi
     xfce.thunar
     bat
+    xdg-utils
     bottom
     sd
     zathura
