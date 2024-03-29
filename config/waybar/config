@@ -1,8 +1,11 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 40,
     "spacing": 4, // Gaps between modules (4px)
+    "margin-top": 6,
+    "margin-left": 20,
+    "margin-right": 20,
     "reload_style_on_change": true,
 
     "modules-left": [
@@ -25,7 +28,7 @@
 
     "network": {
         "format": " Disabled",
-        "format-wifi": "r {signalStrength}%",
+        "format-wifi": "r{signalStrength}%",
         "tooltip-format-wifi": "{essid}",
         "format-ethernet": "{bandwidthDownBits:>}{bandwidthUpBits:>}",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",

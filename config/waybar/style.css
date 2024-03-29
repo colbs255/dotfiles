@@ -1,143 +1,101 @@
-/* Reset all styles */
-* {
-    border: 1px;
-    border-radius: 5px;
-    padding: 0 0;
-    font-family:JetBrainsMono, SymbolsNerdFont;
-    font-size: 15px;
-    margin-right: 2px;
-    margin-left: 2px;
-    padding-bottom:2px;
-}
+@define-color base           #1e242f ;
+@define-color urgent         #b02c36 ;
+@define-color primary_orange #fe9000 ;
+@define-color primary_yellow #ffdd4a ;
+@define-color primary_red    #da1b2b ;
+@define-color primary_blue   #afd2e9 ;
+@define-color primary_blue_2 #6fadd6 ;
 
-window#waybar {
-    background:#2e3440;
-    background-color:rgba(43, 45, 50, 0.6);
-}
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
 
-#workspaces button {
-    padding: 2px 8px;
-    border-bottom: 2px;
-    color: #eceff4;
-    border-color: #d8dee9;
-    border-style: solid;
-    margin-top:2px;
-}
-
-#workspaces button.active {
-    border-color: #81a1c1;
-}
-
-#mode {
-    color: #ebcb8b;
-}
-
-#mode,
-#window,
-#network,
-#cpu,
-#temperature,
-#memory,
-#idle_inhibitor,
-#backlight,
-#pulseaudio,
-#battery,
-#clock,
-#tray,
-#custom-power {
-    padding: 2px 8px;
-    border: 1px;
-    border-bottom: 2px;
-    border-style: solid;
-    border-radius: 5px;
-    margin-top: 1px;
-}
-
-
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-
-#mode{
-    margin-bottom:3px;
-}
-
-#window{
-    border-style: hidden;
-    margin-top:1px;
-    color: #eceff4;
-}
-
-#network {
-    color:#81a1c1;
-}
-
-#network.disabled,#network.disconnected {
-    color:#bf616a;
-}
-
-#cpu {
-    color:#a3be8c;
-}
-
-#temperature {
-    color: #8fbcbb;
-}
-
-#temperature.critical {
-    color: #bf616a;
-}
-
-#memory {
-    color: #b48ead;
-}
-
-#idle_inhibitor {
-    color: #81a1c1;
-}
-
-#backlight {
-    color: #ebcb8b;
-}
-
-#pulseaudio {
-    color: #b48ead;
-}
-
-#pulseaudio.muted {
-    color: #3b4252;
-}
-
-#battery {
-    color: #d8dee9;
-}
-
-#battery.charging {
-    color: #81a1c1;
-}
-
-@keyframes blink {
     to {
-        color: #4c566a;
-        background-color: #eceff4;
+        color: white;
+        background-color: orange;
     }
 }
 
-#battery.critical:not(.charging) {
-    background: #bf616a;
-    color: #eceff4;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
 }
 
-#clock {
-    color: #a3be8c;
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 0;
 }
 
-#tray {
-    color:#eceff4;
+/* The whole bar */
+#waybar {
+    background: transparent;
+    color: @primary_blue;
+    background-color: @base;
+    font-family: "JetBrains Mono NF";
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+/* Every modules */
+#clock,
+#network,
+#pulseaudio {
+    padding: 0.5rem 0.6rem;
+    margin: 1px 0px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#network.disconnected {
+    color: @primary_orange;
+}
+
+#pulseaudio {
+    padding-top: 6px;
+}
+
+#pulseaudio.muted {
+    color: @primary_yellow;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#workspaces {
+    font-size: 16px;
+}
+
+#workspaces button {
+    border-bottom: 3px solid @primary_blue_2;
+    margin-bottom: 0px;
+    padding:0px;
+}
+
+#workspaces button.active {
+    border-bottom: 3px solid  @primary_yellow;
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+
+#workspaces button.urgent {
+    border-color: @primary_red;
+    color: @primary_red;
 }
