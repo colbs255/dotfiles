@@ -1,83 +1,38 @@
 {
     "layer": "top",
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "top",
     "height": 30,
     "spacing": 4, // Gaps between modules (4px)
-
-// Configuration - modules-left
+    "reload_style_on_change": true,
 
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/window"
+        "hyprland/workspaces"
     ],    
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-		"3": "3",
-		"4": "4",
-		"5": "5",
-		"6": "6",
-		"7": "7",
-		"8": "8",
-		"9": "9",
-		"10": "10",
-        }
-    },
-    "hyprland/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "hyprland/window": {
-        //"all-outputs": true, // Uncomment for active window on all outputs
-        "format": "{}"
-    },
-
-// Configuration - modules-right
-
+    "modules-center": [
+        "hyprland/window",
+    ],    
     "modules-right": [
         "network",
-        "custom/keyboard-layout",
-        "cpu",
-        "temperature",
-        "memory",
-        "idle_inhibitor",
         "pulseaudio",
         "clock",
-        "tray",
     ],
+
+    "hyprland/workspaces": {
+    },
+
+    "hyprland/window": {
+    },
 
     "network": {
         "format": " Disabled",
-        "format-wifi": "{bandwidthDownBits:>}{bandwidthUpBits:>}",
+        "format-wifi": "r {signalStrength}%",
         "tooltip-format-wifi": "{essid}",
         "format-ethernet": "{bandwidthDownBits:>}{bandwidthUpBits:>}",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": " Disconnected",
-        "interval": 2,
+        "interval": 30,
     },
-    "cpu": {
-        "format": "{usage: >3}%"
-    },
-    "memory": {
-        "format": "{: >3}%"
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C",
-        "tooltip-format": "{temperatureC}° Celsius\n{temperatureF}° Fahrenheit\n{temperatureK}° Kelvin"
-    },    
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip-format-activated": "Idle Inhibitor Activated",
-        "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
-    },
+
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{icon}{volume: >3}%",
@@ -94,14 +49,7 @@
         },
         "on-click": "pavucontrol"
     },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}{capacity: >3}%",
-        "format-icons": ["", "", "", "", ""]
-    },
+
     "clock": {
         "format": " {:%H:%M}",
         "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
@@ -120,7 +68,4 @@
             "on-scroll-down": "shift_down"
         },
     },
-    "tray": {
-        "icon-size": 22
-    }
 }

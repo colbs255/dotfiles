@@ -1,9 +1,4 @@
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
- 
 /* Reset all styles */
-
 * {
     border: 1px;
     border-radius: 5px;
@@ -13,7 +8,7 @@
     margin-right: 2px;
     margin-left: 2px;
     padding-bottom:2px;
-   }
+}
 
 window#waybar {
     background:#2e3440;
@@ -29,7 +24,7 @@ window#waybar {
     margin-top:2px;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     border-color: #81a1c1;
 }
 
@@ -58,7 +53,7 @@ window#waybar {
     margin-top: 1px;
 }
 
- 
+
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
@@ -99,7 +94,7 @@ window#waybar {
 }
 
 #idle_inhibitor {
-   color: #81a1c1;
+    color: #81a1c1;
 }
 
 #backlight {
@@ -140,7 +135,7 @@ window#waybar {
 }
 
 #clock {
- color: #a3be8c;
+    color: #a3be8c;
 }
 
 #tray {
