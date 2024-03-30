@@ -39,29 +39,29 @@
         default = "Google";
         engines = {
           "Nix Packages" = {
+            definedAliases = [ ":np" ];
             urls = [{
               template = "https://search.nixos.org/packages";
               params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
               ];
             }];
-            definedAliases = [ ":np" ];
           };
           "YouTube" = {
+            definedAliases = [ ":yt" ];
             urls = [{
               template = "https://www.youtube.com/results";
               params = [
-              { name = "search_query"; value = "{searchTerms}"; }
+                { name = "search_query"; value = "{searchTerms}"; }
               ];
             }];
-            definedAliases = [ ":yt" ];
           };
         };
       };
 
       bookmarks = [
-      { name = "Charles Schwab"; url = "https://www.schwab.com/"; }
+        { name = "Charles Schwab"; url = "https://www.schwab.com/"; }
       ];
 
       settings = {
