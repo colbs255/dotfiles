@@ -44,6 +44,23 @@
     };
   };
 
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+      id = 0;
+      name = "default";
+      isDefault = true;
+      search = {
+        force = true;
+        default = "Google";
+      };
+      bookmarks = { };
+      settings = {
+        "browser.startup.homepage" = "https://google.com";
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     neovim
     swaybg
