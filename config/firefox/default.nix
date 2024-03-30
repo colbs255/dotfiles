@@ -1,6 +1,9 @@
+{ pkgs, ... }:
+
 {
   programs.firefox = {
     enable = true;
+
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
@@ -18,18 +21,9 @@
       NewTabPage = false;
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-        SearchBar = "unified"; # alternative: "separate"
-
-        /* ---- EXTENSIONS ---- */
-        # Check about:support for extension/add-on ID strings.
-        ExtensionSettings = {
-          "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
-            "uBlock0@raymondhill.net" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-              installation_mode = "force_installed";
-            };
-        };
+      SearchBar = "unified"; # alternative: "separate"
     };
+
     profiles.default = {
       id = 0;
       name = "default";
@@ -68,6 +62,9 @@
         "browser.startup.homepage" = "about:blank";
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
       };
+
+      extensions = [
+      ];
     };
   };
 }
