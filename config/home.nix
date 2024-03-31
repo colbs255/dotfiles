@@ -8,8 +8,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-        ublock-origin = firefox-extensions.ublock-origin;
-        bitwarden = firefox-extensions.bitwarden;
+        inherit firefox-extensions;
     })
   ];
 
