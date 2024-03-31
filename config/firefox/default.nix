@@ -63,9 +63,9 @@
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
       };
 
-      extensions = [
-        firefox-extensions.packages.${pkgs.system}.ublock-origin
-        firefox-extensions.packages.${pkgs.system}.bitwarden
+      extensions = with firefox-extensions.packages.${pkgs.system}; [
+        ublock-origin
+        bitwarden
       ];
     };
   };
