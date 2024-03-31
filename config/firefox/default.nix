@@ -33,7 +33,7 @@
         default = "Google";
         engines = {
           "Nix Packages" = {
-            definedAliases = [ ":np" ];
+            definedAliases = [ ",np" ];
             urls = [{
               template = "https://search.nixos.org/packages";
               params = [
@@ -43,7 +43,7 @@
             }];
           };
           "YouTube" = {
-            definedAliases = [ ":yt" ];
+            definedAliases = [ ",yt" ];
             urls = [{
               template = "https://www.youtube.com/results";
               params = [
@@ -61,6 +61,7 @@
       settings = {
         "browser.startup.homepage" = "about:blank";
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+        "extensions.pocket.enabled" = { Value = "false"; Status = "locked"; };
       };
 
       extensions = with pkgs.firefox-extensions; [

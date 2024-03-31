@@ -1,16 +1,10 @@
-{ pkgs, firefox-extensions, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "colby";
   home.homeDirectory = "/home/colby";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
-
-  nixpkgs.overlays = [
-    (final: prev: {
-        inherit firefox-extensions;
-    })
-  ];
 
   imports = [
     ./firefox
