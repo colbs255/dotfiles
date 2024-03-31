@@ -1,10 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "colby";
   home.homeDirectory = "/home/colby";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
+
+  imports = [
+    ./firefox
+  ];
 
   xdg.configFile = {
     lazygit.source = ./lazygit;
@@ -90,7 +94,6 @@
     swappy
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     jetbrains.idea-community
-    brave
     inkscape
   ];
 }
