@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "firefox-extensions": {
+    "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -76,7 +76,7 @@
     },
     "root": {
       "inputs": {
-        "firefox-extensions": "firefox-extensions",
+        "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
