@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, firefox-extensions, ... }:
 
 {
   programs.firefox = {
@@ -64,6 +64,8 @@
       };
 
       extensions = [
+        firefox-extensions.packages.${pkgs.system}.ublock-origin
+        firefox-extensions.packages.${pkgs.system}.bitwarden
       ];
     };
   };

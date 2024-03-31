@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, firefox-extensions, ... }:
 
 {
   home.username = "colby";
@@ -7,7 +7,7 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [
-    ./firefox
+    (import ./firefox { inherit pkgs; inherit firefox-extensions; })
   ];
 
   xdg.configFile = {
