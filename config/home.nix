@@ -18,7 +18,6 @@
     fuzzel.source = ./fuzzel;
     hypr.source = ./hypr;
     wlogout.source = ./wlogout;
-    waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
     fish.source = ./fish;
     alacritty.source = ./alacritty;

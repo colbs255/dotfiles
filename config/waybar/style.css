@@ -1,89 +1,115 @@
+@define-color base           #1e242f ;
+@define-color urgent         #b02c36 ;
+@define-color primary_orange #fe9000 ;
+@define-color primary_yellow #ffdd4a ;
+@define-color primary_red    #da1b2b ;
+@define-color primary_blue   #afd2e9 ;
+@define-color primary_blue_2 #6fadd6 ;
+
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
 * {
-	border: none;
-	border-radius: 0;
-	font-family: "JetBrains Mono NF";
-	font-size: 14px;
-	min-height: 24px;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background: transparent;
+    color: @primary_blue;
+    background-color: @base;
+    font-family: "JetBrains Mono NF";
+    font-size: 16px;
+    border-radius: 15px;
 }
 
 window#waybar {
 	background: transparent;
 }
 
-window#waybar.hidden {
-	opacity: 0.2;
+/* Every modules */
+#clock,
+#network,
+#pulseaudio {
+    padding: 0.5rem 0.6rem;
+    margin: 1px 0px;
 }
 
-#window {
-    margin-top: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
+#clock,
+#network,
+#pulseaudio,
+#window
+{
+    border: 1px solid rgba(255, 119, 0, 1.0);
 	border-radius: 26px;
-	transition: none;
-    color: #f8f8f2;
-	background: #282a36;
 }
 
-#workspaces {
-	margin-top: 8px;
-	margin-left: 12px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	background: #282a36;
-	transition: none;
-}
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
 
-#workspaces button {
-	transition: none;
-	color: #f8f8f2;
-	background: transparent;
-	font-size: 16px;
-}
-
-#workspaces button.active {
-	color: #9aedfe;
-}
-
-#workspaces button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #ff79c6;
-}
-
-#network {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #bd93f9;
+#network.disconnected {
+    color: @primary_orange;
 }
 
 #pulseaudio {
-	margin-top: 8px;
-	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #4d4d4d;
-	background: #9aedfe;
+    padding-top: 6px;
 }
 
-#clock {
-	margin-top: 8px;
-	margin-left: 8px;
-	margin-right: 12px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #f8f8f2;
-	background: #282a36;
+#pulseaudio.muted {
+    color: @primary_yellow;
 }
+
+#window {
+    font-weight: bold;
+}
+
+#workspaces {
+    font-size: 16px;
+	border-radius: 26px;
+}
+
+#workspaces button {
+    border-bottom: 3px solid @primary_blue_2;
+    margin-bottom: 0px;
+    padding:0px;
+}
+
+#workspaces button.active {
+    border-bottom: 3px solid  @primary_yellow;
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+
+#workspaces button.urgent {
+    border-color: @primary_red;
+    color: @primary_red;
+}
+
