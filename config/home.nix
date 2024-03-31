@@ -100,7 +100,6 @@
     swappy
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     jetbrains.idea-community
-    brave
     inkscape
   ];
 }
