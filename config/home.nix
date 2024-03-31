@@ -6,8 +6,15 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  nixpkgs.overlays = [
+    (final: prev: {
+        ublock-origin = firefox-extensions.ublock-origin;
+        bitwarden = firefox-extensions.bitwarden;
+    })
+  ];
+
   imports = [
-    (import ./firefox { inherit pkgs; inherit firefox-extensions; })
+    ./firefox
   ];
 
   xdg.configFile = {

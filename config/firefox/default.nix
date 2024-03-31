@@ -1,4 +1,4 @@
-{ pkgs, firefox-extensions, ... }:
+{ pkgs, ... }:
 
 {
   programs.firefox = {
@@ -63,7 +63,7 @@
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
       };
 
-      extensions = with firefox-extensions; [
+      extensions = with pkgs; [
         ublock-origin
         bitwarden
       ];
