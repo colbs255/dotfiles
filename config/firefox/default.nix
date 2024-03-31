@@ -57,6 +57,7 @@
 
       bookmarks = [
         { name = "Charles Schwab"; url = "https://www.schwab.com/"; }
+        { name = "Router Settings"; url = "https://192.168.1.1/"; }
       ];
 
       settings = {
