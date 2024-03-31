@@ -28,6 +28,7 @@
       id = 0;
       name = "default";
       isDefault = true;
+      userChrome = builtins.readFile ./userChrome.css;
       search = {
         force = true;
         default = "Google";
@@ -62,6 +63,7 @@
         "browser.startup.homepage" = "about:blank";
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
         "extensions.pocket.enabled" = { Value = "false"; Status = "locked"; };
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = "true";
       };
 
       extensions = with pkgs.firefox-extensions; [
