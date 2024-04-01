@@ -19,6 +19,7 @@
     hypr.source = ./hypr;
     wlogout.source = ./wlogout;
     wallpapers.source = ./wallpapers;
+    waybar.source = ./waybar;
     fish.source = ./fish;
     alacritty.source = ./alacritty;
     foot.source = ./foot;
