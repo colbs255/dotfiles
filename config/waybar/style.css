@@ -49,13 +49,14 @@
     font-family: "JetBrains Mono NF";
     font-size: 16px;
     border-radius: 15px;
+    font-size: 16px;
 }
 
 window#waybar {
 	background: transparent;
 }
 
-/* Every modules */
+/* All modules */
 #clock,
 #network,
 #pulseaudio {
@@ -81,10 +82,6 @@ window#waybar {
 
 #window {
     font-weight: bold;
-}
-
-#workspaces {
-    font-size: 16px;
 }
 
 #workspaces button {
