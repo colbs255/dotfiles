@@ -34,7 +34,6 @@
 
 /* Reset all styles */
 * {
-    border: none;
     border-radius: 0;
     min-height: 0;
     margin: 1px;
@@ -63,6 +62,15 @@ window#waybar {
     margin: 1px 0px;
 }
 
+#clock,
+#network,
+#pulseaudio,
+#window
+{
+    border: 1px solid rgba(255, 119, 0, 1.0);
+	border-radius: 26px;
+}
+
 /* -----------------------------------------------------------------------------
  * Modules styles
  * -------------------------------------------------------------------------- */
@@ -85,6 +93,7 @@ window#waybar {
 
 #workspaces {
     font-size: 16px;
+	border-radius: 26px;
 }
 
 #workspaces button {
@@ -103,3 +112,4 @@ window#waybar {
     border-color: @primary_red;
     color: @primary_red;
 }
+
