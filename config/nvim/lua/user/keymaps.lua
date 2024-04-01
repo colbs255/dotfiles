@@ -4,6 +4,13 @@ local function set_keymap(mode, lhs, rhs, description)
 end
 
 -- stylua: ignore start
+set_keymap("n", "gx",
+    function()
+        vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cfile>") }, { detach = true })
+    end,
+    "Open file under cursor with xdg-open"
+)
+
 set_keymap("n", "x", '"_x', "Prevent delete char from overwriting register")
 set_keymap("v", "p", '"_dP', "Prevents visual paste from overwriting register")
 
