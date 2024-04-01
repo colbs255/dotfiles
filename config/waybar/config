@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 40,
+    "height": 42,
     "spacing": 4, // Gaps between modules (4px)
     "margin-top": 6,
     "margin-left": 20,
