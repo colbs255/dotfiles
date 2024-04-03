@@ -46,6 +46,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.openssh.enable = pkgs.lib.mkForce false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.colby = {
