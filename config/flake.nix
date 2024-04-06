@@ -13,24 +13,34 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, firefox-addons, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      firefox-addons,
+      ...
+    }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev: {
-        # Add firefox extensions to our packages
-        firefox-extensions = firefox-addons.packages.${system};
-      });
-    in {
+      pkgs = nixpkgs.legacyPackages.${system}.extend (
+        final: prev: {
+          # Add firefox extensions to our packages
+          firefox-extensions = firefox-addons.packages.${system};
+        }
+      );
+    in
+    {
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [ ./configuration.nix ];
       };
-      
+
       homeConfigurations."colby" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
       };
 
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
 }

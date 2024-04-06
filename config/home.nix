@@ -6,9 +6,7 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [
-    ./firefox
-  ];
+  imports = [ ./firefox ];
 
   xdg.configFile = {
     lazygit.source = ./lazygit;
@@ -30,7 +28,10 @@
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
@@ -42,7 +43,10 @@
       package = pkgs.catppuccin-gtk.override {
         accents = [ "pink" ];
         size = "compact";
-        tweaks = [ "rimless" "black" ];
+        tweaks = [
+          "rimless"
+          "black"
+        ];
         variant = "macchiato";
       };
     };

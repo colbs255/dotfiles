@@ -8,7 +8,7 @@
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       EnableTrackingProtection = {
-        Value= true;
+        Value = true;
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
@@ -35,37 +35,68 @@
         engines = {
           "Nix Packages" = {
             definedAliases = [ ",np" ];
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
           };
           "YouTube" = {
             definedAliases = [ ",yt" ];
-            urls = [{
-              template = "https://www.youtube.com/results";
-              params = [
-                { name = "search_query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://www.youtube.com/results";
+                params = [
+                  {
+                    name = "search_query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
           };
         };
       };
 
       bookmarks = [
-        { name = "Charles Schwab"; url = "https://www.schwab.com/"; }
-        { name = "Router Settings"; url = "https://192.168.1.1/"; }
-        { name = "Dotfiles"; url = "https://github.com/colbs255/dotfiles/"; }
-        { name = "Github"; url = "https://github.com/"; }
+        {
+          name = "Charles Schwab";
+          url = "https://www.schwab.com/";
+        }
+        {
+          name = "Router Settings";
+          url = "https://192.168.1.1/";
+        }
+        {
+          name = "Dotfiles";
+          url = "https://github.com/colbs255/dotfiles/";
+        }
+        {
+          name = "Github";
+          url = "https://github.com/";
+        }
       ];
 
       settings = {
         "browser.startup.homepage" = "about:blank";
-        "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
-        "extensions.pocket.enabled" = { Value = "false"; Status = "locked"; };
+        "browser.contentblocking.category" = {
+          Value = "strict";
+          Status = "locked";
+        };
+        "extensions.pocket.enabled" = {
+          Value = "false";
+          Status = "locked";
+        };
         "toolkit.legacyUserProfileCustomizations.stylesheets" = "true";
       };
 

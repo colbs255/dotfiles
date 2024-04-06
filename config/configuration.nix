@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader
   boot.loader.timeout = 1;
@@ -34,7 +34,7 @@
   programs.hyprland.enable = true;
   programs.steam.enable = true;
   programs.ssh.startAgent = true;
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -52,18 +52,22 @@
   users.users.colby = {
     isNormalUser = true;
     description = "Colby";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
+    packages = with pkgs; [ ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     vim
     wget
   ];
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
