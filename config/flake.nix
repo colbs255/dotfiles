@@ -21,7 +21,7 @@
       ...
     }:
     let
-      system ="x86_64-linux";
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}.extend (
         final: prev: {
           # Add firefox extensions to our packages
