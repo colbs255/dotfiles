@@ -24,6 +24,9 @@ jobs:
     - name: Nix flake check
       working-directory: ./config
       run: nix flake check
+    - name: Nix format
+      working-directory: ./config
+      run: nix fmt && git diff --exit-code
   validate-lua:
     runs-on: ubuntu-latest
     name: Validate lua files
