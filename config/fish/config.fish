@@ -23,8 +23,6 @@ abbr --add lg lazygit
 abbr --add vi nvim
 abbr --add c 'bat --style=plain --paging=never'
 abbr --add ls 'exa -F --icons --group-directories-first'
-abbr --add homebuild 'home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ~/dotfiles/config'
-abbr --add sysbuild 'sudo nixos-rebuild switch --flake ~/dotfiles/config'
 
 function yazi_cd
 	set tmp (mktemp -t "yazi-cwd.XXXXX")
