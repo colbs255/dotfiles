@@ -22,6 +22,7 @@
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
       SearchBar = "unified"; # alternative: "separate"
+      PasswordManagerEnabled = false;
     };
 
     profiles.default = {
