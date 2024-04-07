@@ -60,6 +60,7 @@
     wlogout
     git
     gnumake
+    just
     gcc
     gh
     ghc
