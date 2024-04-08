@@ -17,6 +17,9 @@ return {
         defaults = {
             prompt_prefix = " ",
             selection_caret = " ",
+            layout_config = {
+                horizontal = { width = 0.95 },
+            },
         },
     },
 }
