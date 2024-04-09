@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+choices="Lock
+Logout
+Shutdown
+Reboot"
+choice=$(fuzzel --dmenu <<< "$choices")
+
+case $choice in
+    "Lock")
+        hyprlock
+        ;;
+    "Logout")
+        loginctl terminate-user "$USER"
+        ;;
+    "Shutdown")
+        systemctl poweroff
+        ;;
+    "Reboot")
+        systemctl reboot
+        ;;
+    *)
+        ;;
+esac
