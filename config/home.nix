@@ -15,7 +15,6 @@
     nvim.source = ./nvim;
     fuzzel.source = ./fuzzel;
     hypr.source = ./hypr;
-    wlogout.source = ./wlogout;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
     fish.source = ./fish;
@@ -60,7 +59,6 @@
     swaybg
     hyprlock
     waybar
-    wlogout
     git
     gnumake
     just
