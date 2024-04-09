@@ -24,12 +24,8 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/nixos.sh)"
 ```
 
-Run `homeupdate` to install your latest changes
-
 ## Other Linux
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
 ```
-
-Run `homeupdate` to install your latest changes
