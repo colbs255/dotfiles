@@ -29,7 +29,6 @@
     source = ./bash/.bash_profile;
   };
 
-
   nix = {
     package = pkgs.nix;
     settings.experimental-features = [
