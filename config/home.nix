@@ -25,6 +25,10 @@
     git.source = ./git;
     tmux.source = ./tmux;
   };
+  home.file.".bash_profile" = {
+    source = ./bash/.bash_profile;
+  };
+
 
   nix = {
     package = pkgs.nix;
