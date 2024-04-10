@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Choices need to separated by newlines
+# Fuzzel expects choices to be separated by newlines
 choices=" Lock
 󰍃 Logout
  Shutdown
