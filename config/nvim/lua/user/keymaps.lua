@@ -33,15 +33,9 @@ set_keymap("n", "<leader>os",
 set_keymap("n", "gl", vim.diagnostic.open_float, "Open diagnostics float")
 set_keymap("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
 set_keymap("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+-- stylua: ignore end
 
 -- UI =======================================
-set_keymap("n", "<leader>us", function() toggleOption("spell") end, "Toggle spelling")
-set_keymap("n", "<leader>uw", function() toggleOption("wrap") end, "Toggle word wrap")
-set_keymap("n", "<leader>ul", function() toggleNumber() end, "Toggle line numbers")
-set_keymap("n", "<leader>uL", function() toggleOption("relativenumber") end, "Toggle relative line numbers")
-set_keymap("n", "<leader>ur", "<CMD>nohlsearch<CR>", "Turn off search highlight (nohlsearch)")
-set_keymap("n", "<leader>ud", function() toggleDiagnostics() end, { "Toggle diagnostics" })
--- stylua: ignore end
 
 local function toggleOption(option)
     vim.opt_local[option] = not vim.opt_local[option]:get()
@@ -64,3 +58,12 @@ local function toggleDiagnostics()
         vim.diagnostic.disable()
     end
 end
+
+-- stylua: ignore start
+set_keymap("n", "<leader>us", function() toggleOption("spell") end, "Toggle spelling")
+set_keymap("n", "<leader>uw", function() toggleOption("wrap") end, "Toggle word wrap")
+set_keymap("n", "<leader>ul", function() toggleNumber() end, "Toggle line numbers")
+set_keymap("n", "<leader>uL", function() toggleOption("relativenumber") end, "Toggle relative line numbers")
+set_keymap("n", "<leader>ur", "<CMD>nohlsearch<CR>", "Turn off search highlight (nohlsearch)")
+set_keymap("n", "<leader>ud", function() toggleDiagnostics() end, { "Toggle diagnostics" })
+-- stylua: ignore end
