@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+# Choices need to separated by newlines
 choices="Lock
 Logout
 Shutdown
 Reboot"
+
+# User picks a choice with fuzzel
 choice=$(fuzzel --dmenu <<< "$choices")
 
 case $choice in
