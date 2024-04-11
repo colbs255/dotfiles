@@ -21,11 +21,5 @@ git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && ma
 ## NixOS
 
 ``` bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/nixos.sh)"
-```
-
-## Other Linux
-
-``` bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/linux/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/install/nixos/install.sh)"
 ```

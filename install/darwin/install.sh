@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Setup shell with our dependencies
 nix-shell -p git home-manager
