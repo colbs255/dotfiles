@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Setup shell with our dependencies
 nix-shell -p git home-manager
 # Clone repo

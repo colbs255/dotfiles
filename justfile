@@ -7,6 +7,7 @@ update:
 format:
     cd config && nix fmt
     nix run nixpkgs#stylua config
+    nix shell nixpkgs#git nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh) --format diff | git apply --allow-empty'
 clean:
     nix-collect-garbage --delete-older-than 7d
     home-manager expire-generations 7d
