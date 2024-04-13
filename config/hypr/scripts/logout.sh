@@ -1,26 +1,28 @@
 #!/usr/bin/env bash
 
 # Fuzzel expects choices to be separated by newlines
-choices=" Lock
-󰍃 Logout
- Shutdown
- Reboot"
+declare -a choices=(
+    [0]=" Lock"
+    [1]=" Shutdown"
+    [2]="󰍃 Logout"
+    [3]=" Reboot"
+)
+choice_str=$(printf "%s\n" "${choices[@]}")
 
 # User picks a choice with fuzzel
-choice=$(fuzzel --prompt "❯ " --lines 4 --dmenu <<< "$choices")
-choice_without_icon=${choice:2}
+choice=$(fuzzel --prompt "❯ " --lines 4 --dmenu --index <<< "$choice_str")
 
-case $choice_without_icon in
-    "Lock")
+case $choice in
+    0)
         hyprlock
         ;;
-    "Logout")
-        hyprctl dispatch exit
-        ;;
-    "Shutdown")
+    1)
         systemctl poweroff
         ;;
-    "Reboot")
+    2)
+        hyprctl dispatch exit
+        ;;
+    3)
         systemctl reboot
         ;;
     *)
