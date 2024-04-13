@@ -12,7 +12,7 @@ lint: lint-lua lint-shell
 lint-lua:
     nix run nixpkgs#stylua -- config --check
 lint-shell:
-    nix shell nixpkgs#git nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
+    nix shell nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
 clean:
     nix-collect-garbage --delete-older-than 7d
     home-manager expire-generations 7d
