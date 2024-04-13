@@ -29,21 +29,21 @@ jobs:
       run: nix fmt && git diff --exit-code
   validate-lua:
     runs-on: ubuntu-latest
-    name: Validate lua files
+    name: Lint lua files
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Stylua
-      run: nix run nixpkgs#stylua -- config --check
+      run: nix run nixpkgs#just -- lint-lua
   validate-shell:
     runs-on: ubuntu-latest
-    name: Validate shell scripts
+    name: Lint shell files
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Shellcheck
-      run: nix shell nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
+      run: nix run nixpkgs#just -- lint-shell
