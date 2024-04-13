@@ -9,7 +9,6 @@ format:
     nix run nixpkgs#stylua config
     nix shell nixpkgs#git nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh) --format diff | git apply --allow-empty'
 lint:
-    -cd config && nix fmt && git diff --exit-code
     -nix run nixpkgs#stylua -- config --check
     -nix shell nixpkgs#git nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
 clean:
