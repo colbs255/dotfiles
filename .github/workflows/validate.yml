@@ -33,8 +33,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - uses: JohnnyMorganz/stylua-action@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        version: v0.20.0
-        args: --check config/nvim
+    - name: Install Nix
+      uses: cachix/install-nix-action@v25
+    - name: Stylua
+      run: nix run nixpkgs#stylua -- config --check
+  validate-shell:
+    runs-on: ubuntu-latest
+    name: Validate shell scripts
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install Nix
+      uses: cachix/install-nix-action@v25
+    - name: Shellcheck
+      run: nix shell nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
