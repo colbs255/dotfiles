@@ -2,24 +2,22 @@
 
 My opinionated dot files. Use at your own risk :)
 
-## MacOS
-
-(optional) Create SSH key and [add SSH key to gihthub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-``` bash
-ssh-keygen -t ed25519 -C "email"
-```
-
-1. Install homebrew
-``` bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-2. Clone this repo and install
-``` bash
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles && make
-```
-
 ## NixOS
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/install/nixos/install.sh)"
+```
+
+## MacOS
+
+1. Install nix package manager
+
+``` bash
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+2. Run install script
+
+``` bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/install/macos/install.sh)"
 ```
