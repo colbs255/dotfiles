@@ -22,10 +22,8 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Nix flake check
-      working-directory: ./config
       run: nix flake check
     - name: Nix format
-      working-directory: ./config
       run: nix fmt && git diff --exit-code
   validate-lua:
     runs-on: ubuntu-latest
@@ -36,7 +34,7 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Stylua
-      run: nix run nixpkgs#just -- lint-lua
+      run: nix develop --command 'just lint-lua'
   validate-shell:
     runs-on: ubuntu-latest
     name: Lint shell files
@@ -46,4 +44,4 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Shellcheck
-      run: nix run nixpkgs#just -- lint-shell
+      run: nix develop --command 'just lint-shell'
