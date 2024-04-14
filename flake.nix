@@ -33,12 +33,12 @@
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./config/configuration.nix ];
       };
 
       homeConfigurations."colby" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [ ./config/home.nix ];
       };
 
       devShells.${system}.default = pkgs.mkShell {
