@@ -3,7 +3,7 @@
 choice=$(fuzzel --prompt "G: " --lines 0 --dmenu <<< '')
 
 if [ -z "$choice" ]; then
-    echo "The string is empty."
+    exit
 fi
 
 search_url="https://www.google.com/search?q="
