@@ -34,7 +34,7 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Stylua
-      run: nix develop --command 'just lint-lua'
+      run: nix develop --command bash -c 'just lint-lua'
   validate-shell:
     runs-on: ubuntu-latest
     name: Lint shell files
@@ -44,4 +44,4 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v25
     - name: Shellcheck
-      run: nix develop --command 'just lint-shell'
+      run: nix develop --command bash -c 'just lint-shell'
