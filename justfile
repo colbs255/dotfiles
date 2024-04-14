@@ -1,11 +1,11 @@
 build-home:
     home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ./config
 build-system:
-    sudo nixos-rebuild switch --flake ./config
+    sudo nixos-rebuild switch --flake .
 update:
-    cd config && nix flake update
+    nix flake update
 format:
-    cd config && nix fmt
+    nix fmt
     stylua config
     shellcheck $(fd -e sh) --format diff | git apply --allow-empty
 lint: lint-lua lint-shell
