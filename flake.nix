@@ -47,7 +47,7 @@
           pkgs.stylua
           pkgs.shellcheck
           pkgs.fd
-          home-manager.packages.${system}.home-manager
+          pkgs.home-manager
         ];
       };
 
