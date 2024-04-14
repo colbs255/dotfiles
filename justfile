@@ -1,5 +1,5 @@
 build-home:
-    home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ./config
+    home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake .
 build-system:
     sudo nixos-rebuild switch --flake .
 update:
