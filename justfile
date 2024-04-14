@@ -1,18 +1,18 @@
 build-home:
-    home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake ./config
+    home-manager --extra-experimental-features nix-command --extra-experimental-features flakes switch --flake .
 build-system:
-    sudo nixos-rebuild switch --flake ./config
+    sudo nixos-rebuild switch --flake .
 update:
-    cd config && nix flake update
+    nix flake update
 format:
-    cd config && nix fmt
-    nix run nixpkgs#stylua config
-    nix shell nixpkgs#git nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh) --format diff | git apply --allow-empty'
+    nix fmt
+    stylua config
+    shellcheck $(fd -e sh) --format diff | git apply --allow-empty
 lint: lint-lua lint-shell
 lint-lua:
-    nix run nixpkgs#stylua -- config --check
+    stylua config --check
 lint-shell:
-    nix shell nixpkgs#fd nixpkgs#shellcheck --command bash -c 'shellcheck $(fd -e sh)'
+    shellcheck $(fd -e sh)
 clean:
     nix-collect-garbage --delete-older-than 7d
     home-manager expire-generations 7d

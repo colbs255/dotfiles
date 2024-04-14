@@ -33,12 +33,22 @@
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./config/configuration.nix ];
       };
 
       homeConfigurations."colby" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [ ./config/home.nix ];
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          pkgs.just
+          pkgs.stylua
+          pkgs.shellcheck
+          pkgs.fd
+          home-manager.packages.${system}.home-manager
+        ];
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
