@@ -7,4 +7,4 @@ if [ -z "$choice" ]; then
 fi
 
 search_url="https://www.google.com/search?q="
-xdg-open "$search_url""$choice"
+xdg-open "$search_url$choice"
