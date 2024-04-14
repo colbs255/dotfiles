@@ -42,7 +42,13 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        packages = [ pkgs.just pkgs.stylua pkgs.shellcheck pkgs.fd home-manager.packages.${system}.home-manager ];
+        packages = [
+          pkgs.just
+          pkgs.stylua
+          pkgs.shellcheck
+          pkgs.fd
+          home-manager.packages.${system}.home-manager
+        ];
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
