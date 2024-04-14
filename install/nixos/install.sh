@@ -10,9 +10,10 @@ echo "Creating ssh key"
 ssh-keygen -t ed25519 -C "colby@dev.com"
 
 echo "Cloning and installing repo"
-nix shell nixpkgs#git nixpkgs#home-manager nixpkgs#gh nixpkgs#bash nixpkgs#just --command bash -c '
+nix shell nixpkgs#git  nixpkgs#gh nixpkgs#bash --command bash -c '
 gh auth login
-git clone git@github.com:colbs255/dotfiles.git ~/dotfiles && cd ~/dotfiles
-just build-home
-just build-system
+git clone git@github.com:colbs255/dotfiles.git ~/dotfiles
 '
+
+cd ~/dotfiles
+nix develop --command bash -c 'just build-home && just build-system'
