@@ -32,7 +32,7 @@ function yazi_cd
 	end
 	rm -f -- "$tmp"
 end
-abbr --add ya yazi_cd
+abbr --add yy yazi_cd
 
 # Setup paths
 zoxide init fish | source
