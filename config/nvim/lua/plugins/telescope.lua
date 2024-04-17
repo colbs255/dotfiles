@@ -1,6 +1,12 @@
 return {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        { "nvim-lua/plenary.nvim" },
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+        },
+    },
     keys = {
         -- stylua: ignore start
         { "<Leader><space>", function() require("telescope.builtin").git_files() end, desc = "Find git files" },
@@ -13,13 +19,16 @@ return {
         { "<Leader>:", function() require("telescope.builtin").command_history() end, desc = "Command History" },
         -- stylua: ignore end
     },
-    opts = {
-        defaults = {
-            prompt_prefix = " ",
-            selection_caret = " ",
-            layout_config = {
-                horizontal = { width = 0.95 },
+    config = function()
+        require("telescope").setup({
+            defaults = {
+                prompt_prefix = " ",
+                selection_caret = " ",
+                layout_config = {
+                    horizontal = { width = 0.95 },
+                },
             },
-        },
-    },
+        })
+        require("telescope").load_extension("fzf")
+    end,
 }
