@@ -97,6 +97,7 @@
     nodePackages.bash-language-server
     slurp
     grim
+    mpv
     swappy
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     jetbrains.idea-community
