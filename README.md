@@ -1,14 +1,14 @@
 # dotfiles
 
-My opinionated dot files. Use at your own risk :)
+## Installation
 
-## NixOS
+### NixOS
 
 ``` bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/colbs255/dotfiles/main/install/nixos/install.sh)"
 ```
 
-## MacOS
+### MacOS
 
 1. Install nix package manager
 
