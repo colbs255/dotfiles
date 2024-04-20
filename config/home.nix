@@ -18,6 +18,7 @@
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
     fish.source = ./fish;
+    bat.source = ./bat;
     alacritty.source = ./alacritty;
     foot.source = ./foot;
     zathura.source = ./zathura;
