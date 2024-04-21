@@ -8,11 +8,15 @@ end
 
 function fish_prompt
     set_color green
-    echo (pwd)
+    prompt_pwd --full-length-dirs=100 --dir-length=100
     echo '➜ '
 end
 
 function fish_greeting
     set_color blue
     echo Welcome $USER!
+end
+
+function fish_command_not_found
+    echo Command not found: (set_color red)$argv[1]
 end
