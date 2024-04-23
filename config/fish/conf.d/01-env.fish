@@ -8,7 +8,7 @@ end
 
 function fish_prompt
     set_color green
-    prompt_pwd --full-length-dirs=100 --dir-length=100
+    prompt_pwd --dir-length=0
     echo '➜ '
 end
 
