@@ -27,6 +27,9 @@ return {
                 layout_config = {
                     horizontal = { width = 0.95 },
                 },
+                path_display = {
+                    "filename_first",
+                },
             },
         })
         require("telescope").load_extension("fzf")
