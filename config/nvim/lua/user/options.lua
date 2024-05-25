@@ -1,7 +1,6 @@
 -- To see what an option is, run :help <cmd>. For example, :help guicursor
 -- To see list of all options, :options
 vim.g.mapleader = " "
-
 vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.spelllang = "en_us"
@@ -55,6 +54,19 @@ vim.opt.updatetime = 50
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
+
+-- Clipboard
+vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+}
 
 -- netrw
 vim.g.netrw_browse_split = 0
