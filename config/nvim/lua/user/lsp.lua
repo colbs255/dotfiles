@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        -- K will use vim.lsp.buf.hover() by default
         vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
