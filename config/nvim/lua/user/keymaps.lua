@@ -65,5 +65,5 @@ set_keymap("n", "<leader>uw", function() toggleOption("wrap") end, "Toggle word 
 set_keymap("n", "<leader>ul", function() toggleNumber() end, "Toggle line numbers")
 set_keymap("n", "<leader>uL", function() toggleOption("relativenumber") end, "Toggle relative line numbers")
 set_keymap("n", "<leader>ur", "<CMD>nohlsearch<CR>", "Turn off search highlight (nohlsearch)")
-set_keymap("n", "<leader>ud", function() toggleDiagnostics() end, { "Toggle diagnostics" })
+set_keymap("n", "<leader>ud", function() toggleDiagnostics() end, "Toggle diagnostics")
 -- stylua: ignore end
