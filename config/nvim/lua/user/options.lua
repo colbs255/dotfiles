@@ -1,6 +1,7 @@
 -- To see what an option is, run :help <cmd>. For example, :help guicursor
 -- To see list of all options, :options
 vim.g.mapleader = " "
+
 vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.spelllang = "en_us"
