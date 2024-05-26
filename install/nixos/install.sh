@@ -2,10 +2,6 @@
 
 set -e
 
-echo "Installing homemanager channel"
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
 echo "Creating ssh key"
 ssh-keygen -t ed25519 -C "colby@dev.com"
 
