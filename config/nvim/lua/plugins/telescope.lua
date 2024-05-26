@@ -20,6 +20,7 @@ return {
         -- stylua: ignore end
     },
     config = function()
+        local actions = require("telescope.actions")
         require("telescope").setup({
             defaults = {
                 prompt_prefix = " ",
@@ -29,6 +30,11 @@ return {
                 },
                 path_display = {
                     "filename_first",
+                },
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close
+                    },
                 },
             },
         })
