@@ -33,7 +33,7 @@ return {
                 },
                 mappings = {
                     i = {
-                        ["<esc>"] = actions.close
+                        ["<esc>"] = actions.close,
                     },
                 },
             },
