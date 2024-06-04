@@ -1,7 +1,7 @@
 return {
-    'echasnovski/mini.notify',
+    "echasnovski/mini.notify",
     config = function()
-        local notify = require('mini.notify')
+        local notify = require("mini.notify")
         notify.setup()
         vim.notify = notify.make_notify()
     end,
