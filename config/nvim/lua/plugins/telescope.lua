@@ -22,6 +22,7 @@ return {
     },
     config = function()
         local actions = require("telescope.actions")
+        local action_layout = require("telescope.actions.layout")
         require("telescope").setup({
             defaults = {
                 prompt_prefix = " ",
@@ -35,6 +36,7 @@ return {
                 mappings = {
                     i = {
                         ["<esc>"] = actions.close,
+                        ["<M-p>"] = action_layout.toggle_preview,
                     },
                 },
             },
