@@ -7,11 +7,18 @@ end
 set_keymap("n", "x", '"_x', "Prevent delete char from overwriting register")
 set_keymap("v", "p", '"_dP', "Prevents visual paste from overwriting register")
 
+set_keymap("i", ",", ",<c-g>u", "Set undo break point on commas")
+set_keymap("i", ".", ".<c-g>u", "Set undo break point on periods")
+set_keymap("i", ";", ";<c-g>u", "Set undo break point on semicolons")
+
 set_keymap("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
 set_keymap("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
 set_keymap("v", "<", "<gv", "Indent left and stay in indent mode")
 set_keymap("v", ">", ">gv", "Indent right and stay in indent mode")
+
+set_keymap("n", "[b", "<cmd>bprevious<cr>", "Prev buffer")
+set_keymap("n", "]b", "<cmd>bnext<cr>", "Next buffer")
 
 set_keymap("n", "<leader>oq", ":e ~/quick.md<CR>", "Go to quick links file")
 set_keymap("n", "<leader>os",
