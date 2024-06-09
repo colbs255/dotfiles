@@ -15,7 +15,7 @@ return {
         { "<Leader>fm", function() require("telescope.builtin").man_pages() end, desc = "Man pages" },
         { "<Leader>gb", function() require("telescope.builtin").git_branches() end, desc = "Git branches" },
         { "<Leader>/", function() require("telescope.builtin").live_grep() end, desc = "Grep (root dir)" },
-        { "<Leader>,", function() require("telescope.builtin").buffers() end, desc = "Buffers" },
+        { "<Leader>,", function() require("telescope.builtin").buffers({ previewer = false }) end, desc = "Buffers" },
         { "<Leader>:", function() require("telescope.builtin").command_history() end, desc = "Command History" },
         { "z=", function() require("telescope.builtin").spell_suggest() end, desc = "Spell suggestions" },
         -- stylua: ignore end
