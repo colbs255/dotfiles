@@ -1,5 +1,5 @@
 set EDITOR nvim
-set -gx TERM screen-256color
+set -gx TERM tmux-256color
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 if status is-interactive
