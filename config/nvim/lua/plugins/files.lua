@@ -24,7 +24,6 @@ end
 
 return {
     "echasnovski/mini.files",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
     keys = {
         {
             "<leader>-",
