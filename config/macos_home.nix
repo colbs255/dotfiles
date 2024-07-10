@@ -8,17 +8,12 @@
 
   xdg.configFile = {
     lazygit.source = ./lazygit;
-    gitui.source = ./gitui;
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
-    fuzzel.source = ./fuzzel;
-    hypr.source = ./hypr;
-    waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
     fish.source = ./fish;
     bat.source = ./bat;
     alacritty.source = ./alacritty;
-    foot.source = ./foot;
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
@@ -37,27 +32,8 @@
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
 
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Catppuccin-Macchiato-Compact-Pink-Dark";
-  #     package = pkgs.catppuccin-gtk.override {
-  #       accents = [ "pink" ];
-  #       size = "compact";
-  #       tweaks = [
-  #         "rimless"
-  #         "black"
-  #       ];
-  #       variant = "macchiato";
-  #     };
-  #   };
-  # };
-
   home.packages = with pkgs; [
     neovim
-    # swaybg
-    # hyprlock
-    # waybar
     git
     gnumake
     just
