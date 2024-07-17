@@ -14,18 +14,13 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      firefox-addons,
-      ...
-    }:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}.extend (
         final: prev: {
           # Add firefox extensions to our packages
-          firefox-extensions = firefox-addons.packages.${system};
+          firefox-extensions = inputs.firefox-addons.packages.${system};
         }
       );
     in
@@ -36,7 +31,7 @@
         modules = [ ./config/configuration.nix ];
       };
 
-      homeConfigurations."colby" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."colby" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./config/home.nix ];
       };
