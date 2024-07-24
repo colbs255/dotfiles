@@ -3,7 +3,7 @@
     "position": "top",
     "height": 42,
     "spacing": 4, // Gaps between modules (4px)
-    "margin-top": 6,
+    "margin-top": 0,
     "margin-bottom": -15,
     "margin-left": 20,
     "margin-right": 20,
