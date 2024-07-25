@@ -57,6 +57,7 @@
 
   home.packages = with pkgs; [
     neovim
+    helix
     swaybg
     hyprlock
     waybar
