@@ -1,0 +1,28 @@
+theme = "tokyonight_storm"
+
+[editor]
+scrolloff = 7
+gutters = ["diagnostics", "spacer", "spacer", "diff"]
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "selections", "register", "position-percentage", "position", "file-encoding"]
+separator = "│"
+mode.normal = "Normal"
+mode.insert = "Insert"
+mode.select = "Select"
+
+[editor.indent-guides]
+render = true
+character = "│"
+skip-levels = 1
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[keys.insert]
+"C-[" = "normal_mode"

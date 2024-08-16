@@ -13,6 +13,7 @@
     gitui.source = ./gitui;
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
+    helix.source = ./helix;
     fuzzel.source = ./fuzzel;
     hypr.source = ./hypr;
     waybar.source = ./waybar;
@@ -57,6 +58,7 @@
 
   home.packages = with pkgs; [
     neovim
+    helix
     swaybg
     hyprlock
     waybar
