@@ -14,8 +14,12 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable networking
+  # Networking
   networking.networkmanager.enable = true;
+  services.openssh.enable = pkgs.lib.mkForce false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -46,7 +50,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.openssh.enable = pkgs.lib.mkForce false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.colby = {
