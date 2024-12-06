@@ -42,6 +42,7 @@
 
   programs.hyprland.enable = true;
   programs.steam.enable = true;
+  hardware.enableRedistributableFirmware = true;
   programs.ssh.startAgent = true;
   security.pam.services.hyprlock = { };
 
