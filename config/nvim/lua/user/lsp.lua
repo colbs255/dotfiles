@@ -23,9 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local client = vim.lsp.start({
             cmd = { "rust-analyzer" },
             filetypes = { "rust" },
-            root_dir = vim.fs.dirname(
-                vim.fs.find({ "Cargo.toml" }, { upward = true })[1]
-            ),
+            root_dir = vim.fs.dirname(vim.fs.find({ "Cargo.toml" }, { upward = true })[1]),
             single_file_support = true,
         })
         vim.lsp.buf_attach_client(0, client)

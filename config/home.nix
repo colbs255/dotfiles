@@ -29,6 +29,12 @@
   home.file.".bash_profile" = {
     source = ./bash/.bash_profile;
   };
+  # Nixpkgs 25.05 moved the location of nerdfonts and apps don't like it
+  # We copy the fonts to the old location so our apps are happy
+  home.file.".local/share/fonts/NerdFonts" = {
+    source = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono";
+    recursive = true;
+  };
 
   nix = {
     package = pkgs.nix;
@@ -102,7 +108,7 @@
     grim
     mpv
     swappy
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
     jetbrains.idea-community
     inkscape
   ];
