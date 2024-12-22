@@ -111,5 +111,6 @@
     nerd-fonts.jetbrains-mono
     jetbrains.idea-community
     inkscape
+    ouch
   ];
 }
