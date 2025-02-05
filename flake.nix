@@ -17,12 +17,18 @@
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system}.extend (
-        final: prev: {
-          # Add firefox extensions to our packages
-          firefox-extensions = inputs.firefox-addons.packages.${system};
-        }
-      );
+      pkgs =
+        nixpkgs.legacyPackages.${system}.extend (
+          final: prev: {
+            # Add firefox extensions to our packages
+            firefox-extensions = inputs.firefox-addons.packages.${system};
+          }
+        )
+        // {
+          config = {
+            allowUnfree = true;
+          };
+        };
     in
     {
 
