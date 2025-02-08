@@ -112,5 +112,6 @@
     jetbrains.idea-community
     inkscape
     ouch
+    bitwig-studio
   ];
 }
