@@ -2,7 +2,6 @@ let mapleader=" "
 
 """ Common settings -------------------------
 set showmode
-set incsearch
 set scrolloff=8
 set sidescrolloff=8
 set number
@@ -24,3 +23,18 @@ map <leader><leader> <Action>(GotoClass)
 map <leader>/ <Action>(FindInPath)
 map <leader>, <Action>(RecentFiles)
 map <leader>^ <Action>(GotoTest)
+" Default gd -> (GoToDeclaration)
+map gi <Action>(GotoImplementation)
+map gD <Action>(GotoSuperMethod)
+map gr <Action>(FindUsages)
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+
+""" Intellij handlers
+sethandler <C-C> a:ide
+sethandler <C-V> a:ide
+sethandler <C-I> a:vim
+sethandler <C-O> a:vim
+sethandler <C-D> a:vim
+sethandler <C-U> a:vim
+sethandler <C-R> a:vim
