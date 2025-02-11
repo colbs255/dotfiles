@@ -12,7 +12,7 @@
     lazygit.source = ./lazygit;
     gitui.source = ./gitui;
     ideavim.source = ./ideavim;
-    # nvim.source = ./nvim;
+    nvim.source = ./nvim;
     helix.source = ./helix;
     fuzzel.source = ./fuzzel;
     hypr.source = ./hypr;
