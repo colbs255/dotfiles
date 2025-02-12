@@ -49,6 +49,7 @@
           pkgs.shellcheck
           pkgs.fd
           pkgs.home-manager
+          pkgs.treefmt2
         ];
       };
 
