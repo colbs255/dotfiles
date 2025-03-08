@@ -54,7 +54,6 @@
     gitui
     fish
     alacritty
-    ghostty
     fzf
     delta
     asciidoctor
