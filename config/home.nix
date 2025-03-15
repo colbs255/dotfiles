@@ -77,6 +77,7 @@
     cabal-install
     haskell-language-server
     lazygit
+    direnv
     gitui
     fish
     foot
