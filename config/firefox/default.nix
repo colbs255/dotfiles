@@ -107,6 +107,7 @@
       extensions.packages = with pkgs.firefox-extensions; [
         ublock-origin
         bitwarden
+        react-devtools
       ];
     };
   };
