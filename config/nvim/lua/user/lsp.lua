@@ -9,12 +9,26 @@ vim.lsp.config.rust = {
     root_markers = { "Cargo.toml" },
     filetypes = { "rust" },
 }
+
 vim.lsp.config.sh = {
     cmd = { "bash-language-server", "start" },
     filetypes = { "sh" },
 }
 
-vim.lsp.enable({ "rust", "sh", "haskell" })
+vim.lsp.config.typescript = {
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+    root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json' },
+}
+
+vim.lsp.enable({ "rust", "sh", "haskell", "typescript" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_augroup,
