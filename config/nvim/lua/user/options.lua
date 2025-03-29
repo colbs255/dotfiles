@@ -17,7 +17,9 @@ end
 set_indentation(4)
 
 vim.api.nvim_create_user_command("SetIndentation", function(opts)
-    set_indentation(tonumber(opts.fargs[1])) end, { nargs = 1 }) vim.opt.expandtab = true
+    set_indentation(tonumber(opts.fargs[1]))
+end, { nargs = 1 })
+vim.opt.expandtab = true
 
 vim.opt.wrap = false
 vim.opt.smartindent = true
@@ -69,7 +71,6 @@ vim.g.clipboard = {
 
 -- Diagnostics
 vim.diagnostic.config({
-    virtual_text = true,
-    virtual_lines = true,
+    -- Only shows diagnostic for current line
+    virtual_lines = { current_line = true },
 })
-
