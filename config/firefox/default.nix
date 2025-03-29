@@ -32,7 +32,7 @@
       userChrome = builtins.readFile ./userChrome.css;
       search = {
         force = true;
-        default = "Google";
+        default = "google";
         engines = {
           "Nix Packages" = {
             definedAliases = [ ",np" ];
@@ -52,7 +52,7 @@
               }
             ];
           };
-          "YouTube" = {
+          "youTube" = {
             definedAliases = [ ",yt" ];
             urls = [
               {
@@ -69,7 +69,9 @@
         };
       };
 
-      bookmarks = [
+      bookmarks = {
+        force = true;
+        settings = [
         {
           name = "Charles Schwab";
           url = "https://www.schwab.com/";
@@ -86,7 +88,8 @@
           name = "Github";
           url = "https://github.com/";
         }
-      ];
+        ];
+      };
 
       settings = {
         "browser.startup.homepage" = "about:blank";
@@ -101,7 +104,7 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = "true";
       };
 
-      extensions = with pkgs.firefox-extensions; [
+      extensions.packages = with pkgs.firefox-extensions; [
         ublock-origin
         bitwarden
       ];
