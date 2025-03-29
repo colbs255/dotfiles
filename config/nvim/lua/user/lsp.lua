@@ -18,14 +18,14 @@ vim.lsp.config.sh = {
 vim.lsp.config.typescript = {
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
     },
-    root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json' },
+    root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
 }
 
 vim.lsp.enable({ "rust", "sh", "haskell", "typescript" })
