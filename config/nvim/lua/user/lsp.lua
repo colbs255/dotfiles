@@ -16,19 +16,11 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rust",
-    group = lsp_augroup,
-    callback = function()
-        local client = vim.lsp.start({
-            cmd = { "rust-analyzer" },
-            filetypes = { "rust" },
-            root_dir = vim.fs.dirname(vim.fs.find({ "Cargo.toml" }, { upward = true })[1]),
-            single_file_support = true,
-        })
-        vim.lsp.buf_attach_client(0, client)
-    end,
-})
+vim.lsp.config.clangd = {
+    cmd = { "rust-analyzer" },
+    root_markers = { "Cargo.toml" },
+    filetypes = { 'rust' },
+}
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "sh",
@@ -52,6 +44,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_augroup,
     desc = "LSP actions",
     callback = function(event)
+        // Enable autocompletion
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+        end
+
         local opts = { buffer = event.buf }
 
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

@@ -17,9 +17,7 @@ end
 set_indentation(4)
 
 vim.api.nvim_create_user_command("SetIndentation", function(opts)
-    set_indentation(tonumber(opts.fargs[1]))
-end, { nargs = 1 })
-vim.opt.expandtab = true
+    set_indentation(tonumber(opts.fargs[1])) end, { nargs = 1 }) vim.opt.expandtab = true
 
 vim.opt.wrap = false
 vim.opt.smartindent = true
@@ -69,13 +67,9 @@ vim.g.clipboard = {
     },
 }
 
--- netrw
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_winsize = 25
--- Comma separated regexes for hiding folders in netrw
--- Hide ./
-vim.g.netrw_list_hide = "^\\./"
--- Hide ../
-vim.g.netrw_list_hide = vim.g.netrw_list_hide .. "," .. "^\\.\\./"
+-- Diagnostics
+vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = true,
+})
+
