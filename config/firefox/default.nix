@@ -72,22 +72,22 @@
       bookmarks = {
         force = true;
         settings = [
-        {
-          name = "Charles Schwab";
-          url = "https://www.schwab.com/";
-        }
-        {
-          name = "Router Settings";
-          url = "https://192.168.1.1/";
-        }
-        {
-          name = "Dotfiles";
-          url = "https://github.com/colbs255/dotfiles/";
-        }
-        {
-          name = "Github";
-          url = "https://github.com/";
-        }
+          {
+            name = "Charles Schwab";
+            url = "https://www.schwab.com/";
+          }
+          {
+            name = "Router Settings";
+            url = "https://192.168.1.1/";
+          }
+          {
+            name = "Dotfiles";
+            url = "https://github.com/colbs255/dotfiles/";
+          }
+          {
+            name = "Github";
+            url = "https://github.com/";
+          }
         ];
       };
 
