@@ -1,57 +1,31 @@
-local lsp_augroup = vim.api.nvim_create_augroup("user_lsp", { clear = true })
+vim.lsp.config.haskell = {
+    cmd = { "haskell-language-server-wrapper", "--lsp" },
+    root_markers = { "*.cabal" },
+    filetypes = { "haskell", "lhaskell" },
+}
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "haskell",
-    group = lsp_augroup,
-    callback = function()
-        local client = vim.lsp.start({
-            cmd = { "haskell-language-server-wrapper", "--lsp" },
-            filetypes = { "haskell", "lhaskell" },
-            root_dir = vim.fs.dirname(
-                vim.fs.find({ "hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml" }, { upward = true })[1]
-            ),
-            single_file_support = true,
-        })
-        vim.lsp.buf_attach_client(0, client)
-    end,
-})
+vim.lsp.config.rust = {
+    cmd = { "rust-analyzer" },
+    root_markers = { "Cargo.toml" },
+    filetypes = { "rust" },
+}
+vim.lsp.config.sh = {
+    cmd = { "bash-language-server", "start" },
+    filetypes = { "sh" },
+}
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rust",
-    group = lsp_augroup,
-    callback = function()
-        local client = vim.lsp.start({
-            cmd = { "rust-analyzer" },
-            filetypes = { "rust" },
-            root_dir = vim.fs.dirname(vim.fs.find({ "Cargo.toml" }, { upward = true })[1]),
-            single_file_support = true,
-        })
-        vim.lsp.buf_attach_client(0, client)
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sh",
-    group = lsp_augroup,
-    callback = function()
-        local client = vim.lsp.start({
-            cmd = { "bash-language-server", "start" },
-            settings = {
-                bashIde = {
-                    globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
-                },
-            },
-            filetypes = { "sh" },
-            single_file_support = true,
-        })
-        vim.lsp.buf_attach_client(0, client)
-    end,
-})
+vim.lsp.enable({ "rust", "sh", "haskell" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_augroup,
     desc = "LSP actions",
     callback = function(event)
+        -- Enable autocompletion
+        -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+        -- if client:supports_method('textDocument/completion') then
+        --     vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+        -- end
+
         local opts = { buffer = event.buf }
 
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

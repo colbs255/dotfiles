@@ -17,9 +17,6 @@ set_keymap("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 set_keymap("v", "<", "<gv", "Indent left and stay in indent mode")
 set_keymap("v", ">", ">gv", "Indent right and stay in indent mode")
 
-set_keymap("n", "[b", "<cmd>bprevious<cr>", "Prev buffer")
-set_keymap("n", "]b", "<cmd>bnext<cr>", "Next buffer")
-
 set_keymap("n", "<leader>oq", ":e ~/quick.md<CR>", "Go to quick links file")
 set_keymap("n", "<leader>os",
     function()
