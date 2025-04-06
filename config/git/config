@@ -6,6 +6,14 @@
 [pull]
     ff = only
     rebase = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -14,8 +22,21 @@
 [merge]
     conflictstyle = diff3
 [diff]
+    algorithm = histogram
     colorMoved = default
+    mnemonicPrefix = true
+    renames = true
 [user]
     email = colby@dev.com
     name = colbs255
-
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
