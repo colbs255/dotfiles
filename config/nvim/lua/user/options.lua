@@ -74,3 +74,9 @@ vim.diagnostic.config({
     -- Only shows diagnostic for current line
     virtual_lines = { current_line = true },
 })
+
+vim.filetype.add({
+    extension = {
+        mdx = "markdown",
+    },
+})
