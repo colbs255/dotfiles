@@ -3,7 +3,7 @@
 set -e
 
 echo "Creating ssh key"
-ssh-keygen -t ed25519 -C "colby@dev.com"
+ssh-keygen -t ed25519
 
 echo "Cloning and installing repo"
 nix shell nixpkgs#git  nixpkgs#gh nixpkgs#bash --command bash -c '
