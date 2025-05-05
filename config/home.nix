@@ -73,9 +73,6 @@
     just
     gcc
     gh
-    ghc
-    cabal-install
-    haskell-language-server
     lazygit
     direnv
     gitui
@@ -85,7 +82,6 @@
     fuzzel
     fzf
     delta
-    asciidoctor
     ripgrep
     stow
     tmux
