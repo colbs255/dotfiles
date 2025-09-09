@@ -105,6 +105,7 @@
     grim
     mpv
     swappy
+    hyprpicker
     nerd-fonts.jetbrains-mono
     jetbrains.idea-community
     inkscape
