@@ -6,28 +6,6 @@
 @define-color primary_blue   #afd2e9 ;
 @define-color primary_blue_2 #6fadd6 ;
 
-@keyframes blink-warning {
-    70% {
-        color: white;
-    }
-
-    to {
-        color: white;
-        background-color: orange;
-    }
-}
-
-@keyframes blink-critical {
-    70% {
-      color: white;
-    }
-
-    to {
-        color: white;
-        background-color: red;
-    }
-}
-
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
@@ -88,6 +66,7 @@ window#waybar {
     border-bottom: 3px solid @primary_blue_2;
     margin-bottom: 0px;
     padding:0px;
+    color: @primary_blue;
 }
 
 #workspaces button.active {
