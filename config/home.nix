@@ -98,7 +98,7 @@
     zathura
     mupdf
     eza
-    temurin-bin-21
+    temurin-bin-25
     shellcheck
     nodePackages.bash-language-server
     slurp
