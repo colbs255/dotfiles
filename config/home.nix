@@ -74,6 +74,7 @@
     gcc
     gh
     lazygit
+    localsend
     direnv
     gitui
     fish
