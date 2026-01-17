@@ -91,7 +91,7 @@
     wget
     zoxide
     yazi
-    xfce.thunar
+    thunar
     bat
     xdg-utils
     bottom
