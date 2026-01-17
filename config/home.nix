@@ -9,7 +9,7 @@
   imports = [ ./firefox ];
 
   xdg.configFile = {
-    lazygit.source = ./lazygit;
+    # lazygit.source = ./lazygit;
     gitui.source = ./gitui;
     ideavim.source = ./ideavim;
     nvim.source = ./nvim;
@@ -18,7 +18,7 @@
     hypr.source = ./hypr;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
-    fish.source = ./fish;
+    # fish.source = ./fish;
     bat.source = ./bat;
     alacritty.source = ./alacritty;
     foot.source = ./foot;
