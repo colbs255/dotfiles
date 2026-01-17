@@ -108,7 +108,7 @@
     swappy
     hyprpicker
     nerd-fonts.jetbrains-mono
-    jetbrains.idea-community
+    jetbrains.idea
     inkscape
     ouch
     bitwig-studio
