@@ -10,7 +10,7 @@ declare -a choices=(
 choice_str=$(printf "%s\n" "${choices[@]}")
 
 # User picks a choice with fuzzel
-choice=$(fuzzel --prompt "❯ " --lines 4 --dmenu --index <<< "$choice_str")
+choice=$(fuzzel --hide-prompt --lines 4 --dmenu --index <<< "$choice_str")
 
 case $choice in
     0)
