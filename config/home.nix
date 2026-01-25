@@ -105,6 +105,7 @@
     slurp
     grim
     mpv
+    opencode
     swappy
     hyprpicker
     nerd-fonts.jetbrains-mono
