@@ -48,6 +48,7 @@
 
   gtk = {
     enable = true;
+    gtk4.theme = null;
     theme = {
       name = "Catppuccin-Macchiato-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
@@ -101,7 +102,7 @@
     eza
     temurin-bin-25
     shellcheck
-    nodePackages.bash-language-server
+    bash-language-server
     slurp
     grim
     mpv
