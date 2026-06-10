@@ -111,6 +111,7 @@
     hyprpicker
     nerd-fonts.jetbrains-mono
     jetbrains.idea
+    godot
     inkscape
     ouch
     bitwig-studio
