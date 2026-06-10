@@ -107,6 +107,7 @@
     grim
     mpv
     opencode
+    claude-code
     swappy
     hyprpicker
     nerd-fonts.jetbrains-mono
