@@ -16,7 +16,7 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";
+      system = "aarch64-darwin";
       pkgs =
         nixpkgs.legacyPackages.${system}.extend (
           final: prev: {
@@ -39,7 +39,7 @@
 
       homeConfigurations."colby" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./config/home.nix ];
+        modules = [ ./config/macos_home.nix ];
       };
 
       devShells.${system}.default = pkgs.mkShell {
