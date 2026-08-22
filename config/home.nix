@@ -116,6 +116,5 @@
     inkscape
     openscad-unstable
     ouch
-    bitwig-studio
   ];
 }
