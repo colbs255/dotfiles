@@ -2,30 +2,27 @@
 -- Since Hyprland 0.55, hyprlang (hyprland.conf) is deprecated in favor of Lua.
 -- See https://wiki.hypr.land/Configuring/Start/
 
-
 ------------------
 ---- MONITORS ----
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
-    mode     = "preferred",
+    output = "",
+    mode = "preferred",
     position = "auto",
-    scale    = "auto",
+    scale = "auto",
 })
-
 
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
 
-local scriptsDir  = os.getenv("HOME") .. "/.config/hypr/scripts"
-local terminal     = "foot fish"
-local browser      = "firefox"
-local fileManager  = "dolphin"
-local menu         = "fuzzel"
-
+local scriptsDir = os.getenv("HOME") .. "/.config/hypr/scripts"
+local terminal = "foot fish"
+local browser = "firefox"
+local fileManager = "dolphin"
+local menu = "fuzzel"
 
 -------------------
 ---- AUTOSTART ----
@@ -37,14 +34,12 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
 end)
 
-
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct") -- change to qt6ct if you have that
-
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -53,12 +48,12 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt5ct") -- change to qt6ct if you have that
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in     = 10,
-        gaps_out    = 20,
+        gaps_in = 10,
+        gaps_out = 20,
         border_size = 2,
 
         col = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+            active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
 
@@ -72,9 +67,9 @@ hl.config({
         rounding = 10,
 
         blur = {
-            enabled  = true,
-            size     = 3,
-            passes   = 1,
+            enabled = true,
+            size = 3,
+            passes = 1,
             vibrancy = 0.1696,
         },
 
@@ -91,12 +86,12 @@ hl.config({
 -- Some default animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 
-hl.animation({ leaf = "windows",     enabled = true, speed = 7,  bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut",  enabled = true, speed = 7,  bezier = "default", style = "popin 80%" })
-hl.animation({ leaf = "border",      enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 8,  bezier = "default" })
-hl.animation({ leaf = "fade",        enabled = true, speed = 7,  bezier = "default" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 6,  bezier = "default" })
+hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "myBezier" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
+hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default" })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
@@ -118,11 +113,10 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,   -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = true,
+        force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = true,
     },
 })
-
 
 ---------------
 ---- INPUT ----
@@ -130,14 +124,14 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "us",
+        kb_layout = "us",
         kb_variant = "",
-        kb_model   = "",
+        kb_model = "",
         kb_options = "ctrl:nocaps",
-        kb_rules   = "",
+        kb_rules = "",
 
         repeat_delay = 240,
-        repeat_rate  = 80,
+        repeat_rate = 80,
 
         follow_mouse = 1,
 
@@ -152,10 +146,9 @@ hl.config({
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
-    name        = "epic-mouse-v1",
+    name = "epic-mouse-v1",
     sensitivity = -0.5,
 })
-
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -164,17 +157,17 @@ hl.device({
 local mainMod = "SUPER"
 
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + return",       hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(scriptsDir .. "/logout.sh"))
-hl.bind(mainMod .. " + Q",            hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + D",    hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + space",        hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(scriptsDir .. "/google.sh"))
-hl.bind(mainMod .. " + F",            hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + T",            hl.dsp.group.toggle())
-hl.bind(mainMod .. " + tab",          hl.dsp.group.next())
-hl.bind(mainMod .. " + SHIFT + tab",  hl.dsp.group.prev())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + T", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + tab", hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + tab", hl.dsp.group.prev())
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "l" }))
@@ -186,22 +179,21 @@ hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "d" }))
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,         hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -209,7 +201,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/ for more
 hl.window_rule({
-    name  = "suppress-maximize-events",
+    name = "suppress-maximize-events",
     match = { class = ".*" },
 
     suppress_event = "maximize",
