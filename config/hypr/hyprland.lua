@@ -160,7 +160,7 @@ xdg-open "https://www.google.com/search?q=$choice"
 ]]
 
 local logoutMenuCmd = [[
-choice=$(printf '%s\n' " Lock" " Shutdown" "󰍃 Logout" " Reboot" | fuzzel --hide-prompt --lines 4 --dmenu --index)
+choice=$(printf '%s\n' " Lock" " Shutdown" "󰍃 Logout" " Reboot" | fuzzel --hide-prompt --lines 4 --dmenu --index)
 case "$choice" in
     0) hyprlock ;;
     1) systemctl poweroff ;;
