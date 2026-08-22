@@ -18,7 +18,6 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
-local scriptsDir = os.getenv("HOME") .. "/.config/hypr/scripts"
 local terminal = "foot fish"
 local browser = "firefox"
 local fileManager = "dolphin"
@@ -150,6 +149,26 @@ hl.device({
     sensitivity = -0.5,
 })
 
+-----------------
+---- SCRIPTS ----
+-----------------
+
+local googleSearchCmd = [[
+choice=$(fuzzel --prompt "G: " --lines 0 --dmenu <<< '')
+[ -z "$choice" ] && exit 0
+xdg-open "https://www.google.com/search?q=$choice"
+]]
+
+local logoutMenuCmd = [[
+choice=$(printf '%s\n' " Lock" " Shutdown" "󰍃 Logout" " Reboot" | fuzzel --hide-prompt --lines 4 --dmenu --index)
+case "$choice" in
+    0) hyprlock ;;
+    1) systemctl poweroff ;;
+    2) hyprctl dispatch exit ;;
+    3) systemctl reboot ;;
+esac
+]]
+
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
@@ -159,11 +178,11 @@ local mainMod = "SUPER"
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(scriptsDir .. "/logout.sh"))
+hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(logoutMenuCmd))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(scriptsDir .. "/google.sh"))
+hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(googleSearchCmd))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + T", hl.dsp.group.toggle())
 hl.bind(mainMod .. " + tab", hl.dsp.group.next())
