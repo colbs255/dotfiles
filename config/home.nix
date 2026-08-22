@@ -114,6 +114,7 @@
     jetbrains.idea
     godot
     inkscape
+    openscad-unstable
     ouch
     bitwig-studio
   ];
