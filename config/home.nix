@@ -115,6 +115,7 @@
     godot
     inkscape
     openscad-unstable
+    freecad
     ouch
   ];
 }
