@@ -110,6 +110,8 @@
     claude-code
     swappy
     hyprpicker
+    wl-clipboard
+    cliphist
     nerd-fonts.jetbrains-mono
     jetbrains.idea
     godot
