@@ -31,6 +31,8 @@ local menu = "fuzzel"
 hl.on("hyprland.start", function()
     hl.exec_cmd("swaybg -i ~/.config/wallpapers/desktop")
     hl.exec_cmd("waybar")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
 end)
 
 -------------------------------
@@ -183,6 +185,7 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(googleSearchCmd))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu --with-nth 2 | cliphist decode | wl-copy"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + T", hl.dsp.group.toggle())
 hl.bind(mainMod .. " + tab", hl.dsp.group.next())
