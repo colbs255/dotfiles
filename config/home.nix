@@ -25,6 +25,9 @@
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
+    # Only the config file is managed here (not the whole gh/ dir) so that
+    # hosts.yml stays a regular writable file for `gh auth login` to use.
+    "gh/config.yml".source = ./gh/config.yml;
   };
   home.file.".bash_profile" = {
     source = ./bash/.bash_profile;
