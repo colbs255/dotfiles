@@ -24,7 +24,7 @@ jobs:
     - name: Nix flake check
       run: nix flake check
     - name: Nix format
-      run: nix fmt && git diff --exit-code
+      run: nix fmt -- --ci
   validate-lua:
     runs-on: ubuntu-latest
     name: Lint lua files
