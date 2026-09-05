@@ -22,6 +22,7 @@ local terminal = "foot fish"
 local browser = "firefox"
 local fileManager = "dolphin"
 local menu = "fuzzel"
+local claudeTerm = "foot --app-id=claude-floating claude"
 
 -------------------
 ---- AUTOSTART ----
@@ -180,6 +181,7 @@ local mainMod = "SUPER"
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(claudeTerm))
 hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(logoutMenuCmd))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
@@ -227,4 +229,13 @@ hl.window_rule({
     match = { class = ".*" },
 
     suppress_event = "maximize",
+})
+
+hl.window_rule({
+    name = "claude-floating-terminal",
+    match = { class = "^claude-floating$" },
+
+    float = true,
+    size = "60% 60%",
+    center = true,
 })
