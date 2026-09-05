@@ -23,12 +23,17 @@ and macOS. `flake.nix` exposes:
    `hl.on("hyprland.start", ...)` block in `config/hypr/hyprland.lua` using
    `hl.exec_cmd(...)`.
 
+## Updating
+
+1. Run `just update` and commit the changes.
+2. Run `just build-system` to verify system
+3. Run `just build-home` to verify home
+4. Make a pr
+
 ## Build / apply changes
 
-- `just build-home` — user-level config)
+- `just build-home` — user-level config
 - `just build-system` — NixOS system config, root-owned
-- `just update` — update packages
-- `just clean` — garbage-collect old generations (>7d)
 
 Always run `just build-home` after editing anything under `config/` to verify it
 builds before considering a config change done. `build-system` touches the whole
@@ -37,9 +42,8 @@ actually in `config/configuration.nix` or `config/hardware-configuration.nix`.
 
 ## Formatting / lint
 
-- `just format` — `nix fmt` + `stylua config` + shellcheck autofix
-- `just lint` — `nix fmt --check`-equivalent via `stylua config --check` +
-  `shellcheck` (no autofix)
+- `just format` — format nix, lua, and bash
+- `just lint` — check/lint nix, lua, and bash
 
 ## Git / PRs
 
