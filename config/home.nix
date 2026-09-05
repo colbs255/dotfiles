@@ -25,7 +25,9 @@
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
-    herdr.source = ./herdr;
+    # Only the config file is managed here (not the whole herdr/ dir) so that
+    # the rest of the directory stays writable for herdr's runtime socket/state.
+    "herdr/config.toml".source = ./herdr/config.toml;
     # Only the config file is managed here (not the whole gh/ dir) so that
     # hosts.yml stays a regular writable file for `gh auth login` to use.
     "gh/config.yml".source = ./gh/config.yml;
