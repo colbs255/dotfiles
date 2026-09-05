@@ -9,6 +9,9 @@ default_shell = "fish"
 [update]
 version_check = false
 
+[ui]
+status_indicators = "symbols"
+
 [keys]
 prefix = "ctrl+space"
 
