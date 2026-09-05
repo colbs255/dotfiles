@@ -268,10 +268,7 @@ local function claudeConsoleFit()
     local reserved = monitor.reserved
     local usable = monitor.height / monitor.scale - reserved.top - reserved.bottom
 
-    claudeConsoleCover(
-        math.floor(reserved.top),
-        math.floor(reserved.bottom + usable * (1 - claudeConsoleShare))
-    )
+    claudeConsoleCover(math.floor(reserved.top), math.floor(reserved.bottom + usable * (1 - claudeConsoleShare)))
 end
 
 claudeConsoleCover(0, 0)
