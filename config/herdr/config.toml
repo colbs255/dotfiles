@@ -1,0 +1,20 @@
+[theme]
+name = "tokyo-night"
+
+[terminal]
+default_shell = "fish"
+
+[update]
+version_check = false
+
+[keys]
+prefix = "ctrl+space"
+
+[worktrees]
+directory = "~/.herdr/worktrees"
+
+[experimental]
+pane_history = false
+
+[advanced]
+scrollback_limit_bytes = 10000000
