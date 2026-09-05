@@ -15,6 +15,7 @@
     nvim.source = ./nvim;
     helix.source = ./helix;
     fuzzel.source = ./fuzzel;
+    mako.source = ./mako;
     hypr.source = ./hypr;
     waybar.source = ./waybar;
     wallpapers.source = ./wallpapers;
@@ -88,6 +89,8 @@
     foot
     alacritty
     fuzzel
+    mako
+    libnotify
     fzf
     delta
     ripgrep
