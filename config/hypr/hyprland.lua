@@ -22,7 +22,8 @@ local terminal = "foot fish"
 local browser = "firefox"
 local fileManager = "dolphin"
 local menu = "fuzzel"
-local claudeTerm = "foot -o colors-dark.alpha=1.0 --app-id=claude-floating fish -c 'mkdir -p ~/scratch; cd ~/scratch; claude --dangerously-skip-permissions'"
+local claudeTerm =
+    "foot -o colors-dark.alpha=1.0 --app-id=claude-floating fish -c 'mkdir -p ~/scratch; cd ~/scratch; claude --dangerously-skip-permissions'"
 
 -------------------
 ---- AUTOSTART ----
