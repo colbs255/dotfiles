@@ -22,7 +22,7 @@ local terminal = "foot fish"
 local browser = "firefox"
 local fileManager = "dolphin"
 local menu = "fuzzel"
-local claudeTerm = "foot --app-id=claude-floating claude"
+local claudeTerm = "foot -o colors-dark.alpha=1.0 --app-id=claude-floating fish -c 'mkdir -p ~/scratch; cd ~/scratch; claude --dangerously-skip-permissions'"
 
 -------------------
 ---- AUTOSTART ----
@@ -181,7 +181,7 @@ local mainMod = "SUPER"
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(claudeTerm))
+hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd(claudeTerm))
 hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(logoutMenuCmd))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
@@ -236,6 +236,6 @@ hl.window_rule({
     match = { class = "^claude-floating$" },
 
     float = true,
-    size = "60% 60%",
+    size = "(monitor_w*0.6) (monitor_h*0.6)",
     center = true,
 })
