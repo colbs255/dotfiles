@@ -12,6 +12,9 @@ version_check = false
 [ui]
 status_indicators = "symbols"
 
+[ui.toast]
+delivery = "system"
+
 [keys]
 prefix = "ctrl+space"
 next_agent = "prefix+n"
