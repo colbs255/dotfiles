@@ -25,6 +25,7 @@
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
+    herdr.source = ./herdr;
     # Only the config file is managed here (not the whole gh/ dir) so that
     # hosts.yml stays a regular writable file for `gh auth login` to use.
     "gh/config.yml".source = ./gh/config.yml;
@@ -122,5 +123,6 @@
     openscad-unstable
     freecad
     ouch
+    herdr
   ];
 }
