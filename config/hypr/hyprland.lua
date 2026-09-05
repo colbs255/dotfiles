@@ -182,7 +182,7 @@ local mainMod = "SUPER"
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd(claudeTerm))
+hl.bind(mainMod .. " + grave", hl.dsp.workspace.toggle_special("claude"))
 hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd(logoutMenuCmd))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
@@ -232,11 +232,59 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
-hl.window_rule({
-    name = "claude-floating-terminal",
-    match = { class = "^claude-floating$" },
+-- Claude quake console: a special workspace dropped down over whatever
+-- workspace you're on, toggled by mainMod + grave. Seeded with Claude the
+-- first time it's opened, so the session persists across toggles instead of
+-- being relaunched. Sized via gaps rather than a window rule, since window
+-- rule sizes are resolved once at map time and would go stale across
+-- monitor/resolution changes.
+local claudeConsoleShare = 0.6 -- how much of the screen the console covers, from the top
 
-    float = true,
-    size = "(monitor_w*0.6) (monitor_h*0.6)",
-    center = true,
+local claudeConsoleCovering = nil
+
+local function claudeConsoleCover(top, bottom)
+    local key = top .. ":" .. bottom
+    if claudeConsoleCovering == key then
+        return
+    end
+    claudeConsoleCovering = key
+
+    hl.workspace_rule({
+        workspace = "special:claude",
+        gaps_in = 0,
+        gaps_out = { top = top, right = 0, bottom = bottom, left = 0 },
+        no_border = true,
+
+        on_created_empty = "[workspace special:claude silent] " .. claudeTerm,
+    })
+end
+
+local function claudeConsoleFit()
+    local monitor = hl.get_active_monitor()
+    if not monitor or not monitor.scale or monitor.scale <= 0 then
+        return
+    end
+
+    local reserved = monitor.reserved
+    local usable = monitor.height / monitor.scale - reserved.top - reserved.bottom
+
+    claudeConsoleCover(
+        math.floor(reserved.top),
+        math.floor(reserved.bottom + usable * (1 - claudeConsoleShare))
+    )
+end
+
+claudeConsoleCover(0, 0)
+claudeConsoleFit()
+
+hl.on("monitor.layout_changed", claudeConsoleFit)
+hl.on("monitor.focused", claudeConsoleFit)
+
+hl.config({
+    decoration = {
+        dim_special = 0.6,
+    },
 })
+
+hl.animation({ leaf = "specialWorkspaceIn", enabled = true, speed = 3, bezier = "default", style = "slide top" })
+hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 2, bezier = "default", style = "slide bottom" })
