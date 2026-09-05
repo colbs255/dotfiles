@@ -1,3 +1,5 @@
+onboarding = false
+
 [theme]
 name = "tokyo-night"
 
@@ -11,7 +13,7 @@ version_check = false
 prefix = "ctrl+space"
 
 [worktrees]
-directory = "~/.herdr/worktrees"
+directory = "~/.local/share/herdr/worktrees"
 
 [experimental]
 pane_history = false
