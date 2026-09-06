@@ -36,9 +36,8 @@
   home.file.".bash_profile" = {
     source = ./bash/.bash_profile;
   };
-  # Only these two files are managed, not the whole ~/.claude dir.
+  # Only this file is managed, not the whole ~/.claude dir.
   home.file.".claude/settings.json".source = ./claude/settings.json;
-  home.file.".claude/statusline-command.sh".source = ./claude/statusline-command.sh;
   # Nixpkgs 25.05 moved the location of nerdfonts and apps don't like it
   # We copy the fonts to the old location so our apps are happy
   home.file.".local/share/fonts/NerdFonts" = {
