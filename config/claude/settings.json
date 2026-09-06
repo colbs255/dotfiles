@@ -1,0 +1,11 @@
+{
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "tui": "fullscreen",
+  "statusLine": {
+    "type": "command",
+    "command": "jq -r '\"[\\(.model.display_name)] \\(.context_window.used_percentage // 0)% context\"'",
+    "padding": 2
+  },
+  "spinnerTipsEnabled": false
+}
