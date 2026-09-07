@@ -68,7 +68,7 @@ systemd-run --user --collect --unit="herdr-spawn-agent-$$-$RANDOM" \
     pane_id=$(jq -r ".result.root_pane.pane_id // empty" <<<"$create_result")
     [ -n "$pane_id" ] || notify_fail "no pane id in worktree create response"
 
-    if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" 2>&1); then
+    if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" -- --dangerously-skip-permissions 2>&1); then
         notify_fail "agent start: $start_result"
     fi
     echo "agent start: $start_result"

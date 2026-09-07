@@ -25,7 +25,7 @@ goto = "prefix+s"
 settings = ""
 
 [[keys.command]]
-key = "prefix+a"
+key = "prefix+d"
 type = "popup"
 command = "~/.config/herdr/scripts/spawn-agent.sh"
 width = "80%"
