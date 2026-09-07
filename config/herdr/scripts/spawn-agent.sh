@@ -32,11 +32,10 @@ input_file=$(mktemp -t herdr-spawn-agent-input.XXXXXX)
 trap 'rm -f "$input_file"' EXIT
 
 cat >"$input_file" <<'EOF'
-# Type the agent name on the line below, leave the === delimiter line
-# alone, then write the prompt underneath it (multiple lines are fine).
 agent-name
-
-===
+# ^ replace with the agent name. Leave the ======= line alone and write
+# the prompt underneath it (multiple lines are fine).
+=======
 Describe what you want the agent to do here.
 EOF
 
@@ -45,8 +44,8 @@ before_hash=$(md5sum "$input_file" | cut -d' ' -f1)
 after_hash=$(md5sum "$input_file" | cut -d' ' -f1)
 [ "$before_hash" != "$after_hash" ] || fail "no changes made, aborting"
 
-delimiter_line=$(grep -n '^===$' "$input_file" | head -1 | cut -d: -f1)
-[ -n "$delimiter_line" ] || fail "could not find the '===' delimiter line, don't remove it"
+delimiter_line=$(grep -n '^=======$' "$input_file" | head -1 | cut -d: -f1)
+[ -n "$delimiter_line" ] || fail "could not find the '=======' delimiter line, don't remove it"
 
 name=$(grep -vE '^\s*#' "$input_file" | awk 'NF{print; exit}')
 [ -n "$name" ] || fail "name required"
