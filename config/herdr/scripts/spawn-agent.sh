@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Popup command bound to prefix+a (see keys.command in config.toml):
+# Popup command bound to prefix+d (see keys.command in config.toml):
 # picks a workspace, creates a worktree in it, and starts a named agent
 # there with a prompt.
 #
@@ -28,12 +28,30 @@ fi
 workspace_label=$(jq -r '.result.workspaces[] | (.worktree.repo_name // .label)' <<<"$workspaces_json" |
     sort -u | fzf --prompt="workspace> ") || fail "no workspace selected"
 
-read -rp "agent name: " name
+input_file=$(mktemp -t herdr-spawn-agent-input.XXXXXX)
+trap 'rm -f "$input_file"' EXIT
+
+cat >"$input_file" <<'EOF'
+agent-name
+# ^ replace with the agent name. Leave the ======= line alone and write
+# the prompt underneath it (multiple lines are fine).
+=======
+Describe what you want the agent to do here.
+EOF
+
+before_hash=$(md5sum "$input_file" | cut -d' ' -f1)
+"${VISUAL:-${EDITOR:-vi}}" "$input_file" || fail "editor exited with an error"
+after_hash=$(md5sum "$input_file" | cut -d' ' -f1)
+[ "$before_hash" != "$after_hash" ] || fail "no changes made, aborting"
+
+delimiter_line=$(grep -n '^=======$' "$input_file" | head -1 | cut -d: -f1)
+[ -n "$delimiter_line" ] || fail "could not find the '=======' delimiter line, don't remove it"
+
+name=$(grep -vE '^\s*#' "$input_file" | awk 'NF{print; exit}')
 [ -n "$name" ] || fail "name required"
 
-echo "prompt (end with ctrl-d):"
-prompt=$(cat)
-[ -n "$prompt" ] || fail "prompt required"
+prompt=$(tail -n +"$((delimiter_line + 1))" "$input_file")
+[ -n "${prompt// /}" ] || fail "prompt required"
 
 workspace_id=$(jq -r --arg q "$workspace_label" '
     [.result.workspaces[] | select((.worktree.repo_name // .label) == $q)]
