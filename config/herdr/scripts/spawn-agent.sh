@@ -2,6 +2,12 @@
 # Popup command bound to prefix+a (see keys.command in config.toml):
 # picks a workspace, creates a worktree in it, and starts a named agent
 # there with a prompt.
+#
+# Only the interactive input-gathering runs in the popup. The worktree
+# create + agent start + prompt submission (which can take a while) runs
+# detached in the background so the popup closes immediately after you
+# submit the prompt instead of blocking the whole session until it's done.
+# Failures are reported via a herdr notification instead of on screen.
 set -euo pipefail
 
 fail() {
@@ -31,23 +37,35 @@ workspace_id=$(jq -r --arg q "$workspace_label" '
 ' <<<"$workspaces_json")
 [ -n "$workspace_id" ] || fail "could not resolve workspace id for '$workspace_label'"
 
-echo "creating worktree for $workspace_label..."
-if ! create_result=$(herdr worktree create --workspace "$workspace_id" --no-focus 2>&1); then
-    fail "worktree create failed: $create_result"
-fi
+log=$(mktemp -t herdr-spawn-agent.XXXXXX.log)
 
-pane_id=$(jq -r '.result.root_pane.pane_id // empty' <<<"$create_result")
-[ -n "$pane_id" ] || fail "no pane id in worktree create response: $create_result"
+setsid nohup bash -c '
+    set -euo pipefail
+    workspace_id=$1 name=$2 prompt=$3
 
-echo "starting agent $name..."
-if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" 2>&1); then
-    fail "failed to start agent: $start_result"
-fi
+    notify_fail() {
+        herdr notification show "spawn-agent failed" --body "$1" >/dev/null 2>&1 || true
+        exit 1
+    }
 
-echo "sending prompt..."
-if ! prompt_result=$(herdr agent prompt "$name" "$prompt" --wait 2>&1); then
-    fail "failed to submit prompt: $prompt_result"
-fi
+    if ! create_result=$(herdr worktree create --workspace "$workspace_id" --no-focus 2>&1); then
+        notify_fail "worktree create: $create_result"
+    fi
 
-echo "done."
-read -rp "press enter to close..." _
+    pane_id=$(jq -r ".result.root_pane.pane_id // empty" <<<"$create_result")
+    [ -n "$pane_id" ] || notify_fail "no pane id in worktree create response"
+
+    if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" 2>&1); then
+        notify_fail "agent start: $start_result"
+    fi
+
+    if ! prompt_result=$(herdr agent prompt "$name" "$prompt" --wait 2>&1); then
+        notify_fail "agent prompt: $prompt_result"
+    fi
+
+    herdr notification show "spawn-agent done" --body "$name is ready" >/dev/null 2>&1 || true
+' _ "$workspace_id" "$name" "$prompt" >"$log" 2>&1 </dev/null &
+disown
+
+echo "spawning '$name' in the background (log: $log)"
+sleep 1
