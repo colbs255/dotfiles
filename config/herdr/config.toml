@@ -28,6 +28,7 @@ settings = ""
 key = "prefix+d"
 type = "popup"
 command = "~/.config/herdr/scripts/spawn-agent.sh"
+description = "dispatch agent"
 width = "80%"
 height = "80%"
 
@@ -39,6 +40,14 @@ key = "prefix+g"
 type = "popup"
 command = "lazygit"
 description = "lazygit"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "fish"
+description = "scratch shell"
 width = "80%"
 height = "80%"
 
