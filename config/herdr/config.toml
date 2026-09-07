@@ -27,6 +27,14 @@ settings = ""
 [worktrees]
 directory = "~/.local/share/herdr/worktrees"
 
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "lazygit"
+description = "lazygit"
+width = "80%"
+height = "80%"
+
 [experimental]
 pane_history = false
 
