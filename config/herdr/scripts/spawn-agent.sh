@@ -46,6 +46,7 @@ worktree_name="${name}-${RANDOM}"
 
 log=$(mktemp -t herdr-spawn-agent.XXXXXX.log)
 
+# shellcheck disable=SC2016 # single-quoted on purpose: $1.. resolve in the inner bash -c, not here
 systemd-run --user --collect --unit="herdr-spawn-agent-$$-$RANDOM" \
     --setenv=PATH="$PATH" \
     --setenv=HERDR_SOCKET_PATH="${HERDR_SOCKET_PATH:-}" \
