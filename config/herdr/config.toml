@@ -24,6 +24,13 @@ previous_tab = "prefix+,"
 goto = "prefix+s"
 settings = ""
 
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "~/.config/herdr/scripts/spawn-agent.sh"
+width = "80%"
+height = "80%"
+
 [worktrees]
 directory = "~/.local/share/herdr/worktrees"
 

@@ -26,9 +26,13 @@
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
-    # Only the config file is managed here (not the whole herdr/ dir) so that
+    # Only these files are managed here (not the whole herdr/ dir) so that
     # the rest of the directory stays writable for herdr's runtime socket/state.
     "herdr/config.toml".source = ./herdr/config.toml;
+    "herdr/scripts/spawn-agent.sh" = {
+      source = ./herdr/scripts/spawn-agent.sh;
+      executable = true;
+    };
     # Only the config file is managed here (not the whole gh/ dir) so that
     # hosts.yml stays a regular writable file for `gh auth login` to use.
     "gh/config.yml".source = ./gh/config.yml;
