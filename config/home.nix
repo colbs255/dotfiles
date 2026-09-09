@@ -136,5 +136,6 @@
     freecad
     ouch
     herdr
+    bitwarden-cli
   ];
 }
