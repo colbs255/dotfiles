@@ -1,25 +1,48 @@
+local ensure_installed = {
+    "java",
+    "python",
+    "bash",
+    "json",
+    "c",
+    "yaml",
+    "rust",
+    "lua",
+    "haskell",
+    "markdown",
+    "markdown_inline",
+}
+
+-- Filetypes to skip treesitter-based indent for (the built-in indenter is better here).
+local indent_disabled = { python = true, css = true }
+
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
-    config = function()
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = { "java", "python", "bash", "json", "c", "yaml", "rust", "lua", "haskell" },
-            -- Only sync_install if running headless.
-            -- From: https://github.com/nvim-treesitter/nvim-treesitter/issues/3579#issuecomment-1278662119
-            sync_install = #vim.api.nvim_list_uis() == 0,
-
-            highlight = {
-                enable = true,
-                disable = { "help" },
-            },
-            autopairs = { enable = true },
-            indent = { enable = true, disable = { "python", "css" } },
-        })
-
-        -- Override default folding options.
-        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-        vim.opt.foldlevel = 999999 -- Leave unfolded by default.
-        vim.opt.foldmethod = "expr"
-    end,
+    branch = "main",
+    -- Upstream: "This plugin does not support lazy-loading."
+    lazy = false,
     build = ":TSUpdate",
+    config = function()
+        require("nvim-treesitter").install(ensure_installed)
+
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                if args.match == "help" then
+                    return
+                end
+
+                local ok = pcall(vim.treesitter.start)
+                if not ok then
+                    return
+                end
+
+                vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                vim.wo[0][0].foldmethod = "expr"
+                vim.wo[0][0].foldlevel = 999999 -- Leave unfolded by default.
+
+                if not indent_disabled[args.match] then
+                    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end
+            end,
+        })
+    end,
 }
