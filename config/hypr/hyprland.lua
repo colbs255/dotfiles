@@ -241,6 +241,13 @@ hl.window_rule({
 -- monitor/resolution changes.
 local claudeConsoleShare = 0.6 -- how much of the screen the console covers, from the top
 
+-- Must match config/waybar/config's top "height". Waybar's negative
+-- margin-bottom lets its pill visually overhang past its reported reserved/
+-- exclusive zone (for the floating-bar look), so clearing just the reserved
+-- area isn't enough - the console needs to start below the bar's full
+-- declared height or it clips the workspace indicators.
+local waybarHeight = 42
+
 local claudeConsoleCovering = nil
 
 local function claudeConsoleCover(top, bottom)
@@ -266,10 +273,16 @@ local function claudeConsoleFit()
         return
     end
 
+    -- Hyprland already keeps workspace content clear of the monitor's reserved
+    -- area (waybar's exclusive zone) on its own, so the top gap here only needs
+    -- to cover the bit of the bar that overhangs past that reserved area (see
+    -- waybarHeight above) - adding the full reserved.top on top of that would
+    -- double-count it and push the console down further than necessary.
     local reserved = monitor.reserved
     local usable = monitor.height / monitor.scale - reserved.top - reserved.bottom
+    local topGap = math.max(0, waybarHeight - reserved.top)
 
-    claudeConsoleCover(math.floor(reserved.top), math.floor(reserved.bottom + usable * (1 - claudeConsoleShare)))
+    claudeConsoleCover(math.floor(topGap), math.floor(usable * (1 - claudeConsoleShare)))
 end
 
 claudeConsoleCover(0, 0)
@@ -277,6 +290,12 @@ claudeConsoleFit()
 
 hl.on("monitor.layout_changed", claudeConsoleFit)
 hl.on("monitor.focused", claudeConsoleFit)
+
+-- Waybar (or any other bar) reserving/releasing screen space changes where the
+-- console should start; refit whenever a layer surface maps or unmaps rather
+-- than only on monitor events, since a bar can (re)start independently of those.
+hl.on("layer.opened", claudeConsoleFit)
+hl.on("layer.closed", claudeConsoleFit)
 
 hl.config({
     decoration = {
