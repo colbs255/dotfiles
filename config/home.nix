@@ -86,6 +86,7 @@
     gnumake
     just
     gcc
+    tree-sitter
     gh
     lazygit
     localsend
