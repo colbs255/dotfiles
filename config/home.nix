@@ -89,6 +89,7 @@
     tree-sitter
     gh
     lazygit
+    hunk
     localsend
     direnv
     gitui
