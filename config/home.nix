@@ -26,6 +26,9 @@
     zathura.source = ./zathura;
     git.source = ./git;
     tmux.source = ./tmux;
+    # Only the config file is managed here (not the whole hunk/ dir) so that
+    # state.json and extensions/ stay writable for hunk's own runtime use.
+    "hunk/config.toml".source = ./hunk/config.toml;
     # Only these files are managed here (not the whole herdr/ dir) so that
     # the rest of the directory stays writable for herdr's runtime socket/state.
     "herdr/config.toml".source = ./herdr/config.toml;
