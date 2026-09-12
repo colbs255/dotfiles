@@ -47,6 +47,7 @@
   home.file.".claude/settings.json".source = ./claude/settings.json;
   home.file.".claude/skills/nix-repo-scaffold".source = ./claude/skills/nix-repo-scaffold;
   home.file.".claude/commands".source = ./claude/commands;
+  home.file.".claude/skills/herdr".source = ./claude/skills/herdr;
   # Nixpkgs 25.05 moved the location of nerdfonts and apps don't like it
   # We copy the fonts to the old location so our apps are happy
   home.file.".local/share/fonts/NerdFonts" = {
