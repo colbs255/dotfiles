@@ -41,13 +41,15 @@ flake's devShell — nothing is assumed to be installed globally.
    `go mod init`, etc.), run it through the shell: `nix develop -c <init
    command>`.
 5. Add build output dirs and `.direnv/` to `.gitignore`.
-6. `justfile` with recipes matching the project's native tooling: `build`,
+6. `README.md` with just 1-2 lines explaining what the project is — no
+   installation/usage/license boilerplate unless asked.
+7. `justfile` with recipes matching the project's native tooling: `build`,
    `run *ARGS`, `test`, `fmt`, `lint`, `check` (fmt + lint + test), `clean`.
    Default recipe runs `build`.
-7. `.envrc` containing just `use flake`, then `direnv allow .`.
-8. Verify: `nix develop -c just build && nix develop -c just run` (adjust to
+8. `.envrc` containing just `use flake`, then `direnv allow .`.
+9. Verify: `nix develop -c just build && nix develop -c just run` (adjust to
    whatever recipes make sense for the project).
-9. Check that everything just pinned is actually current — don't just accept
+10. Check that everything just pinned is actually current — don't just accept
    whatever version got templated in:
    - `flake.nix` inputs: point `nixpkgs` at a current channel (e.g.
      `nixos-unstable`), then run `nix flake update` and commit the resulting
@@ -60,6 +62,6 @@ flake's devShell — nothing is assumed to be installed globally.
      dependencies it declares resolve to current versions, using that
      ecosystem's own tooling (e.g. `cargo update`, `npm outdated`/`npm
      update`, `go get -u`) run through `nix develop -c`.
-10. `git add -A` and commit.
+11. `git add -A` and commit.
 
 Keep it minimal — don't add dependencies, CI, or extra tooling unless asked.
