@@ -12,8 +12,31 @@ flake's devShell — nothing is assumed to be installed globally.
 1. `git init`
 2. `flake.nix` — devShell listing every package the project needs (compiler/
    runtime, formatter, linter, language server, build tool, etc., based on
-   the project's language). Use `flake-utils.lib.eachDefaultSystem`. Set any
-   env vars the toolchain needs (e.g. backtrace/debug flags).
+   the project's language). Do not use `flake-utils`; multi-system support
+   comes from a plain `nixpkgs.lib.genAttrs` over a `supportedSystems` list,
+   e.g.:
+
+   ```nix
+   {
+     inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+     outputs = { self, nixpkgs }:
+       let
+         supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+         forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
+       in {
+         devShells = forEachSystem (system:
+           let pkgs = nixpkgs.legacyPackages.${system};
+           in {
+             default = pkgs.mkShell {
+               packages = [ /* project tools */ ];
+             };
+           });
+       };
+   }
+   ```
+
+   Set any env vars the toolchain needs (e.g. backtrace/debug flags) inside
+   `mkShell`.
 3. Stage `flake.nix` (`git add flake.nix`) — Nix flakes ignore untracked
    files, so this must happen before any `nix develop`/`nix flake check`.
 4. If the language has a project-init generator (`cargo init`, `npm init`,
