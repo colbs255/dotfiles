@@ -22,15 +22,13 @@ flake's devShell — nothing is assumed to be installed globally.
      outputs = { self, nixpkgs }:
        let
          supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-         forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
+         forEachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f system nixpkgs.legacyPackages.${system});
        in {
-         devShells = forEachSystem (system:
-           let pkgs = nixpkgs.legacyPackages.${system};
-           in {
-             default = pkgs.mkShell {
-               packages = [ /* project tools */ ];
-             };
-           });
+         devShells = forEachSystem (system: pkgs: {
+           default = pkgs.mkShell {
+             packages = [ /* project tools */ ];
+           };
+         });
        };
    }
    ```
