@@ -8,6 +8,13 @@
 
   imports = [ ./firefox ];
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+    };
+  };
+
   xdg.configFile = {
     lazygit.source = ./lazygit;
     gitui.source = ./gitui;
