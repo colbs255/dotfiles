@@ -89,15 +89,17 @@
     enable = true;
     gtk4.theme = null;
     theme = {
-      name = "catppuccin-macchiato-pink-compact+rimless";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [
-          "rimless"
-        ];
-        variant = "macchiato";
+      name = "WhiteSur-Dark";
+      package = pkgs.whitesur-gtk-theme.override {
+        colorVariants = [ "dark" ];
+        opacityVariants = [ "normal" ];
+        altVariants = [ "normal" ];
+        schemeVariants = [ "standard" ];
       };
+    };
+    iconTheme = {
+      name = "WhiteSur-dark";
+      package = pkgs.whitesur-icon-theme;
     };
   };
 
