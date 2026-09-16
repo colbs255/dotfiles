@@ -89,13 +89,12 @@
     enable = true;
     gtk4.theme = null;
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      name = "catppuccin-macchiato-pink-compact+rimless";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "pink" ];
         size = "compact";
         tweaks = [
           "rimless"
-          "black"
         ];
         variant = "macchiato";
       };
