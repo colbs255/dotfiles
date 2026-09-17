@@ -6,14 +6,15 @@
 #
 # Only the interactive input-gathering runs in the popup. The name
 # generation + worktree create + agent start + prompt submission (which can
-# take a while) runs as a transient systemd --user unit so the popup closes
-# immediately after you submit the prompt instead of blocking the whole
-# session until it's done. This must be a real systemd unit, not a
-# backgrounded/setsid/disowned job: herdr appears to reap a popup command's
-# whole descendant process tree on close (probably by walking /proc parent
-# links), which kills a merely-backgrounded job even in its own session.
-# Handing it to systemd fully detaches it from herdr's process tree.
-# Failures are reported via a herdr notification instead of on screen.
+# take a while) runs in a separate background herdr tab instead of inline,
+# so the popup closes immediately after you submit the prompt instead of
+# blocking the whole session until it's done. This doesn't need a
+# detachment trick like a transient systemd unit: a pane created via
+# `herdr tab create` is spawned and owned by the herdr server itself, not
+# by this popup script, so it was never in the popup's process tree to
+# begin with and survives the popup closing naturally. The runner closes
+# its own scratch tab when it's done. Failures are reported via a herdr
+# notification instead of on screen.
 set -euo pipefail
 
 fail() {
@@ -55,76 +56,30 @@ workspace_id=$(jq -r --arg q "$workspace_label" '
 ' <<<"$workspaces_json")
 [ -n "$workspace_id" ] || fail "could not resolve workspace id for '$workspace_label'"
 
-log=$(mktemp -t herdr-spawn-agent.XXXXXX.log)
-
 # Hand the prompt off via a file (rather than passed as an argv word) so that a prompt
-# containing literal $-sequences can't be mangled by systemd-run's own
-# variable substitution on ExecStart argv (see note below).
+# containing literal $-sequences can't be mangled by the shell parsing the `pane run`
+# command text sent into the scratch pane below.
 prompt_file=$(mktemp -t herdr-spawn-agent-prompt.XXXXXX)
 printf '%s' "$prompt" >"$prompt_file"
 
-# The inner logic lives in its own file rather than a `bash -c '...'` string:
-# systemd-run does its own ${FOO}-style variable substitution on ExecStart
-# argv words (looked up in the unit's environment), so any ${name}/${RANDOM}
-# style reference written inline here would silently get replaced with an
-# empty string before bash ever saw it. A file path on the command line has
-# no such sequences for systemd to mangle, and the script's own $ references
-# are only interpreted once bash reads it from disk.
-runner=$(mktemp -t herdr-spawn-agent-runner.XXXXXX.sh)
+# The background half of the workflow lives in its own deployed script
+# (spawn-agent-runner.sh, next to this one) rather than inline, so it gets
+# normal shellcheck coverage and doesn't need regenerating into a temp file
+# on every run.
+runner="$(dirname "$0")/spawn-agent-runner.sh"
 
-cat >"$runner" <<'EOF'
-#!/usr/bin/env bash
-exec >"$1" 2>&1
-set -euo pipefail
-workspace_id=$2
-prompt=$(cat "$3")
-rm -f "$3"
-
-notify_fail() {
-    echo "$1"
-    herdr notification show "spawn-agent failed" --body "$1" >/dev/null 2>&1 || true
-    exit 1
-}
-
-# Ask a fast/cheap model for a short slug summarizing the task, and
-# sanitize it to lowercase-kebab-case; fall back to a timestamp if that fails.
-name_raw=$(claude -p --model haiku "Summarize the following task as a short slug: 2 to 4 lowercase words separated by hyphens, no punctuation, no quotes, no other text in your response.
-
-Task:
-$prompt" 2>/dev/null) || name_raw=""
-name=$(printf "%s" "$name_raw" | tr "[:upper:]" "[:lower:]" | tr -c "a-z0-9" "-" | sed -E "s/-+/-/g; s/^-+//; s/-+$//" | cut -c1-40)
-[ -n "$name" ] || name="task-$(date +%s)"
-echo "generated name: $name"
-
-worktree_name="${name}-${RANDOM}"
-
-# Create the git worktree/branch for this task.
-if ! create_result=$(herdr worktree create --workspace "$workspace_id" --branch "$worktree_name" --label "$worktree_name" --no-focus 2>&1); then
-    notify_fail "worktree create: $create_result"
+# Open a background tab to run the setup logic in. Its pane belongs to the
+# herdr server, not to this popup process, so it keeps running (and its
+# output stays inspectable via `herdr pane read`) after the popup closes.
+if ! tab_result=$(herdr tab create --workspace "$workspace_id" --label "spawn-agent" --no-focus 2>&1); then
+    fail "tab create: $tab_result"
 fi
-echo "worktree create: $create_result"
 
-pane_id=$(jq -r ".result.root_pane.pane_id // empty" <<<"$create_result")
-[ -n "$pane_id" ] || notify_fail "no pane id in worktree create response"
+scratch_pane_id=$(jq -r '.result.root_pane.pane_id // empty' <<<"$tab_result")
+scratch_tab_id=$(jq -r '.result.tab.tab_id // empty' <<<"$tab_result")
+[ -n "$scratch_pane_id" ] || fail "no pane id in tab create response"
+[ -n "$scratch_tab_id" ] || fail "no tab id in tab create response"
 
-# Start a named Claude agent in that worktree's pane.
-if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" -- --dangerously-skip-permissions 2>&1); then
-    notify_fail "agent start: $start_result"
+if ! run_result=$(herdr pane run "$scratch_pane_id" "bash '$runner' '$workspace_id' '$prompt_file' '$scratch_tab_id'" 2>&1); then
+    fail "pane run: $run_result"
 fi
-echo "agent start: $start_result"
-
-# Submit the task prompt to it and wait for it to be delivered.
-if ! prompt_result=$(herdr agent prompt "$name" "$prompt" --wait 2>&1); then
-    notify_fail "agent prompt: $prompt_result"
-fi
-echo "agent prompt: $prompt_result"
-
-herdr notification show "spawn-agent done" --body "$name is ready" >/dev/null 2>&1 || true
-rm -f "$0"
-EOF
-chmod +x "$runner"
-
-systemd-run --user --collect --unit="herdr-spawn-agent-$$-$RANDOM" \
-    --setenv=PATH="$PATH" \
-    --setenv=HERDR_SOCKET_PATH="${HERDR_SOCKET_PATH:-}" \
-    -- bash "$runner" "$log" "$workspace_id" "$prompt_file"

@@ -54,6 +54,10 @@
       source = ./herdr/scripts/spawn-agent.sh;
       executable = true;
     };
+    "herdr/scripts/spawn-agent-runner.sh" = {
+      source = ./herdr/scripts/spawn-agent-runner.sh;
+      executable = true;
+    };
     # Only the config file is managed here (not the whole gh/ dir) so that
     # hosts.yml stays a regular writable file for `gh auth login` to use.
     "gh/config.yml".source = ./gh/config.yml;
