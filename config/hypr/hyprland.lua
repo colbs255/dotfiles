@@ -233,6 +233,13 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
+hl.window_rule({
+    name = "thunar-transparency",
+    match = { class = "^(thunar)$" },
+
+    opacity = "0.9 0.9",
+})
+
 -- Claude quake console: a special workspace dropped down over whatever
 -- workspace you're on, toggled by mainMod + grave. Seeded with Claude the
 -- first time it's opened, so the session persists across toggles instead of
