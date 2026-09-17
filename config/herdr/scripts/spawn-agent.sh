@@ -19,6 +19,9 @@ set -euo pipefail
 
 fail() {
     echo "$1" >&2
+    # Clean up the prompt file if we failed after writing it but before
+    # handing it off to the runner (which otherwise owns removing it).
+    [ -n "${prompt_file:-}" ] && rm -f "$prompt_file"
     read -rp "press enter to close..." _
     exit 1
 }
