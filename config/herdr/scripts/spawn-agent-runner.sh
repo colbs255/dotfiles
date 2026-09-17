@@ -18,6 +18,18 @@ notify_fail() {
     exit 1
 }
 
+# Runs a herdr command, echoes its output (so `herdr pane read` shows
+# progress), and notify_fails on error. Result is left in $step_result
+# for callers that need to parse it (e.g. to pull a pane id out of it).
+run_step() {
+    local label=$1
+    shift
+    if ! step_result=$("$@" 2>&1); then
+        notify_fail "$label: $step_result"
+    fi
+    echo "$label: $step_result"
+}
+
 # Ask a fast/cheap model for a short slug summarizing the task, and
 # sanitize it to lowercase-kebab-case; fall back to a timestamp if that fails.
 name_raw=$(claude -p --model haiku "Summarize the following task as a short slug: 2 to 4 lowercase words separated by hyphens, no punctuation, no quotes, no other text in your response.
@@ -31,25 +43,16 @@ echo "generated name: $name"
 worktree_name="${name}-${RANDOM}"
 
 # Create the git worktree/branch for this task.
-if ! create_result=$(herdr worktree create --workspace "$workspace_id" --branch "$worktree_name" --label "$worktree_name" --no-focus 2>&1); then
-    notify_fail "worktree create: $create_result"
-fi
-echo "worktree create: $create_result"
+run_step "worktree create" herdr worktree create --workspace "$workspace_id" --branch "$worktree_name" --label "$worktree_name" --no-focus
 
-pane_id=$(jq -r ".result.root_pane.pane_id // empty" <<<"$create_result")
+pane_id=$(jq -r ".result.root_pane.pane_id // empty" <<<"$step_result")
 [ -n "$pane_id" ] || notify_fail "no pane id in worktree create response"
 
 # Start a named Claude agent in that worktree's pane.
-if ! start_result=$(herdr agent start "$name" --kind claude --pane "$pane_id" -- --dangerously-skip-permissions 2>&1); then
-    notify_fail "agent start: $start_result"
-fi
-echo "agent start: $start_result"
+run_step "agent start" herdr agent start "$name" --kind claude --pane "$pane_id" -- --dangerously-skip-permissions
 
 # Submit the task prompt to it and wait for it to be delivered.
-if ! prompt_result=$(herdr agent prompt "$name" "$prompt" --wait 2>&1); then
-    notify_fail "agent prompt: $prompt_result"
-fi
-echo "agent prompt: $prompt_result"
+run_step "agent prompt" herdr agent prompt "$name" "$prompt" --wait
 
 herdr notification show "spawn-agent done" --body "$name is ready" >/dev/null 2>&1 || true
 herdr tab close "$scratch_tab_id" >/dev/null 2>&1 || true
