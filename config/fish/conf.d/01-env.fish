@@ -1,4 +1,4 @@
-set EDITOR nvim
+set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
 fish_add_path -g ~/.local/bin
 
