@@ -35,20 +35,20 @@ workspace_label=$(jq -r '.result.workspaces[] | (.worktree.repo_name // .label)'
     sort -u | fzf --prompt="workspace> ") || fail "no workspace selected"
 
 # Open $EDITOR on a template so the user can type the task description.
-input_file=$(mktemp -t herdr-spawn-agent-input.XXXXXX)
+# Markdown extension so the editor applies markdown highlighting/wrapping to
+# the prompt. The template is just a plain placeholder line the user clears
+# and replaces, so the whole file content becomes the prompt verbatim.
+input_file=$(mktemp --suffix=.md -t herdr-spawn-agent-input.XXXXXX)
 trap 'rm -f "$input_file"' EXIT
 
-cat >"$input_file" <<'EOF'
-# Describe what you want the agent to do below (multiple lines are fine).
-# The agent name and worktree will be generated automatically from this.
-EOF
+echo "Clear this line and enter your prompt" >"$input_file"
 
 before_hash=$(md5sum "$input_file" | cut -d' ' -f1)
 "${VISUAL:-${EDITOR:-vi}}" "$input_file" || fail "editor exited with an error"
 after_hash=$(md5sum "$input_file" | cut -d' ' -f1)
 [ "$before_hash" != "$after_hash" ] || fail "no changes made, aborting"
 
-prompt=$(grep -vE '^\s*#' "$input_file")
+prompt=$(<"$input_file")
 [ -n "${prompt// /}" ] || fail "prompt required"
 
 # Map the human-readable label back to herdr's internal workspace id.
