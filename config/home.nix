@@ -157,6 +157,7 @@
     mpv
     opencode
     claude-code
+    bubblewrap
     swappy
     hyprpicker
     wl-clipboard
