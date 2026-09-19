@@ -103,6 +103,8 @@
           Status = "locked";
         };
         "toolkit.legacyUserProfileCustomizations.stylesheets" = "true";
+        "media.ffmpeg.vaapi.enable" = true;
+        "media.hardware-video-decoding.force-enabled" = true;
       };
 
       extensions.packages = with pkgs.firefox-extensions; [
