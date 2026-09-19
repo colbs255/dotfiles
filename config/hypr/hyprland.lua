@@ -31,7 +31,7 @@ local claudeTerm =
 
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 hl.on("hyprland.start", function()
-    hl.exec_cmd("swaybg -i ~/.config/wallpapers/desktop")
+    hl.exec_cmd("mpvpaper -o 'no-audio loop-playlist hwdec=vaapi' '*' ~/.config/wallpapers/desktop")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
