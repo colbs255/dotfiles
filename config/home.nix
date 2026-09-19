@@ -110,7 +110,7 @@
   home.packages = with pkgs; [
     neovim
     helix
-    swaybg
+    mpvpaper
     hyprlock
     waybar
     git
