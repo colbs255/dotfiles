@@ -55,6 +55,10 @@
   programs.hyprland.enable = true;
   programs.steam.enable = true;
   hardware.enableRedistributableFirmware = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver ];
+  };
   programs.ssh.startAgent = true;
   security.pam.services.hyprlock = { };
 
