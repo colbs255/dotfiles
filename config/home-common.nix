@@ -1,10 +1,10 @@
 # Cross-platform home-manager config: shared across NixOS and macOS.
-# OS-specific config (desktop environment, GTK, xdg mime, etc.) lives in
-# ./home-linux.nix / ./home-darwin.nix instead.
-{ pkgs, isDarwin, ... }:
+# Imported by ./home-linux.nix / ./home-darwin.nix, which add OS-specific
+# config (desktop environment, GTK, xdg mime, etc.) on top.
+{ pkgs, ... }:
 {
   home.username = "colby";
-  home.homeDirectory = if isDarwin then "/Users/colby" else "/home/colby";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/colby" else "/home/colby";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 

@@ -48,18 +48,12 @@
 
       homeConfigurations."colby@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor linuxSystem;
-        extraSpecialArgs = {
-          isDarwin = false;
-        };
-        modules = [ ./config/home.nix ];
+        modules = [ ./config/home-linux.nix ];
       };
 
       homeConfigurations."colby@macbook" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor darwinSystem;
-        extraSpecialArgs = {
-          isDarwin = true;
-        };
-        modules = [ ./config/home.nix ];
+        modules = [ ./config/home-darwin.nix ];
       };
 
       devShells = forAllSystems (

@@ -1,8 +1,12 @@
-# Linux-only home-manager config: Hyprland desktop stack, GTK theming, and
-# packages/xdg entries that don't apply (or don't build) on macOS.
+# Linux home-manager config: home-common.nix plus the Hyprland desktop
+# stack, GTK theming, and packages/xdg entries that don't apply (or don't
+# build) on macOS.
 { pkgs, ... }:
 {
-  imports = [ ./firefox ]; # pkgs.firefox isn't packaged for Darwin
+  imports = [
+    ./home-common.nix
+    ./firefox # pkgs.firefox isn't packaged for Darwin
+  ];
 
   xdg.mimeApps = {
     enable = true;
