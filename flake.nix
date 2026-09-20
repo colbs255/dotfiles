@@ -16,12 +16,19 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs =
+      linuxSystem = "x86_64-linux";
+      darwinSystem = "aarch64-darwin";
+      systems = [
+        linuxSystem
+        darwinSystem
+      ];
+
+      pkgsFor =
+        system:
         nixpkgs.legacyPackages.${system}.extend (
           final: prev: {
-            # Add firefox extensions to our packages
-            firefox-extensions = inputs.firefox-addons.packages.${system};
+            # Add firefox extensions to our packages (Linux only: firefox isn't packaged for Darwin)
+            firefox-extensions = inputs.firefox-addons.packages.${linuxSystem} or { };
           }
         )
         // {
@@ -29,29 +36,50 @@
             allowUnfree = true;
           };
         };
+
+      forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = linuxSystem;
         modules = [ ./config/configuration.nix ];
       };
 
-      homeConfigurations."colby" = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      homeConfigurations."colby@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor linuxSystem;
+        extraSpecialArgs = {
+          isDarwin = false;
+        };
         modules = [ ./config/home.nix ];
       };
 
-      devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          pkgs.just
-          pkgs.stylua
-          pkgs.shellcheck
-          pkgs.fd
-          pkgs.home-manager
-        ];
+      homeConfigurations."colby@macbook" = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor darwinSystem;
+        extraSpecialArgs = {
+          isDarwin = true;
+        };
+        modules = [ ./config/home.nix ];
       };
 
-      formatter.${system} = pkgs.nixfmt-tree;
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = pkgsFor system;
+        in
+        {
+          default = pkgs.mkShell {
+            packages = [
+              pkgs.just
+              pkgs.stylua
+              pkgs.shellcheck
+              pkgs.fd
+              pkgs.home-manager
+            ];
+          };
+        }
+      );
+
+      formatter = forAllSystems (system: (pkgsFor system).nixfmt-tree);
     };
 }
