@@ -9,6 +9,20 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
 
     set -l claude_bin (readlink -f $claude_path)
 
+    # NixOS's system ssh_config Includes a systemd-ssh-proxy snippet from the
+    # Nix store (for `ssh <container>` via systemd-machined) that is unrelated
+    # to normal git-over-ssh. Inside an unprivileged bwrap sandbox, root-owned
+    # files appear owned by the unmapped "nobody" uid, and ssh's strict
+    # ownership check on Include'd files then aborts *all* ssh connections.
+    # Strip the Include line and shadow the real (symlink-resolved) config
+    # path so ordinary ssh usage (git, etc.) keeps working.
+    set -l ssh_config_override (mktemp)
+    set -l ssh_config_real /etc/ssh/ssh_config
+    if test -f $ssh_config_real
+        grep -viE '^\s*include\b' $ssh_config_real >$ssh_config_override
+        set ssh_config_real (readlink -f $ssh_config_real)
+    end
+
     set -l bwrap_args \
         --unshare-all --share-net \
         --die-with-parent \
@@ -18,6 +32,7 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
         --ro-bind /nix /nix \
         --ro-bind /run/current-system /run/current-system \
         --ro-bind /etc /etc \
+        --ro-bind-try $ssh_config_override $ssh_config_real \
         --ro-bind-try $HOME/.nix-profile $HOME/.nix-profile \
         --ro-bind-try $HOME/.local/state/nix $HOME/.local/state/nix \
         --ro-bind-try $HOME/.local/bin $HOME/.local/bin \
@@ -49,4 +64,7 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
     end
 
     bwrap $bwrap_args -- $claude_bin --dangerously-skip-permissions $argv
+    set -l exit_code $status
+    rm -f $ssh_config_override
+    return $exit_code
 end
