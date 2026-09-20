@@ -37,7 +37,7 @@
           };
         };
 
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system (pkgsFor system));
     in
     {
 
@@ -57,11 +57,7 @@
       };
 
       devShells = forAllSystems (
-        system:
-        let
-          pkgs = pkgsFor system;
-        in
-        {
+        _system: pkgs: {
           default = pkgs.mkShell {
             packages = [
               pkgs.just
@@ -74,6 +70,6 @@
         }
       );
 
-      formatter = forAllSystems (system: (pkgsFor system).nixfmt-tree);
+      formatter = forAllSystems (_system: pkgs: pkgs.nixfmt-tree);
     };
 }
