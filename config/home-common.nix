@@ -15,7 +15,6 @@
     helix.source = ./helix;
     fish.source = ./fish;
     bat.source = ./bat;
-    alacritty.source = ./alacritty;
     git.source = ./git;
     tmux.source = ./tmux;
     # Only the config file is managed here (not the whole hunk/ dir) so that
@@ -60,7 +59,6 @@
 
     # Shell / terminal / CLI
     fish
-    alacritty
     tmux
     zoxide
     fzf
