@@ -94,5 +94,19 @@
 
     # freecad has no aarch64-darwin build in nixpkgs
     freecad
+
+    # Editors / IDEs
+    jetbrains.idea
+
+    # Creative / CAD
+    godot
+    inkscape
+    openscad-unstable
+
+    # Media
+    mpv
+
+    # Misc
+    localsend
   ];
 }

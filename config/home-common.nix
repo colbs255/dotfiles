@@ -55,7 +55,6 @@
     # Editors / IDEs
     neovim
     helix
-    jetbrains.idea
 
     # Shell / terminal / CLI
     fish
@@ -98,16 +97,7 @@
     bash-language-server
     direnv
 
-    # Creative / CAD
-    godot
-    inkscape
-    openscad-unstable
-
-    # Media
-    mpv
-
     # Misc
-    localsend
     nerd-fonts.jetbrains-mono
     bitwarden-cli
   ];
