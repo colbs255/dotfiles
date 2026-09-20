@@ -8,6 +8,8 @@
     ./firefox # pkgs.firefox isn't packaged for Darwin
   ];
 
+  home.homeDirectory = "/home/colby";
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

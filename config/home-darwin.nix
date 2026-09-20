@@ -5,5 +5,7 @@
 {
   imports = [ ./home-common.nix ];
 
+  home.homeDirectory = "/Users/colby";
+
   home.packages = with pkgs; [ ];
 }

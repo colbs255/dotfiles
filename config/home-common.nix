@@ -4,7 +4,6 @@
 { pkgs, ... }:
 {
   home.username = "colby";
-  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/colby" else "/home/colby";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
