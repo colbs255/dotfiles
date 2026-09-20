@@ -5,7 +5,7 @@ decorations = "None"
 
 [font]
 size = 18
-normal = { family = "JetBrains Mono NF" }
+normal = { family = "JetBrainsMonoNL Nerd Font Mono" }
 
 [cursor]
 style = { shape = "Beam", blinking = "On" }
