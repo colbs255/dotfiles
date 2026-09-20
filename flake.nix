@@ -27,8 +27,8 @@
         system:
         nixpkgs.legacyPackages.${system}.extend (
           final: prev: {
-            # Add firefox extensions to our packages (Linux only: firefox isn't packaged for Darwin)
-            firefox-extensions = inputs.firefox-addons.packages.${linuxSystem} or { };
+            # Add firefox extensions to our packages (empty on Darwin: firefox isn't packaged there)
+            firefox-extensions = inputs.firefox-addons.packages.${system} or { };
           }
         )
         // {
@@ -37,7 +37,11 @@
           };
         };
 
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system (pkgsFor system));
+      # Computed once per system so nix flake show/check don't redo the
+      # pkgs.extend above for every output that needs it.
+      pkgsBySystem = nixpkgs.lib.genAttrs systems pkgsFor;
+
+      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f pkgsBySystem.${system});
     in
     {
 
@@ -47,29 +51,27 @@
       };
 
       homeConfigurations."colby@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor linuxSystem;
+        pkgs = pkgsBySystem.${linuxSystem};
         modules = [ ./config/home-linux.nix ];
       };
 
       homeConfigurations."colby@macbook" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor darwinSystem;
+        pkgs = pkgsBySystem.${darwinSystem};
         modules = [ ./config/home-darwin.nix ];
       };
 
-      devShells = forAllSystems (
-        _system: pkgs: {
-          default = pkgs.mkShell {
-            packages = [
-              pkgs.just
-              pkgs.stylua
-              pkgs.shellcheck
-              pkgs.fd
-              pkgs.home-manager
-            ];
-          };
-        }
-      );
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          packages = [
+            pkgs.just
+            pkgs.stylua
+            pkgs.shellcheck
+            pkgs.fd
+            pkgs.home-manager
+          ];
+        };
+      });
 
-      formatter = forAllSystems (_system: pkgs: pkgs.nixfmt-tree);
+      formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
     };
 }
