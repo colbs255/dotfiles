@@ -75,6 +75,7 @@
     hyprpicker
     waybar
     fuzzel
+    foot
     mako
     libnotify
     slurp
