@@ -68,6 +68,10 @@
   home.file.".bash_profile" = {
     source = ./bash/.bash_profile;
   };
+  home.file.".local/bin/claude-sandboxed" = {
+    source = ./claude-sandbox/claude-sandboxed.sh;
+    executable = true;
+  };
   # Only these paths are managed, not the whole ~/.claude dir.
   home.file.".claude/settings.json".source = ./claude/settings.json;
   home.file.".claude/commands".source = ./claude/commands;
@@ -171,5 +175,6 @@
     ouch
     herdr
     bitwarden-cli
+    bubblewrap
   ];
 }
