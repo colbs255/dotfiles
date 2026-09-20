@@ -1,11 +1,13 @@
 function agent-sandboxed --description 'Run claude --dangerously-skip-permissions inside a bwrap sandbox confined to the current project'
     set -l project_dir (pwd)
-    set -l claude_bin (readlink -f (command -v claude))
+    set -l claude_path (command -v claude)
 
-    if test -z "$claude_bin"
+    if test -z "$claude_path"
         echo "agent-sandboxed: claude not found on PATH" >&2
         return 1
     end
+
+    set -l claude_bin (readlink -f $claude_path)
 
     set -l bwrap_args \
         --unshare-all --share-net \
@@ -24,8 +26,9 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
         --bind-try $HOME/.claude.json $HOME/.claude.json \
         --bind-try $HOME/.cache/claude-cli-nodejs $HOME/.cache/claude-cli-nodejs \
         --ro-bind-try $HOME/.config/git $HOME/.config/git \
-        --ro-bind-try $HOME/.config/gh $HOME/.config/gh \
+        --bind-try $HOME/.config/gh $HOME/.config/gh \
         --ro-bind-try $HOME/.ssh/known_hosts $HOME/.ssh/known_hosts \
+        --ro-bind-try $HOME/.ssh/config $HOME/.ssh/config \
         --setenv HOME $HOME \
         --chdir $project_dir
 
