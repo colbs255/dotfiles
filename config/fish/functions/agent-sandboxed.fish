@@ -14,14 +14,10 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
     # to normal git-over-ssh. Inside an unprivileged bwrap sandbox, root-owned
     # files appear owned by the unmapped "nobody" uid, and ssh's strict
     # ownership check on Include'd files then aborts *all* ssh connections.
-    # Strip the Include line and shadow the real (symlink-resolved) config
-    # path so ordinary ssh usage (git, etc.) keeps working.
-    set -l ssh_config_override (mktemp)
-    set -l ssh_config_real /etc/ssh/ssh_config
-    if test -f $ssh_config_real
-        grep -viE '^\s*include\b' $ssh_config_real >$ssh_config_override
-        set ssh_config_real (readlink -f $ssh_config_real)
-    end
+    # None of the system config's settings matter here (we bind the user's
+    # own ~/.ssh/config and ~/.ssh/known_hosts below), so just shadow the
+    # real (symlink-resolved) path with an empty file to skip it entirely.
+    set -l ssh_config_real (readlink -f /etc/ssh/ssh_config)
 
     set -l bwrap_args \
         --unshare-all --share-net \
@@ -32,7 +28,7 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
         --ro-bind /nix /nix \
         --ro-bind /run/current-system /run/current-system \
         --ro-bind /etc /etc \
-        --ro-bind-try $ssh_config_override $ssh_config_real \
+        --ro-bind /dev/null $ssh_config_real \
         --ro-bind-try $HOME/.nix-profile $HOME/.nix-profile \
         --ro-bind-try $HOME/.local/state/nix $HOME/.local/state/nix \
         --ro-bind-try $HOME/.local/bin $HOME/.local/bin \
@@ -64,7 +60,4 @@ function agent-sandboxed --description 'Run claude --dangerously-skip-permission
     end
 
     bwrap $bwrap_args -- $claude_bin --dangerously-skip-permissions $argv
-    set -l exit_code $status
-    rm -f $ssh_config_override
-    return $exit_code
 end
