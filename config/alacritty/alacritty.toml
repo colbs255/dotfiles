@@ -1,7 +1,7 @@
 [window]
 padding = { x = 10, y = 10 }
 opacity = 0.9
-decorations = "None"
+decorations = "Buttonless"
 
 [font]
 size = 18
