@@ -72,7 +72,6 @@
     jq
     ouch
     wget
-    stow
 
     # Git / VCS
     git

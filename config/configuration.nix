@@ -91,7 +91,6 @@
   ];
   environment.systemPackages = with pkgs; [
     vim
-    wget
   ];
   system.stateVersion = "23.11"; # Did you read the comment?
 }
