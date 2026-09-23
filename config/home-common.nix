@@ -98,7 +98,6 @@
     direnv
 
     # Misc
-    nerd-fonts.jetbrains-mono
     bitwarden-cli
   ];
 }
