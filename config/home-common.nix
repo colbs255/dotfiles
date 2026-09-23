@@ -83,6 +83,7 @@
     # AI / agent tooling
     opencode
     claude-code
+    codex
     herdr
     hunk
 
