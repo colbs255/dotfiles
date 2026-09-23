@@ -1,5 +1,4 @@
 cask "alacritty"
-cask "docker"
 cask "font-jetbrains-mono-nerd-font"
 cask "godot"
 cask "intellij-idea"
