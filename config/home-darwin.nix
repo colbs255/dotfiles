@@ -12,7 +12,10 @@
 
   xdg.configFile = {
     alacritty.source = ./alacritty;
-    homebrew.source = ./homebrew;
+    # Only the Brewfile is managed here (not the whole homebrew/ dir) so
+    # that trust.json/trust.json.lock stay writable for Homebrew's own
+    # tap-trust runtime state.
+    "homebrew/Brewfile".source = ./homebrew/Brewfile;
   };
 
   home.packages = with pkgs; [ alacritty ];
