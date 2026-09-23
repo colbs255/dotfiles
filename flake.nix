@@ -11,6 +11,12 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Tracks Claude Code releases directly (hourly-updated), instead of
+    # waiting for nixpkgs to repackage each new version.
+    claude-code-nix = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,12 +31,15 @@
 
       pkgsFor =
         system:
-        nixpkgs.legacyPackages.${system}.extend (
-          final: prev: {
-            # Add firefox extensions to our packages (empty on Darwin: firefox isn't packaged there)
-            firefox-extensions = inputs.firefox-addons.packages.${system} or { };
-          }
-        )
+        let
+          base = nixpkgs.legacyPackages.${system}.extend (
+            final: prev: {
+              # Add firefox extensions to our packages (empty on Darwin: firefox isn't packaged there)
+              firefox-extensions = inputs.firefox-addons.packages.${system} or { };
+            }
+          );
+        in
+        base.extend inputs.claude-code-nix.overlays.default
         // {
           config = {
             allowUnfree = true;
