@@ -108,5 +108,6 @@
 
     # Misc
     localsend
+    nerd-fonts.jetbrains-mono
   ];
 }
