@@ -9,10 +9,7 @@
 
   home.packages = with pkgs; [ alacritty ];
 
-  # GUI apps (casks) don't play well when installed via Nix on macOS, so
-  # they're declared in homebrew/Brewfile instead and applied here. Referenced
-  # by its Nix store path so we never have to touch ~/.config/homebrew, which
-  # Homebrew itself owns (trust.json, trust.json.lock, etc).
+  # GUI apps don't play well when installed with Nix, so we use Homebrew instead.
   home.activation.brewBundle = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     /opt/homebrew/bin/brew bundle --file="${./homebrew/Brewfile}"
   '';
