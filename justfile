@@ -16,3 +16,7 @@ lint-shell:
 clean:
     nix-collect-garbage --delete-older-than 7d
     home-manager expire-generations 7d
+check-system:
+    nix build .#nixosConfigurations.nixos.config.system.build.toplevel --no-link
+check-home host:
+    nix build '.#homeConfigurations."colby@{{host}}".activationPackage' --no-link
