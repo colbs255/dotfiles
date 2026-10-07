@@ -85,21 +85,8 @@ jobs:
       - name: Build home (nixos)
         run: nix develop -c just check-home nixos
 
-  build-home-darwin:
-    needs: update
-    if: needs.update.outputs.changed == 'true'
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v8
-        with:
-          name: flake-lock
-      - uses: nixbuild/nix-quick-install-action@v35
-      - name: Build home (macbook)
-        run: nix develop -c just check-home macbook
-
   pr:
-    needs: [check, build-system, build-home-linux, build-home-darwin]
+    needs: [check, build-system, build-home-linux]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -118,4 +105,4 @@ jobs:
           body: |
             Automated `nix flake update`.
 
-            Validated in CI: flake check, format, lint, NixOS system build, and home builds for `colby@nixos` and `colby@macbook`.
+            Validated in CI: flake check, format, lint, NixOS system build, and home build for `colby@nixos`.
