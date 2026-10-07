@@ -20,7 +20,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
     - name: Install Nix
-      uses: cachix/install-nix-action@v31
+      uses: nixbuild/nix-quick-install-action@v35
     - name: Nix flake check
       run: nix flake check
     - name: Nix format
@@ -32,7 +32,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
     - name: Install Nix
-      uses: cachix/install-nix-action@v31
+      uses: nixbuild/nix-quick-install-action@v35
     - name: Stylua
       run: nix develop --command bash -c 'just lint-lua'
   validate-shell:
@@ -42,6 +42,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
     - name: Install Nix
-      uses: cachix/install-nix-action@v31
+      uses: nixbuild/nix-quick-install-action@v35
     - name: Shellcheck
       run: nix develop --command bash -c 'just lint-shell'
