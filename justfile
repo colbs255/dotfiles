@@ -6,13 +6,8 @@ update:
     nix flake update
 format:
     nix fmt
-    stylua config
-    shellcheck $(fd -e sh) --format diff | git apply --allow-empty
-lint: lint-lua lint-shell
-lint-lua:
-    stylua config --check
-lint-shell:
-    shellcheck $(fd -e sh)
+lint:
+    nix flake check -L
 clean:
     nix-collect-garbage --delete-older-than 7d
     home-manager expire-generations 7d

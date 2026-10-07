@@ -43,7 +43,7 @@ actually in `config/configuration.nix` or `config/hardware-configuration.nix`.
 ## Formatting / lint
 
 - `just format` — format nix, lua, and bash
-- `just lint` — check/lint nix, lua, and bash
+- `just lint` — `nix flake check`: evaluates configs and checks formatting/shellcheck (treefmt, configured in `flake.nix`)
 
 ## Git / PRs
 

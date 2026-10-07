@@ -14,7 +14,7 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
@@ -42,6 +42,37 @@
       pkgsBySystem = nixpkgs.lib.genAttrs systems pkgsFor;
 
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f pkgsBySystem.${system});
+
+      # One treefmt config drives nix, lua and shell. `nix fmt` runs it;
+      # `nix flake check` runs it in --ci mode so CI and local agree.
+      treefmtFor =
+        pkgs:
+        pkgs.treefmt.withConfig {
+          runtimeInputs = [
+            pkgs.nixfmt
+            pkgs.stylua
+            pkgs.shellcheck
+          ];
+          settings = {
+            tree-root-file = "flake.nix";
+            on-unmatched = "info";
+            formatter = {
+              nixfmt = {
+                command = "nixfmt";
+                includes = [ "*.nix" ];
+              };
+              stylua = {
+                command = "stylua";
+                includes = [ "*.lua" ];
+              };
+              # shellcheck doesn't rewrite files; a non-zero exit fails the run
+              shellcheck = {
+                command = "shellcheck";
+                includes = [ "*.sh" ];
+              };
+            };
+          };
+        };
     in
     {
 
@@ -64,14 +95,19 @@
         default = pkgs.mkShell {
           packages = [
             pkgs.just
-            pkgs.stylua
-            pkgs.shellcheck
-            pkgs.fd
             pkgs.home-manager
           ];
         };
       });
 
-      formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
+      formatter = forAllSystems treefmtFor;
+
+      checks = forAllSystems (pkgs: {
+        formatting = pkgs.runCommand "treefmt-check" { } ''
+          cp -r ${self} src && chmod -R +w src && cd src
+          ${treefmtFor pkgs}/bin/treefmt --ci --no-cache
+          touch $out
+        '';
+      });
     };
 }

@@ -13,35 +13,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate-nix:
+  validate:
     runs-on: ubuntu-latest
-    name: Validate nix configs
+    name: Validate configs
     steps:
     - name: Checkout
       uses: actions/checkout@v7
     - name: Install Nix
       uses: nixbuild/nix-quick-install-action@v35
     - name: Nix flake check
-      run: nix flake check
-    - name: Nix format
-      run: nix fmt -- --ci
-  validate-lua:
-    runs-on: ubuntu-latest
-    name: Lint lua files
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v7
-    - name: Install Nix
-      uses: nixbuild/nix-quick-install-action@v35
-    - name: Stylua
-      run: nix develop --command bash -c 'just lint-lua'
-  validate-shell:
-    runs-on: ubuntu-latest
-    name: Lint shell files
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v7
-    - name: Install Nix
-      uses: nixbuild/nix-quick-install-action@v35
-    - name: Shellcheck
-      run: nix develop --command bash -c 'just lint-shell'
+      run: nix flake check -L
