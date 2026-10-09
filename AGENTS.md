@@ -25,6 +25,9 @@ and macOS. `flake.nix` exposes:
 
 ## Updating
 
+A weekly `flake update` workflow (`.github/workflows/flake-update.yml`) does this
+automatically and opens a PR only if every build passes. To do it by hand:
+
 1. Run `just update` and commit the changes.
 2. Run `just build-system` to verify system
 3. Run `just build-home` to verify home
