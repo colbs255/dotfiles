@@ -6,6 +6,7 @@
   home.homeDirectory = "/Users/colby";
 
   xdg.configFile.alacritty.source = ./alacritty;
+  xdg.configFile.rex.source = ./rex;
 
   home.packages = with pkgs; [ alacritty ];
 
