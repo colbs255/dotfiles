@@ -33,6 +33,43 @@ rex.bind("ctrl+space>shift+d", "session.close")
 rex.bind("ctrl+space>w", "session.switch")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
 
+local home = os.getenv("HOME")
+local worktrees = home .. "/.local/share/rex/worktrees"
+
+-- The Rex server runs with launchd's bare PATH, so put Nix's tools on it.
+local function run(argv)
+    local cmd = { "/usr/bin/env", "PATH=" .. home .. "/.nix-profile/bin:/usr/bin:/bin" }
+    for _, arg in ipairs(argv) do
+        table.insert(cmd, arg)
+    end
+    local r, err = rex.exec(cmd)
+    if r == nil then
+        error(err, 0)
+    end
+    if not r.ok then
+        error(r.stderr, 0)
+    end
+    return (r.stdout:gsub("%s+$", ""))
+end
+
+-- A short kebab-case branch name for the task, falling back to a timestamp.
+local function slug(prompt)
+    local ok, raw = pcall(run, {
+        "claude",
+        "-p",
+        "--model",
+        "haiku",
+        "Summarize the following task as a short slug: 2 to 4 lowercase words separated by hyphens, "
+            .. "no punctuation, no quotes, no other text in your response.\n\nTask:\n"
+            .. prompt,
+    })
+    local name = ok and raw:lower():gsub("[^a-z0-9]+", "-"):gsub("^-+", ""):gsub("-+$", ""):sub(1, 40) or ""
+    if name == "" then
+        name = "task"
+    end
+    return name .. "-" .. os.time() % 100000
+end
+
 rex.action({
     name = "open_project",
     title = "Open Project…",
@@ -61,10 +98,33 @@ rex.action({
             return
         end
 
+        local prompt = rex.ui.input({
+            title = "Prompt for Claude",
+            placeholder = "Leave empty for a plain shell",
+            confirm = "Launch",
+        })
+        if prompt == nil then
+            return
+        end
+
+        -- An empty prompt opens the project itself; a prompt gets its own
+        -- worktree and branch with Claude started on the task.
+        local repo = dir:match("[^/]+$")
+        local label = repo
+        local options = { cwd = dir }
+        if prompt:match("%S") then
+            local branch = slug(prompt)
+            local path = worktrees .. "/" .. repo .. "/" .. branch
+            run({ "git", "-C", dir, "worktree", "add", "-b", branch, path })
+            label = repo .. "/" .. branch
+            options.cwd = path
+            options.initial_input = "claude --dangerously-skip-permissions '" .. prompt:gsub("'", "'\\''") .. "'\r"
+        end
+
         local session, create_err = rex.call("session.create", {
-            label = dir:match("[^/]+$"),
+            label = label,
             initial_windows = {
-                { layout = rex.layout.block({ flavor = "com.superlogical.terminal.shell", options = { cwd = dir } }) },
+                { layout = rex.layout.block({ flavor = "com.superlogical.terminal.shell", options = options }) },
             },
         })
         if session == nil then
