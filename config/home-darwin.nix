@@ -7,6 +7,8 @@
 
   xdg.configFile.alacritty.source = ./alacritty;
   xdg.configFile.rex.source = ./rex;
+  # zsh reads ~/.zshrc, not ~/.config, so this one goes in home.file.
+  home.file.".zshrc".source = ./zsh/.zshrc;
 
   home.packages = with pkgs; [ alacritty ];
 
