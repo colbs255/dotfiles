@@ -25,10 +25,52 @@ rex.bind("ctrl+space>c", "client.tab.new")
 rex.bind("ctrl+space>shift+x", "client.tab.close")
 rex.bind("ctrl+space>shift+t", "client.tab.rename")
 for i = 1, 9 do
-  rex.bind("ctrl+space>" .. i, "client.tab.goto", { index = i })
+    rex.bind("ctrl+space>" .. i, "client.tab.goto", { index = i })
 end
 rex.bind("ctrl+space>shift+n", "session.new")
 rex.bind("ctrl+space>shift+w", "session.rename")
 rex.bind("ctrl+space>shift+d", "session.close")
 rex.bind("ctrl+space>w", "session.switch")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
+
+rex.action({
+    name = "open_project",
+    title = "Open Project…",
+    run = function()
+        local root = os.getenv("HOME") .. "/projects"
+        local r, err =
+            rex.exec({ "find", root, "-mindepth", "1", "-maxdepth", "1", "-type", "d", "-not", "-name", ".*" })
+        if r == nil then
+            error(err, 0)
+        end
+        if not r.ok then
+            error(r.stderr, 0)
+        end
+
+        local items = {}
+        for dir in r.stdout:gmatch("[^\n]+") do
+            local name = dir:match("[^/]+$")
+            table.insert(items, { id = dir, title = name, subtitle = "~/projects/" .. name, icon = "folder" })
+        end
+        table.sort(items, function(a, b)
+            return a.title:lower() < b.title:lower()
+        end)
+
+        local dir = rex.ui.pick({ title = "Open project", placeholder = "Filter projects", items = items })
+        if dir == nil then
+            return
+        end
+
+        local session, create_err = rex.call("session.create", {
+            label = dir:match("[^/]+$"),
+            initial_windows = {
+                { layout = rex.layout.block({ flavor = "com.superlogical.terminal.shell", options = { cwd = dir } }) },
+            },
+        })
+        if session == nil then
+            error(create_err, 0)
+        end
+        rex.client.queue("session.select", { session_id = session.session_id })
+    end,
+})
+rex.bind("ctrl+space>d", "open_project")
