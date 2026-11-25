@@ -134,3 +134,41 @@ rex.action({
     end,
 })
 rex.bind("ctrl+space>d", "open_project")
+
+-- The focused terminal's working directory, from the path it last reported.
+local function focused_cwd(ctx)
+    local r =
+        rex.call("block.method", { session_id = ctx.session_id, block_id = ctx.block_id, method = "pwd", args = {} })
+    local path = r and r.pwd and r.pwd:match("^file://[^/]*(/.*)$")
+    if path == nil then
+        error("can't tell which directory this pane is in", 0)
+    end
+    return (path:gsub("%%(%x%x)", function(h)
+        return string.char(tonumber(h, 16))
+    end))
+end
+
+rex.action({
+    name = "lazygit",
+    title = "Lazygit",
+    run = function(ctx)
+        local _, err = rex.call("session.new_layer", {
+            session_id = ctx.session_id,
+            bounds = { 0.05, 0.05, 0.9, 0.9 },
+            focus = true,
+            layout = rex.layout.block({
+                flavor = "com.superlogical.terminal.shell",
+                options = {
+                    cwd = focused_cwd(ctx),
+                    shell = "none",
+                    command = { home .. "/.nix-profile/bin/lazygit" },
+                    path_prepend = { home .. "/.nix-profile/bin" },
+                },
+            }),
+        })
+        if err ~= nil then
+            error(err, 0)
+        end
+    end,
+})
+rex.bind("ctrl+space>g", "lazygit")
